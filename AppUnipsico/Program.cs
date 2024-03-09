@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("AppUnipsico");
+var connectionString = builder.Configuration.GetConnectionString("App");
 
 builder.Services.AddControllersWithViews();
 
