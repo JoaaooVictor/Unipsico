@@ -1,4 +1,5 @@
-﻿using AppUnipsico.ViewModels;
+﻿using AppUnipsico.Models;
+using AppUnipsico.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -59,16 +60,24 @@ namespace AppUnipsico.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(LoginViewModel registerViewModel)
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = registerViewModel.UserName };
+                var user = new User 
+                { 
+                    UserName = registerViewModel.UserName,
+                    Cpf = registerViewModel.Cpf,
+                    DataNascimento = registerViewModel.DataNascimento,
+                    DataRegistro = DateTime.Now,
+                    Email = registerViewModel.Email
+                };
+
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
 
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _userManager.AddToRoleAsync(user, "Paciente");
                     RedirectToAction("Login", "Account");
                 }
                 else

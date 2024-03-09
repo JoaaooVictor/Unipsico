@@ -1,4 +1,4 @@
-﻿@model LoginViewModel
+﻿@model RegisterViewModel
 
 <div class="container">
     <div class="row justify-content-center">
@@ -11,19 +11,33 @@
                     <img src="~/imagens/registrado.png" alt="Registrar Usuário" style="width: 100px; height: auto;" class="mb-4" />
                     <form asp-controller="Account" asp-action="Register" method="post">
                         <hr />
-                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="ReturnUrl" />
                         <div class="form-group">
                             <label asp-for="UserName" class="font-weight-bold">Nome de Usuário</label>
                             <input asp-for="UserName" class="form-control" />
                             <span asp-validation-for="UserName" class="text-danger"></span>
                         </div>
                         <div class="form-group">
+                            <label asp-for="Cpf" class="font-weight-bold">CPF</label>
+                            <input asp-for="Cpf" class="form-control" />
+                            <span asp-validation-for="Cpf" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DataNascimento" class="font-weight-bold">Data de nascimento</label>
+                            <input asp-for="DataNascimento" class="form-control"/>
+                            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
                             <label asp-for="Password" class="font-weight-bold">Senha</label>
                             <input asp-for="Password" type="password" class="form-control" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
+                        <div class="form-group">
+                            <label asp-for="Repassword" class="font-weight-bold">Insira a senha novamente</label>
+                            <input asp-for="Repassword" type="password" class="form-control" />
+                            <span asp-validation-for="Repassword" class="text-danger"></span>
+                        </div>
                         <br />
-
                         <div class="form-group">
                             <button type="submit" class="btn btn-success btn-block">Registrar</button>
                         </div>
