@@ -2,7 +2,7 @@
 
 namespace AppUnipsico.Models
 {
-    public class User : IdentityUser
+    public class Usuario : IdentityUser
     {
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }

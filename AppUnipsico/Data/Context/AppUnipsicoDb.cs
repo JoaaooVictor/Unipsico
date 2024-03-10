@@ -9,6 +9,6 @@ namespace AppUnipsico.Data.Context
     {
         public AppUnipsicoDb(DbContextOptions options) : base(options) { }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Usuario> Users { get; set; }
     }
 }

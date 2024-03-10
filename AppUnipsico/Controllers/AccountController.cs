@@ -64,7 +64,7 @@ namespace AppUnipsico.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User 
+                var user = new Usuario 
                 { 
                     UserName = registerViewModel.UserName,
                     Cpf = registerViewModel.Cpf,
