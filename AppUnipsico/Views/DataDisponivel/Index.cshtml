@@ -6,34 +6,17 @@
 
 <div class="container">
     <div class="row">
-        @foreach (var consulta in Model.DatasDisponiveis)
+        @foreach (var dataDisponivel in Model.DatasDisponiveis)
         {
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Consulta</h4>
+                        <h4 class="my-0 font-weight-normal text-center">Data Disponivel</h4>
                     </div>
-                    <div class="card-body">
-                        <h2 class="card-title pricing-card-title">@consulta.Data.ToShortDateString()</h2>
-                        <button type="button" class="btn btn-lg btn-block btn-outline-primary" data-toggle="modal" data-target="#consultaModal@(consulta.Id)">Ver Detalhes</button>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="consultaModal@(consulta.Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Detalhes da Consulta</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Data da Consulta: @consulta.Data.ToShortDateString()</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        </div>
+                    <div class="card-body text-center">
+                        <h2 class="card-title pricing-card-title text-center">Data: @dataDisponivel.Data.ToString("dd/MM/yyyy")</h2>
+                        <h2 class="card-title pricing-card-title text-center">Hora: @dataDisponivel.Data.ToString("hh:mm")</h2>
+                        <a type="button" class="btn btn-success text-white" asp-controller="Consulta" asp-action="Agendar" asp-route-DataConsultaId=@dataDisponivel.Id>Agendar</a>
                     </div>
                 </div>
             </div>

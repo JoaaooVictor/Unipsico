@@ -13,11 +13,11 @@ namespace AppUnipsico.Controllers
             _dataDisponivelService = dataDisponivelService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var dataDisponivelViewModel = new DataDisponivelViewModel()
             {
-                DatasDisponiveis = await _dataDisponivelService.DatasDisponiveis(),
+                DatasDisponiveis = _dataDisponivelService.DatasDisponiveis(),
             };
 
             return View(dataDisponivelViewModel);
