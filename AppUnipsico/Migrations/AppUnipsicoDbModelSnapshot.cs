@@ -22,6 +22,25 @@ namespace AppUnipsico.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AppUnipsico.Models.Consulta", b =>
+                {
+                    b.Property<string>("ConsultaId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DataConsulta")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("StatusConsulta")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ConsultaId");
+
+                    b.ToTable("Consultas");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -229,21 +248,34 @@ namespace AppUnipsico.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("AppUnipsico.Models.User", b =>
+            modelBuilder.Entity("AppUnipsico.Models.Usuario", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Cpf")
-                        .IsRequired()
+                    b.Property<string>("ConsultaId")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cpf")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataRegistro")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Idade")
-                        .HasColumnType("int");
+                    b.HasDiscriminator().HasValue("Usuario");
+                });
 
-                    b.HasDiscriminator().HasValue("User");
+            modelBuilder.Entity("AppUnipsico.Models.Consulta", b =>
+                {
+                    b.HasOne("AppUnipsico.Models.Usuario", "Usuario")
+                        .WithMany("Consultas")
+                        .HasForeignKey("ConsultaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -295,6 +327,11 @@ namespace AppUnipsico.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AppUnipsico.Models.Usuario", b =>
+                {
+                    b.Navigation("Consultas");
                 });
 #pragma warning restore 612, 618
         }

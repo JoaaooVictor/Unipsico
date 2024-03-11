@@ -1,4 +1,7 @@
 using AppUnipsico.Data.Context;
+using AppUnipsico.Repositories;
+using AppUnipsico.Services.Impl;
+using AppUnipsico.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("App");
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ConsultaRepository>();
+builder.Services.AddScoped<DataDisponivelRepository>();
+builder.Services.AddScoped<IConsultaService, ConsultaService>();
+builder.Services.AddScoped<IDataDisponivelService, DataDisponivelService>();
 
 builder.Services.AddDbContext<AppUnipsicoDb>(opt =>
 {

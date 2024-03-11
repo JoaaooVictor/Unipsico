@@ -7,5 +7,8 @@ namespace AppUnipsico.Models
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataRegistro { get; set; }
+
+        public string ConsultaId { get; set; }
+        public virtual IEnumerable<Consulta> Consultas { get; set; }
     }
 }
