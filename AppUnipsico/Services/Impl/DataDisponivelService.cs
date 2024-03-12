@@ -16,8 +16,9 @@ namespace AppUnipsico.Services.Impl
             _dataDisponivelRepository = dataDisponivelRepository;
         }
 
-        public IEnumerable<DataDisponivel> DatasDisponiveis()
+        public async Task<IEnumerable<Datas>> DatasDisponiveis()
         {
+            await InserirDatasDisponiveis();
             return _dataDisponivelRepository.BuscaTodasDatasDisponiveis();
         }
 
@@ -34,14 +35,14 @@ namespace AppUnipsico.Services.Impl
                 if (worksheet is not null)
                 {
                     int rowCount = worksheet.Dimension.Rows;
-                    var consultas = new List<DataDisponivel>();
+                    var consultas = new List<Datas>();
 
                     for (int row = 2; row <= rowCount; row++)
                     {
                         var dataString = worksheet.Cells[row, 1].Value.ToString();
                         if (DateTime.TryParse(dataString, out DateTime dataHora))
                         {
-                            consultas.Add(new DataDisponivel { Data = dataHora, Id = Guid.NewGuid() });
+                            consultas.Add(new Datas { Data = dataHora, Id = Guid.NewGuid() });
                         }
                     }
 

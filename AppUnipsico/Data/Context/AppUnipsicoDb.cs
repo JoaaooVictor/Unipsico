@@ -11,7 +11,7 @@ namespace AppUnipsico.Data.Context
         public AppUnipsicoDb(DbContextOptions options) : base(options) { }
 
         public DbSet<Consulta> Consultas { get; set; }
-        public DbSet<DataDisponivel> DatasDisponiveis { get; set; }
+        public DbSet<Datas> Datas { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

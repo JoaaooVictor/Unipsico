@@ -39,7 +39,11 @@ namespace AppUnipsico.Controllers
 
                 if (result.Succeeded)
                 {
-                    if (string.IsNullOrEmpty(loginViewModel.ReturnUrl))
+                    if (await _userManager.IsInRoleAsync(user, "Admin"))
+                    {
+                        return RedirectToAction("Index", "Home", new {area = "Admin"});
+                    }
+                    else if(string.IsNullOrEmpty(loginViewModel.ReturnUrl))
                     {
                         return RedirectToAction("Index", "Home");
                     }

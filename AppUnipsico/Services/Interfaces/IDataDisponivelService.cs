@@ -4,7 +4,7 @@ namespace AppUnipsico.Services.Interfaces
 {
     public interface IDataDisponivelService
     {
-        public IEnumerable<DataDisponivel> DatasDisponiveis();
+        public Task<IEnumerable<Datas>> DatasDisponiveis();
         public Task InserirDatasDisponiveis();
     }
 }

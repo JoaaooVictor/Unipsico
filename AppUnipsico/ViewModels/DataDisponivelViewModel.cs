@@ -4,6 +4,6 @@ namespace AppUnipsico.ViewModels
 {
     public class DataDisponivelViewModel
     {
-        public IEnumerable<DataDisponivel> DatasDisponiveis { get; set; }
+        public IEnumerable<Datas> DatasDisponiveis { get; set; }
     }
 }

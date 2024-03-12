@@ -4,22 +4,26 @@
     ViewBag.Title = "Lista de Datas Disponíveis";
 }
 
-<div class="container">
-    <div class="row">
-        @foreach (var dataDisponivel in Model.DatasDisponiveis)
-        {
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal text-center">Data Disponivel</h4>
-                    </div>
-                    <div class="card-body text-center">
-                        <h2 class="card-title pricing-card-title text-center">Data: @dataDisponivel.Data.ToString("dd/MM/yyyy")</h2>
-                        <h2 class="card-title pricing-card-title text-center">Hora: @dataDisponivel.Data.ToString("hh:mm")</h2>
-                        <a type="button" class="btn btn-success text-white" asp-controller="Consulta" asp-action="Agendar" asp-route-DataConsultaId=@dataDisponivel.Id>Agendar</a>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+    <div class="container">
+        <div class="row">
+            @foreach (var dataDisponivel in Model.DatasDisponiveis)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal text-center">Data Disponivel</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <h2 class="card-title pricing-card-title text-center">Data: @dataDisponivel.Data.ToString("dd/MM/yyyy")</h2>
+                            <h2 class="card-title pricing-card-title text-center">Hora: @dataDisponivel.Data.ToString("hh:mm")</h2>
+                            <a type="button" class="btn btn-success text-white" asp-controller="Consulta" asp-action="Agendar" asp-route-DataConsultaId=@dataDisponivel.Id>Agendar</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
-</div>
+</body>
+</html>

@@ -13,12 +13,12 @@ namespace AppUnipsico.Repositories
             _context = context;
         }
 
-        public IEnumerable<DataDisponivel> BuscaTodasDatasDisponiveis()
+        public IEnumerable<Datas> BuscaTodasDatasDisponiveis()
         {
-            return _context.DatasDisponiveis.ToList();
+            return _context.Datas.ToList();
         }
 
-        public async Task SalvarConsultasExcel(List<DataDisponivel> datasDisponiveis)
+        public async Task SalvarConsultasExcel(List<Datas> datasDisponiveis)
         {
             await _context.AddRangeAsync(datasDisponiveis);
             await _context.SaveChangesAsync();

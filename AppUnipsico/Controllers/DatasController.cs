@@ -4,20 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AppUnipsico.Controllers
 {
-    public class DataDisponivelController : Controller
+    public class DatasController : Controller
     {
         private readonly DataDisponivelService _dataDisponivelService;
 
-        public DataDisponivelController(DataDisponivelService dataDisponivelService)
+        public DatasController(DataDisponivelService dataDisponivelService)
         {
             _dataDisponivelService = dataDisponivelService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var dataDisponivelViewModel = new DataDisponivelViewModel()
             {
-                DatasDisponiveis = _dataDisponivelService.DatasDisponiveis(),
+                DatasDisponiveis = await _dataDisponivelService.DatasDisponiveis(),
             };
 
             return View(dataDisponivelViewModel);
