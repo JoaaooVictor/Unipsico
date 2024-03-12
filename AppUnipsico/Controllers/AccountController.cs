@@ -41,7 +41,7 @@ namespace AppUnipsico.Controllers
                 {
                     if (await _userManager.IsInRoleAsync(user, "Admin"))
                     {
-                        return RedirectToAction("Index", "Home", new {area = "Admin"});
+                        return RedirectToAction("Index", "Admin", new {area = "Admin"});
                     }
                     else if(string.IsNullOrEmpty(loginViewModel.ReturnUrl))
                     {
@@ -96,9 +96,6 @@ namespace AppUnipsico.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Clear();
-            HttpContext.User = null;
-
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }

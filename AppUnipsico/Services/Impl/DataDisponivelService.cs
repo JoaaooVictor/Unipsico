@@ -16,9 +16,8 @@ namespace AppUnipsico.Services.Impl
             _dataDisponivelRepository = dataDisponivelRepository;
         }
 
-        public async Task<IEnumerable<Datas>> DatasDisponiveis()
+        public IEnumerable<Datas> DatasDisponiveis()
         {
-            await InserirDatasDisponiveis();
             return _dataDisponivelRepository.BuscaTodasDatasDisponiveis();
         }
 

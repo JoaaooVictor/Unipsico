@@ -14,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<DataDisponivelService>();
 builder.Services.AddScoped<ConsultaRepository>();
 builder.Services.AddScoped<DataDisponivelRepository>();
+builder.Services.AddScoped<ICriaUsuarioRoleInicialService, CriaUsuarioRoleInicialService>();
 builder.Services.AddScoped<IDataDisponivelService, DataDisponivelService>();
 
 builder.Services.AddDbContext<AppUnipsicoDb>(opt =>
@@ -41,6 +42,18 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+CriarPerfisUsuarios(app);
+void CriarPerfisUsuarios(WebApplication app)
+{
+    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+    using (var scope = scopedFactory.CreateScope())
+    {
+        var service = scope.ServiceProvider.GetService<ICriaUsuarioRoleInicialService>();
+        service.CriaRoles();
+        service.CriaUsuarios();
+    }
+}
 
 app.MapControllerRoute(
   name: "areas",
