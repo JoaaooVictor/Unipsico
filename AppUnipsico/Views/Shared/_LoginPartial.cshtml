@@ -1,14 +1,31 @@
 ﻿@using Microsoft.AspNetCore.Identity
-
+@inject UserManager<Usuario> userManager
 @inject SignInManager<Usuario> signInManager
 
-@if (signInManager.IsSignedIn(User))
+@{
+    var user = await userManager.GetUserAsync(User);
+}
+
+@if (signInManager.IsSignedIn(User) && user != null)
 {
-    <a class="nav-link text-light" asp-area="" asp-controller="Datas" asp-action="Index">Datas Disponíveis</a>
-    <a class="nav-link text-light" asp-area="" asp-controller="Consulta" asp-action="ConsultaPaciente">Suas Consultas</a>
-    <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-left">
-        <button type="submit" style="width:auto" class="nav-link btn btn-link py-0 text-info">Sair - @User.Identity.Name</button>
-    </form>
+    var isInRolePaciente = await userManager.IsInRoleAsync(user, "Paciente");
+    var isInRoleAdmin = await userManager.IsInRoleAsync(user, "Admin");
+
+    if (isInRolePaciente)
+    {
+        <a class="nav-link text-light" asp-area="" asp-controller="Datas" asp-action="Index">Datas Disponíveis</a>
+        <a class="nav-link text-light" asp-area="" asp-controller="Consulta" asp-action="ConsultaPaciente">Suas Consultas</a>
+        <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-left">
+            <button type="submit" style="width:auto" class="nav-link btn btn-link py-0 text-info">Sair - @User.Identity.Name</button>
+        </form>
+    }
+    else if (isInRoleAdmin)
+    {
+        <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Dashboard</a>
+        <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-left">
+            <button type="submit" style="width:auto" class="nav-link btn btn-link py-0 text-info">Sair - @User.Identity.Name</button>
+        </form>
+    }
 }
 else
 {
@@ -17,3 +34,4 @@ else
         <a class="nav-link text-left" asp-controller="Account" asp-action="Register" style="color:white">&nbsp;Registro&nbsp;&nbsp;</a>
     </ul>
 }
+

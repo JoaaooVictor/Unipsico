@@ -4,58 +4,44 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cpf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataNascimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataRegistro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cpf)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataNascimento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataRegistro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="container mt-4">
+    <h1 class="mb-3 text-center">Listagem de usuários</h1>
+    <br />
+    <p>
+        <a class="btn btn-primary form-control" asp-action="Create">Criar novo usuário</a>
+    </p>
+    <br />
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.UserName)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Cpf)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.DataNascimento)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.DataRegistro)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Email)</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.UserName)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.Cpf)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.DataNascimento)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.DataRegistro)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

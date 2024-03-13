@@ -22,7 +22,10 @@ namespace AppUnipsico.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var appUnipsicoDb = _context.Consultas.Include(c => c.Usuario);
+            var appUnipsicoDb = _context.Consultas
+                .Include(c => c.Usuario)
+                .Include(c => c.DataConsulta);
+
             return View(await appUnipsicoDb.ToListAsync());
         }
 
@@ -35,6 +38,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
 
             var consulta = await _context.Consultas
                 .Include(c => c.Usuario)
+                .Include(c => c.DataConsulta)
                 .FirstOrDefaultAsync(m => m.ConsultaId == id);
             if (consulta == null)
             {
@@ -122,6 +126,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
 
             var consulta = await _context.Consultas
                 .Include(c => c.Usuario)
+                .Include(c => c.DataConsulta)
                 .FirstOrDefaultAsync(m => m.ConsultaId == id);
             if (consulta == null)
             {
