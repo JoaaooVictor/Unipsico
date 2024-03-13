@@ -31,3 +31,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.botoes-cor {
+    background-color: #00365d;
+    color: white
+}
