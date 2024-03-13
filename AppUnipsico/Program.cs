@@ -1,4 +1,5 @@
 using AppUnipsico.Data.Context;
+using AppUnipsico.Models;
 using AppUnipsico.Repositories;
 using AppUnipsico.Services.Impl;
 using AppUnipsico.Services.Interfaces;
@@ -17,14 +18,23 @@ builder.Services.AddScoped<DataDisponivelRepository>();
 builder.Services.AddScoped<ICriaUsuarioRoleInicialService, CriaUsuarioRoleInicialService>();
 builder.Services.AddScoped<IDataDisponivelService, DataDisponivelService>();
 
+builder.Services.AddIdentity<Usuario, IdentityRole>()
+    .AddEntityFrameworkStores<AppUnipsicoDb>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAlunoRole", policy => policy.RequireRole("Aluno"));
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("RequireProfessorAlunoRole", policy => policy.RequireRole("Professor", "Aluno"));
+    options.AddPolicy("RequireAdminProfessorRole", policy => policy.RequireRole("Admin", "Professor"));
+});
+
 builder.Services.AddDbContext<AppUnipsicoDb>(opt =>
 {
     opt.UseSqlServer(connectionString);
 });
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<AppUnipsicoDb>()
-    .AddDefaultTokenProviders();
 
 var app = builder.Build();
 
@@ -63,5 +73,10 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Aluno}/{action=Index}/{id?}"
+    );
 
 app.Run();

@@ -1,14 +1,16 @@
-﻿using AppUnipsico.Services.Interfaces;
+﻿using AppUnipsico.Enums;
+using AppUnipsico.Models;
+using AppUnipsico.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace AppUnipsico.Services.Impl
 {
     public class CriaUsuarioRoleInicialService : ICriaUsuarioRoleInicialService
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Usuario> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public CriaUsuarioRoleInicialService(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
+        public CriaUsuarioRoleInicialService(RoleManager<IdentityRole> roleManager, UserManager<Usuario> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -53,13 +55,15 @@ namespace AppUnipsico.Services.Impl
         {
             if (_userManager.FindByEmailAsync("paciente@localhost").Result == null)
             {
-                IdentityUser user = new IdentityUser();
+                Usuario user = new Usuario();
 
                 user.UserName = "paciente@localhost";
                 user.Email = "paciente@localhost";
                 user.NormalizedUserName = "PACIENTE@LOCALHOST";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
+                user.DataRegistro = DateTime.Now;
+                user.TipoUsuario = TipoUsuarioEnum.Paciente;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
                 IdentityResult result = _userManager.CreateAsync(user, "Paciente123#").Result;
@@ -72,13 +76,15 @@ namespace AppUnipsico.Services.Impl
 
             if (_userManager.FindByEmailAsync("professor@localhost").Result == null)
             {
-                IdentityUser user = new IdentityUser();
+                Usuario user = new Usuario();
 
                 user.UserName = "professor@localhost";
                 user.Email = "professor@localhost";
                 user.NormalizedUserName = "PROFESSOR@LOCALHOST";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
+                user.DataRegistro = DateTime.Now;
+                user.TipoUsuario = TipoUsuarioEnum.Professor;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
                 IdentityResult result = _userManager.CreateAsync(user, "Professor123#").Result;
@@ -91,13 +97,15 @@ namespace AppUnipsico.Services.Impl
 
             if (_userManager.FindByEmailAsync("aluno@localhost").Result == null)
             {
-                IdentityUser user = new IdentityUser();
+                Usuario user = new Usuario();
 
                 user.UserName = "aluno@localhost";
                 user.Email = "aluno@localhost";
                 user.NormalizedUserName = "ALUNO@LOCALHOST";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
+                user.DataRegistro = DateTime.Now;
+                user.TipoUsuario = TipoUsuarioEnum.Aluno;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
                 IdentityResult result = _userManager.CreateAsync(user, "Aluno123#").Result;
@@ -110,13 +118,15 @@ namespace AppUnipsico.Services.Impl
 
             if (_userManager.FindByEmailAsync("admin@localhost").Result == null)
             {
-                IdentityUser user = new IdentityUser();
+                Usuario user = new Usuario();
 
                 user.UserName = "admin@localhost";
                 user.Email = "admin@localhost";
                 user.NormalizedUserName = "ADMIN@LOCALHOST";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
+                user.DataRegistro = DateTime.Now;
+                user.TipoUsuario = TipoUsuarioEnum.Admin;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
                 IdentityResult result = _userManager.CreateAsync(user, "Admin123#").Result;

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AppUnipsico.Areas.Admin.Controllers
+namespace AppUnipsico.Areas.Aluno.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Policy = "RequireAdminProfessorRole")]
-    public class AdminController : Controller
+    [Area("Aluno")]
+    [Authorize(Policy = "RequireProfessorAlunoRole")]
+    public class AlunoController : Controller
     {
         public IActionResult Index()
         {

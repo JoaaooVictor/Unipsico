@@ -15,7 +15,12 @@ namespace AppUnipsico.Repositories
 
         public IEnumerable<Datas> BuscaTodasDatasDisponiveis()
         {
-            return _context.Datas.ToList();
+            return _context.Datas.Where(d => d.Status == ConsultaEnum.Disponivel).ToList();
+        }
+
+        public IEnumerable<Datas> BuscaDatasPorStatus(ConsultaEnum status)
+        {
+            return _context.Datas.Where(d => d.Status == status).ToList();
         }
 
         public async Task SalvarConsultasExcel(List<Datas> datasDisponiveis)

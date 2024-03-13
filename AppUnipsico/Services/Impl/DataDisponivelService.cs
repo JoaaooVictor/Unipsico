@@ -1,6 +1,4 @@
-﻿using AppUnipsico.Data.Context;
-using AppUnipsico.Enums;
-using AppUnipsico.Models;
+﻿using AppUnipsico.Models;
 using AppUnipsico.Repositories;
 using AppUnipsico.Services.Interfaces;
 using OfficeOpenXml;
@@ -41,7 +39,7 @@ namespace AppUnipsico.Services.Impl
                         var dataString = worksheet.Cells[row, 1].Value.ToString();
                         if (DateTime.TryParse(dataString, out DateTime dataHora))
                         {
-                            consultas.Add(new Datas { Data = dataHora, Id = Guid.NewGuid() });
+                            consultas.Add(new Datas { Data = dataHora, Id = Guid.NewGuid(), Status = Enums.ConsultaEnum.Disponivel});
                         }
                     }
 

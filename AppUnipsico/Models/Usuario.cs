@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AppUnipsico.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace AppUnipsico.Models
 {
@@ -7,6 +8,7 @@ namespace AppUnipsico.Models
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataRegistro { get; set; }
+        public TipoUsuarioEnum TipoUsuario { get; set; }
 
         public virtual IEnumerable<Consulta> Consultas { get; set; }
     }

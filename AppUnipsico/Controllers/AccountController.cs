@@ -7,10 +7,10 @@ namespace AppUnipsico.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Usuario> _userManager;
+        private readonly SignInManager<Usuario> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -43,6 +43,10 @@ namespace AppUnipsico.Controllers
                     {
                         return RedirectToAction("Index", "Admin", new {area = "Admin"});
                     }
+                    else if (await _userManager.IsInRoleAsync(user, "Aluno"))
+                    {
+                        return RedirectToAction("Index", "Aluno", new { area = "Aluno" });
+                    }
                     else if(string.IsNullOrEmpty(loginViewModel.ReturnUrl))
                     {
                         return RedirectToAction("Index", "Home");
@@ -68,13 +72,14 @@ namespace AppUnipsico.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Usuario 
-                { 
+                var user = new Usuario
+                {
                     UserName = registerViewModel.UserName,
                     Cpf = registerViewModel.Cpf,
                     DataNascimento = registerViewModel.DataNascimento,
                     DataRegistro = DateTime.Now,
-                    Email = registerViewModel.Email
+                    Email = registerViewModel.Email,
+                    TipoUsuario = Enums.TipoUsuarioEnum.Paciente,
                 };
 
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);

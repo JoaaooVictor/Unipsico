@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AppUnipsico.Data.Context
 {
-    public class AppUnipsicoDb : IdentityDbContext<IdentityUser>
+    public class AppUnipsicoDb : IdentityDbContext<Usuario>
     {
         public AppUnipsicoDb(DbContextOptions options) : base(options) { }
 
