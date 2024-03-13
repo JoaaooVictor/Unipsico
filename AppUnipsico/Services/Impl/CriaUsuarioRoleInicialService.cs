@@ -60,6 +60,7 @@ namespace AppUnipsico.Services.Impl
                 user.UserName = "paciente@localhost";
                 user.Email = "paciente@localhost";
                 user.NormalizedUserName = "PACIENTE@LOCALHOST";
+                user.Cpf = "00000000000";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
                 user.DataRegistro = DateTime.Now;
@@ -81,6 +82,7 @@ namespace AppUnipsico.Services.Impl
                 user.UserName = "professor@localhost";
                 user.Email = "professor@localhost";
                 user.NormalizedUserName = "PROFESSOR@LOCALHOST";
+                user.Cpf = "00000000000";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
                 user.DataRegistro = DateTime.Now;
@@ -102,6 +104,7 @@ namespace AppUnipsico.Services.Impl
                 user.UserName = "aluno@localhost";
                 user.Email = "aluno@localhost";
                 user.NormalizedUserName = "ALUNO@LOCALHOST";
+                user.Cpf = "00000000000";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
                 user.DataRegistro = DateTime.Now;
@@ -123,6 +126,7 @@ namespace AppUnipsico.Services.Impl
                 user.UserName = "admin@localhost";
                 user.Email = "admin@localhost";
                 user.NormalizedUserName = "ADMIN@LOCALHOST";
+                user.Cpf = "00000000000";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
                 user.DataRegistro = DateTime.Now;

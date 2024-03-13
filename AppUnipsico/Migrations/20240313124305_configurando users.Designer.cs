@@ -4,6 +4,7 @@ using AppUnipsico.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppUnipsico.Migrations
 {
     [DbContext(typeof(AppUnipsicoDb))]
-    partial class AppUnipsicoDbModelSnapshot : ModelSnapshot
+    [Migration("20240313124305_configurando users")]
+    partial class configurandousers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,13 +37,11 @@ namespace AppUnipsico.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UsuarioId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ConsultaId");
 
                     b.HasIndex("DataConsultaId");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Consultas");
                 });
@@ -274,15 +275,17 @@ namespace AppUnipsico.Migrations
 
             modelBuilder.Entity("AppUnipsico.Models.Consulta", b =>
                 {
+                    b.HasOne("AppUnipsico.Models.Usuario", "Usuario")
+                        .WithMany("Consultas")
+                        .HasForeignKey("ConsultaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("AppUnipsico.Models.Datas", "DataConsulta")
                         .WithMany()
                         .HasForeignKey("DataConsultaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("AppUnipsico.Models.Usuario", "Usuario")
-                        .WithMany("Consultas")
-                        .HasForeignKey("UsuarioId");
 
                     b.Navigation("DataConsulta");
 

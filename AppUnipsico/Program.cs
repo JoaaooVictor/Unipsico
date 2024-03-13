@@ -12,11 +12,12 @@ var connectionString = builder.Configuration.GetConnectionString("App");
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<DataDisponivelService>();
+builder.Services.AddScoped<DataService>();
+builder.Services.AddScoped<DataRepository>();
 builder.Services.AddScoped<ConsultaRepository>();
-builder.Services.AddScoped<DataDisponivelRepository>();
+builder.Services.AddScoped<IDataService, DataService>();
+builder.Services.AddScoped<IConsultaService, ConsultaService>();
 builder.Services.AddScoped<ICriaUsuarioRoleInicialService, CriaUsuarioRoleInicialService>();
-builder.Services.AddScoped<IDataDisponivelService, DataDisponivelService>();
 
 builder.Services.AddIdentity<Usuario, IdentityRole>()
     .AddEntityFrameworkStores<AppUnipsicoDb>()
@@ -24,6 +25,7 @@ builder.Services.AddIdentity<Usuario, IdentityRole>()
 
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("RequirePacienteRole", policy => policy.RequireRole("Paciente"));
     options.AddPolicy("RequireAlunoRole", policy => policy.RequireRole("Aluno"));
     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
     options.AddPolicy("RequireProfessorAlunoRole", policy => policy.RequireRole("Professor", "Aluno"));

@@ -11,7 +11,7 @@ namespace AppUnipsico.Data.ConfigurationModels
             builder
                 .HasMany(u => u.Consultas)
                 .WithOne(u => u.Usuario)
-                .HasForeignKey(u => u.ConsultaId);
+                .HasForeignKey(u => u.UsuarioId);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AppUnipsico.ViewModels
 {
-    public class DataDisponivelViewModel
+    public class DataViewModel
     {
         public IEnumerable<Datas> DatasDisponiveis { get; set; }
     }

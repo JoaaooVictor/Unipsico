@@ -5,18 +5,23 @@ using OfficeOpenXml;
 
 namespace AppUnipsico.Services.Impl
 {
-    public class DataDisponivelService : IDataDisponivelService
+    public class DataService : IDataService
     {
-        private readonly DataDisponivelRepository _dataDisponivelRepository;
+        private readonly DataRepository _dataRepository;
 
-        public DataDisponivelService(DataDisponivelRepository dataDisponivelRepository)
+        public DataService(DataRepository dataDisponivelRepository)
         {
-            _dataDisponivelRepository = dataDisponivelRepository;
+            _dataRepository = dataDisponivelRepository;
         }
 
         public IEnumerable<Datas> DatasDisponiveis()
         {
-            return _dataDisponivelRepository.BuscaTodasDatasDisponiveis();
+            return _dataRepository.BuscaTodasDatasDisponiveis();
+        }
+
+        public async Task AtualizaStatusData(Guid dataId)
+        {
+            await _dataRepository.AtualizaStatusData(dataId);
         }
 
         public async Task InserirDatasDisponiveis()
@@ -32,20 +37,25 @@ namespace AppUnipsico.Services.Impl
                 if (worksheet is not null)
                 {
                     int rowCount = worksheet.Dimension.Rows;
-                    var consultas = new List<Datas>();
+                    var datas = new List<Datas>();
 
                     for (int row = 2; row <= rowCount; row++)
                     {
                         var dataString = worksheet.Cells[row, 1].Value.ToString();
                         if (DateTime.TryParse(dataString, out DateTime dataHora))
                         {
-                            consultas.Add(new Datas { Data = dataHora, Id = Guid.NewGuid(), Status = Enums.ConsultaEnum.Disponivel});
+                            datas.Add(new Datas { Data = dataHora, Id = Guid.NewGuid(), Status = Enums.ConsultaEnum.Disponivel});
                         }
                     }
 
-                    await _dataDisponivelRepository.SalvarConsultasExcel(consultas);
+                    await _dataRepository.SalvarConsultasExcel(datas);
                 }
             }
+        }
+
+        public async Task<Datas> BuscaDataPorId(Guid dataId)
+        {
+            return await _dataRepository.BuscaDataConsultaPorId(dataId);
         }
     }
 }

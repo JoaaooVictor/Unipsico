@@ -1,29 +1,38 @@
-﻿@model DataDisponivelViewModel
+﻿@model DataViewModel
 
 @{
     ViewBag.Title = "Lista de Datas Disponíveis";
 }
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<body>
-    <div class="container">
-        <div class="row">
+@if (User.IsInRole("Paciente"))
+{
+    <style>
+        body {
+            background-color: #f4f4f4; /* Definindo um background para a página */
+        }
+    </style>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Datas Disponíveis para Agendamento</h1>
+        <div class="row row-cols-1 row-cols-md-4">
             @foreach (var dataDisponivel in Model.DatasDisponiveis)
             {
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal text-center">Data Disponivel</h4>
+                <div class="col mb-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-header bg-success text-white">
+                            <h4 class="my-0 font-weight-normal text-center">Data Disponível</h4>
                         </div>
-                        <div class="card-body text-center">
-                            <h2 class="card-title pricing-card-title text-center">Data: @dataDisponivel.Data.ToString("dd/MM/yyyy")</h2>
-                            <h2 class="card-title pricing-card-title text-center">Hora: @dataDisponivel.Data.ToString("hh:mm")</h2>
-                            <a type="button" class="btn btn-success text-white" asp-controller="Consulta" asp-action="Agendar" asp-route-DataConsultaId=@dataDisponivel.Id>Agendar</a>
+                        <div class="card-body">
+                            <h2 class="card-title pricing-card-title text-center">@dataDisponivel.Data.ToString("dd/MM/yyyy")</h2>
+                            <h3 class="card-title pricing-card-title text-center">@dataDisponivel.Data.ToString("hh:mm")</h3>
+                            <p class="card-text text-center">Descrição: Esta é uma data disponível para agendamento.</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a type="button" class="btn btn-success" asp-controller="Consulta" asp-action="ValidaEConfirmaConsultaNaSemana" asp-route-DataConsultaId="@dataDisponivel.Id">Confirmar Agendamento</a>
                         </div>
                     </div>
                 </div>
             }
         </div>
     </div>
-</body>
-</html>
+}

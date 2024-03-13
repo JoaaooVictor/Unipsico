@@ -4,11 +4,11 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-primary text-white">
                     <h3 class="text-center">Registrar Usuário</h3>
                 </div>
                 <div class="card-body text-center">
-                    <img src="~/imagens/registrado.png" alt="Registrar Usuário" style="width: 100px; height: auto;" class="mb-4" />
+                    <img src="~/img/registrado.png" alt="Registrar Usuário" style="width: 100px; height: auto;" class="mb-4" />
                     <form asp-controller="Account" asp-action="Register" method="post">
                         <hr />
                         <input type="hidden" asp-for="ReturnUrl" />
@@ -28,8 +28,8 @@
                             <span asp-validation-for="Cpf" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="DataNascimento" class="font-weight-bold">Data de nascimento</label>
-                            <input asp-for="DataNascimento" class="form-control"/>
+                            <label asp-for="DataNascimento" class="font-weight-bold">Data de Nascimento</label>
+                            <input asp-for="DataNascimento" class="form-control" />
                             <span asp-validation-for="DataNascimento" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -38,7 +38,7 @@
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Repassword" class="font-weight-bold">Insira a senha novamente</label>
+                            <label asp-for="Repassword" class="font-weight-bold">Confirmar Senha</label>
                             <input asp-for="Repassword" type="password" class="form-control" />
                             <span asp-validation-for="Repassword" class="text-danger"></span>
                         </div>

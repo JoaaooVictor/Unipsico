@@ -6,9 +6,9 @@ namespace AppUnipsico.Controllers
 {
     public class DatasController : Controller
     {
-        private readonly DataDisponivelService _dataDisponivelService;
+        private readonly DataService _dataDisponivelService;
 
-        public DatasController(DataDisponivelService dataDisponivelService)
+        public DatasController(DataService dataDisponivelService)
         {
             _dataDisponivelService = dataDisponivelService;
         }
@@ -16,7 +16,7 @@ namespace AppUnipsico.Controllers
         [HttpGet]   
         public IActionResult Index()
         {
-            var dataDisponivelViewModel = new DataDisponivelViewModel()
+            var dataDisponivelViewModel = new DataViewModel()
             {
                 DatasDisponiveis = _dataDisponivelService.DatasDisponiveis(),
             };

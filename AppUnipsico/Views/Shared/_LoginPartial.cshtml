@@ -4,12 +4,11 @@
 
 @if (signInManager.IsSignedIn(User))
 {
+    <a class="nav-link text-light" asp-area="" asp-controller="Datas" asp-action="Index">Datas Disponíveis</a>
+    <a class="nav-link text-light" asp-area="" asp-controller="Consulta" asp-action="ConsultaPaciente">Suas Consultas</a>
     <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-left">
-        <ul class="nav navbar-nav navbar-left">
-            <button type="submit" style="width:auto" class="nav-link btn btn-link py-0">Sair / @User.Identity.Name &nbsp;</button>
-        </ul>
+        <button type="submit" style="width:auto" class="nav-link btn btn-link py-0 text-info">Sair - @User.Identity.Name</button>
     </form>
-    <a class="nav-link text-light" asp-area="" asp-controller="Datas" asp-action="Index">Datas Disponiveis</a>
 }
 else
 {

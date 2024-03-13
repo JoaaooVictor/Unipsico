@@ -3,9 +3,10 @@
     public enum ConsultaEnum
     {
         Disponivel = 1,
-        Cancelada = 2,
+        Agendada = 2,
         Concluida = 3,
-        Falta = 4, 
-        Remarcada = 5,
+        Cancelada = 4,
+        Falta = 5, 
+        Remarcada = 6,
     }
 }

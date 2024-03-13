@@ -10,6 +10,6 @@ namespace AppUnipsico.Models
         public DateTime DataRegistro { get; set; }
         public TipoUsuarioEnum TipoUsuario { get; set; }
 
-        public virtual IEnumerable<Consulta> Consultas { get; set; }
+        public virtual ICollection<Consulta> Consultas { get; set; }
     }
 }

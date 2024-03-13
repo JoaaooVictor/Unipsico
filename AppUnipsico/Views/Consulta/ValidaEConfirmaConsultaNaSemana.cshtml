@@ -1,0 +1,27 @@
+﻿@model ValidaConsultaViewModel
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <h5 class="card-title">Consulta</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <p><strong>Mensagem:</strong> @Model.Mensagem</p>
+                @if (Model.Consulta is not null)
+                {
+                    <p><strong>Consulta Id:</strong> @Model.Consulta.ConsultaId</p>
+                    <p><strong>Data da Consulta:</strong> @Model.Consulta.DataConsulta.Data</p>
+                    <p><strong>Status da Consulta:</strong> @Model.Consulta.StatusConsulta</p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Fechar</a>
+        @if (Model.Consulta is not null)
+        {
+            <a asp-area="" asp-controller="Datas" asp-action="Index" class="btn btn-danger">Cancelar Consulta</a>
+        }
+    </div>
+</div>

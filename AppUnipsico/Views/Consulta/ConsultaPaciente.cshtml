@@ -1,0 +1,44 @@
+﻿@model ConsultaViewModel
+
+@{
+    ViewBag.Title = "Consultas do Paciente";
+}
+
+@if (Model.Consultas.Any())
+{
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="card-title text-center">Consultas do Paciente</h5>
+        </div>
+        <div class="card-body">
+            @if (Model.Consultas.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data da Consulta</th>
+                            <th>Status</th>
+                            <th>Id da Consulta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var consulta in Model.Consultas)
+                        {
+                            <tr>
+                                <td>@consulta.DataConsulta.Data</td>
+                                <td>@consulta.StatusConsulta</td>
+                                <td>@consulta.ConsultaId</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>Você não possui consultas agendadas no momento.</p>
+            }
+        </div>
+    </div>
+}
+
+
