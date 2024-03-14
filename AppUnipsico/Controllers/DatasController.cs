@@ -6,11 +6,11 @@ namespace AppUnipsico.Controllers
 {
     public class DatasController : Controller
     {
-        private readonly DataService _dataDisponivelService;
+        private readonly DataService _datasServices;
 
         public DatasController(DataService dataDisponivelService)
         {
-            _dataDisponivelService = dataDisponivelService;
+            _datasServices = dataDisponivelService;
         }
 
         [HttpGet]   
@@ -18,10 +18,21 @@ namespace AppUnipsico.Controllers
         {
             var dataDisponivelViewModel = new DataViewModel()
             {
-                DatasDisponiveis = _dataDisponivelService.DatasDisponiveis(),
+                DatasDisponiveis = _datasServices.DatasDisponiveis(),
             };
 
             return View(dataDisponivelViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> InserirDatasDisponiveis(IFormFile file)
+        {
+            if(file is not null)
+            {
+                await _datasServices.InserirDatasDisponiveis(file);
+            }
+
+            return Ok();
         }
     }
 }

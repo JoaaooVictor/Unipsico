@@ -24,31 +24,32 @@ namespace AppUnipsico.Services.Impl
             await _dataRepository.AtualizaStatusData(dataId);
         }
 
-        public async Task InserirDatasDisponiveis()
+        public async Task InserirDatasDisponiveis(IFormFile file)
         {
-            var caminhoArquivo = @"C:\Users\joaov\OneDrive\Documentos\Documentos PCC\dataconsulta.xlsx";
-
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
-            using (var package = new ExcelPackage(new FileInfo(caminhoArquivo)))
+            if (file is not null)
             {
-                var worksheet = package.Workbook.Worksheets.FirstOrDefault();
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-                if (worksheet is not null)
+                using (var package = new ExcelPackage(file.OpenReadStream()))
                 {
-                    int rowCount = worksheet.Dimension.Rows;
-                    var datas = new List<Datas>();
+                    var worksheet = package.Workbook.Worksheets.FirstOrDefault();
 
-                    for (int row = 2; row <= rowCount; row++)
+                    if (worksheet is not null)
                     {
-                        var dataString = worksheet.Cells[row, 1].Value.ToString();
-                        if (DateTime.TryParse(dataString, out DateTime dataHora))
-                        {
-                            datas.Add(new Datas { Data = dataHora, Id = Guid.NewGuid(), Status = Enums.ConsultaEnum.Disponivel});
-                        }
-                    }
+                        int rowCount = worksheet.Dimension.Rows;
+                        var datas = new List<Datas>();
 
-                    await _dataRepository.SalvarConsultasExcel(datas);
+                        for (int row = 2; row <= rowCount; row++)
+                        {
+                            var dataString = worksheet.Cells[row, 1].Value.ToString();
+                            if (DateTime.TryParse(dataString, out DateTime dataHora))
+                            {
+                                datas.Add(new Datas { Data = dataHora, Id = Guid.NewGuid(), Status = Enums.ConsultaEnum.Disponivel });
+                            }
+                        }
+
+                        await _dataRepository.SalvarConsultasExcel(datas);
+                    }
                 }
             }
         }

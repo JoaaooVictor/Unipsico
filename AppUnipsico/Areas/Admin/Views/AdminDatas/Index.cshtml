@@ -1,0 +1,54 @@
+﻿@model DatasViewModel
+
+@if(Model.Datas is not null && Model.Datas.Any())
+{
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-center card-title">@Model.Mensagem</h4>
+                    <br />
+                    <form id="formUpload" enctype="multipart/form-data">
+                        <input  class="text-center" type="file" id="fileInput" name="fileInput" accept=".xlsx,.xls">
+                        <button asp-area="" asp-controller="DatasController" asp-action="InserirDatasDisponiveis" formmethod="post" class="btn btn-success text-center" type="submit">Enviar Arquivo</button>
+                    </form>
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="bg-primary text-white">
+                                <tr class="text-center">
+                                    <th class="text-center">DATA DA CONSULTA</th>
+                                    <th class="text-center">HORÁRIO DA CONSULTA</th>
+                                    <th class="text-center">STATUS DA DATA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var datas in Model.Datas)
+                                {
+                                    <tr class="text-center">
+                                        <td class="text-center">@datas.Data.ToString("dd-MM-yyyy")</td>
+                                        <td class="text-center">@datas.Data.ToString("hh:MM")</td>
+                                        <td class="text-center">@datas.Status</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-center card-title">Mensagem</h4>
+                    <p class="text-center">@Model.Mensagem</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -57,6 +57,7 @@ namespace AppUnipsico.Services.Impl
             {
                 Usuario user = new Usuario();
 
+                user.NomeCompleto = "Paciente TESTE";
                 user.UserName = "paciente@localhost";
                 user.Email = "paciente@localhost";
                 user.NormalizedUserName = "PACIENTE@LOCALHOST";
@@ -79,6 +80,7 @@ namespace AppUnipsico.Services.Impl
             {
                 Usuario user = new Usuario();
 
+                user.NomeCompleto = "Professor TESTE";
                 user.UserName = "professor@localhost";
                 user.Email = "professor@localhost";
                 user.NormalizedUserName = "PROFESSOR@LOCALHOST";
@@ -101,6 +103,7 @@ namespace AppUnipsico.Services.Impl
             {
                 Usuario user = new Usuario();
 
+                user.NomeCompleto = "Aluno TESTE";
                 user.UserName = "aluno@localhost";
                 user.Email = "aluno@localhost";
                 user.NormalizedUserName = "ALUNO@LOCALHOST";
@@ -123,6 +126,7 @@ namespace AppUnipsico.Services.Impl
             {
                 Usuario user = new Usuario();
 
+                user.NomeCompleto = "Admin TESTE";
                 user.UserName = "admin@localhost";
                 user.Email = "admin@localhost";
                 user.NormalizedUserName = "ADMIN@LOCALHOST";

@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
-using System.Runtime.CompilerServices;
 
 namespace AppUnipsico.Areas.Admin.Controllers
 {
@@ -70,7 +68,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
                         return View(usuariodetalheViewModel);
                     }
 
-                    return View(new UsuarioDetalheViewModel {Usuario = usuario, Consultas = null, Mensagem = $"Nenhuma consulta encontrada para o usuário {usuario.NomeCompleto}!" });
+                    return View(new UsuarioDetalheViewModel { Usuario = usuario, Consultas = null, Mensagem = $"Nenhuma consulta encontrada para o usuário {usuario.NomeCompleto}!" });
                 }
                 else
                 {
@@ -123,6 +121,8 @@ namespace AppUnipsico.Areas.Admin.Controllers
 
             var usuario = await _userManager.Users
                 .Where(u => u.Id == usuarioId)
+                .Include(u => u.Consultas)
+                .ThenInclude(c => c.DataConsulta)
                 .FirstOrDefaultAsync();
 
             if (usuario is null)
@@ -150,15 +150,15 @@ namespace AppUnipsico.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var result = await _userManager.DeleteAsync(usuario);
+            var resultUserManager = await _userManager.DeleteAsync(usuario);
 
-            if (result.Succeeded)
+            if (resultUserManager.Succeeded)
             {
                 return RedirectToAction("Index", new { area = "Admin" });
             }
             else
             {
-                foreach (var error in result.Errors)
+                foreach (var error in resultUserManager.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }

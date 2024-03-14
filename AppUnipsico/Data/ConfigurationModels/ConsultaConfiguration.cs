@@ -10,6 +10,12 @@ namespace AppUnipsico.Data.ConfigurationModels
         {
             builder
                 .HasKey(c => c.ConsultaId);
+
+            builder
+                .HasOne(c => c.Usuario)
+                .WithMany(u => u.Consultas)
+                .HasForeignKey(c => c.UsuarioId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
