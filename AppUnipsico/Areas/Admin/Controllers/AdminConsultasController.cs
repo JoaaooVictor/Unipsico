@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AppUnipsico.Data.Context;
+using AppUnipsico.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AppUnipsico.Data.Context;
-using AppUnipsico.Models;
 
 namespace AppUnipsico.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "RequireAdminProfessorRole")]
     public class AdminConsultasController : Controller
     {
         private readonly AppUnipsicoDb _context;

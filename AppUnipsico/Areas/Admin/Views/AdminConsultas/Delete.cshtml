@@ -15,16 +15,16 @@
 
                     <dl class="row">
                         <dt class="col-sm-4">Data da Consulta:</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.DataConsulta.Data)</dd>
+                        <dd class="col-sm-8">@Model.DataConsulta.Data</dd>
 
-                        <dt class="col-sm-4">Status:</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.StatusConsulta)</dd>
+                        <dt class="col-sm-4">Status da consulta:</dt>
+                        <dd class="col-sm-8">@Model.StatusConsulta</dd>
 
-                        <dt class="col-sm-4">ID do Usuário:</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.UsuarioId)</dd>
+                        <dt class="col-sm-4">Id do paciente:</dt>
+                        <dd class="col-sm-8">@Model.UsuarioId</dd>
 
-                        <dt class="col-sm-4">Nome do Usuário:</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Usuario.UserName)</dd>
+                        <dt class="col-sm-4">Nome completo do Paciente:</dt>
+                        <dd class="col-sm-8">@Model.Usuario.NomeCompleto</dd>
                     </dl>
 
                     <form asp-action="Delete" method="post">

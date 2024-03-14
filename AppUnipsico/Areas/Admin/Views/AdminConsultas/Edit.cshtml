@@ -1,41 +1,52 @@
 ﻿@model AppUnipsico.Models.Consulta
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Consulta";
 }
 
-<h1>Edit</h1>
+<div class="container mt-4">
+    <h1 class="text-center">Editar Consulta</h1>
+    <hr />
 
-<h4>Consulta</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ConsultaId" />
-            <div class="form-group">
-                <label asp-for="DataConsulta" class="control-label"></label>
-                <input asp-for="DataConsulta" class="form-control" />
-                <span asp-validation-for="DataConsulta" class="text-danger"></span>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Consulta</h4>
+
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ConsultaId" />
+                        <div class="form-group">
+                            <label asp-for="DataConsulta" class="control-label">Data da Consulta:</label>
+                            <input asp-for="DataConsulta" class="form-control" />
+                            <span asp-validation-for="DataConsulta" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="StatusConsulta" class="control-label">Status:</label>
+                            <select asp-for="StatusConsulta" class="form-control">
+                                <option value="Disponivel">Disponivel</option>
+                                <option value="Agendada">Agendada</option>
+                                <option value="Concluida">Concluida</option>
+                                <option value="Cancelada">Cancelada</option>
+                                <option value="Falta">Falta</option>
+                                <option value="Remarcada">Remarcada</option>
+                            </select>
+                            <span asp-validation-for="StatusConsulta" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UsuarioId" class="control-label">Id Paciente</label>
+                            <input asp-for="UsuarioId" class="form-control"/>
+                            <span asp-validation-for="UsuarioId" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary col-5">Salvar</button>
+                            <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="StatusConsulta" class="control-label"></label>
-                <select asp-for="StatusConsulta" class="form-control"></select>
-                <span asp-validation-for="StatusConsulta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UsuarioId" class="control-label"></label>
-                <input asp-for="UsuarioId" class="form-control" />
-                <span asp-validation-for="UsuarioId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

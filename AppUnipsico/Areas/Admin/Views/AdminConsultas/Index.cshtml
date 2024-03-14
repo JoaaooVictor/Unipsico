@@ -15,7 +15,7 @@
         <tr>
             <th class="text-center">Data Consulta</th>
             <th class="text-center">Status Consulta</th>
-            <th class="text-center">Usuário</th>
+            <th class="text-center">Paciente Id</th>
             <th class="text-center">Horário da Consulta</th>
             <th class="text-center">Ações</th>
         </tr>
@@ -31,16 +31,16 @@
                     @item.StatusConsulta
                 </td>
                 <td class="text-center">
-                    @item.Usuario.UserName
+                    @item.Usuario.Id
                 </td>
                 <td class="text-center">
                     @item.DataConsulta.Data.ToShortTimeString()
                 </td>
                 <td class="text-center">
                     <div class="btn-group" role="group">
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ConsultaId">Details</a>
-                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ConsultaId">Edit</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ConsultaId">Delete</a>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ConsultaId">Detalhes</a>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ConsultaId">Editar</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ConsultaId">Deletar</a>
                     </div>
                 </td>
             </tr>

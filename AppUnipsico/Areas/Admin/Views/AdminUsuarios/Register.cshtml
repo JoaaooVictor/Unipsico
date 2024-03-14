@@ -9,11 +9,11 @@
                 </div>
                 <div class="card-body text-center">
                     <img src="~/img/registrado.png" alt="Registrar Usuário" style="width: 100px; height: auto;" class="mb-4" />
-                    <form asp-controller="Account" asp-action="Register" method="post">
+                    <form asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register" method="post">
                         <hr />
                         <input type="hidden" asp-for="ReturnUrl" />
                         <div class="form-group">
-                            <label asp-for="NomeCompleto" class="font-weight-bold">Nome de Usuário</label>
+                            <label asp-for="NomeCompleto" class="font-weight-bold">Nome completo</label>
                             <input asp-for="NomeCompleto" class="form-control" />
                             <span asp-validation-for="NomeCompleto" class="text-danger"></span>
                         </div>
@@ -31,6 +31,16 @@
                             <label asp-for="DataNascimento" class="font-weight-bold">Data de Nascimento</label>
                             <input asp-for="DataNascimento" class="form-control" />
                             <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SelectedRole"></label>
+                            <select asp-for="SelectedRole" class="form-control">
+                                <option value="" disabled>Escolha um perfil</option>
+                                <option value="Aluno">Aluno</option>
+                                <option value="Professor">Professor</option>
+                                <option value="Admin">Administrador</option>
+                            </select>
+                            <span asp-validation-for="SelectedRole" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Password" class="font-weight-bold">Senha</label>
@@ -52,3 +62,4 @@
         </div>
     </div>
 </div>
+

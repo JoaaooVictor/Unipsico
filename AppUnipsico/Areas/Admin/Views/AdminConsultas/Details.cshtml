@@ -1,42 +1,38 @@
 ﻿@model AppUnipsico.Models.Consulta
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Consulta</h4>
+<div class="container mt-4">
+    <h1 class="text-center">Detalhes da Consulta</h1>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataConsulta.Data)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataConsulta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StatusConsulta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StatusConsulta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UsuarioId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UsuarioId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Usuario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Usuario.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ConsultaId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Consulta</h4>
+
+            <dl class="row">
+                <dt class="col-sm-3">Data da Consulta:</dt>
+                <dd class="col-sm-9">@Model.DataConsulta.Data.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3">Hora da Consulta:</dt>
+                <dd class="col-sm-9">@Model.DataConsulta.Data.ToString("HH:mm")</dd>
+
+                <dt class="col-sm-3">Status:</dt>
+                <dd class="col-sm-9">@Model.StatusConsulta)</dd>
+
+                <dt class="col-sm-3">ID do Usuário:</dt>
+                <dd class="col-sm-9">@Model.UsuarioId</dd>
+
+                <dt class="col-sm-3">Nome do Usuário:</dt>
+                <dd class="col-sm-9">@Model.Usuario.NomeCompleto</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.ConsultaId" class="btn btn-primary mr-2">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+    </div>
 </div>

@@ -1,10 +1,12 @@
 ﻿using AppUnipsico.Models;
 using AppUnipsico.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppUnipsico.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<Usuario> _userManager;
@@ -74,7 +76,8 @@ namespace AppUnipsico.Controllers
             {
                 var user = new Usuario
                 {
-                    UserName = registerViewModel.UserName,
+                    UserName = registerViewModel.Email,
+                    NomeCompleto = registerViewModel.NomeCompleto,
                     Cpf = registerViewModel.Cpf,
                     DataNascimento = registerViewModel.DataNascimento,
                     DataRegistro = DateTime.Now,

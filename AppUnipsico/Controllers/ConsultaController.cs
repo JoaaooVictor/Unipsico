@@ -8,6 +8,7 @@ using NuGet.Common;
 
 namespace AppUnipsico.Controllers
 {
+    [Authorize(Policy = "RequirePacienteRole")]
     public class ConsultaController : Controller
     {
         private readonly IConsultaService _consultaService;
