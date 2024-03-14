@@ -1,14 +1,16 @@
 ﻿@model RegisterViewModel
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="text-center">Registrar Usuário</h3>
+<section class="vh-100">
+
+<div class="container py-5 h-100">
+    <div class="row d-flex align-iems-center justify-content-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card-header p-5">
+
                 </div>
                 <div class="card-body text-center">
-                    <img src="~/imagens/registrado.png" alt="Registrar Usuário" style="width: 100px; height: auto;" class="mb-4" />
+                    <h3 class="text-center">Registrar Usuário</h3>
                     <form asp-controller="Account" asp-action="Register" method="post">
                         <hr />
                         <input type="hidden" asp-for="ReturnUrl" />
@@ -47,3 +49,4 @@
         </div>
     </div>
 </div>
+</section>
