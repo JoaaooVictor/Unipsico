@@ -4,7 +4,6 @@ using AppUnipsico.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Common;
 
 namespace AppUnipsico.Controllers
 {
@@ -28,7 +27,7 @@ namespace AppUnipsico.Controllers
 
             if (usuario is null)
             {
-                return RedirectToAction("Login", "Account");
+                return View("Login");
             }
 
             var consulta = await _consultaService.CriaConsulta(DataConsultaId, usuario);
@@ -59,7 +58,7 @@ namespace AppUnipsico.Controllers
                 {
                     Consultas = consultas,
                 };
-                
+
                 return View(consultaViewModel);
             }
             else

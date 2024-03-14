@@ -37,9 +37,9 @@
                         <td class="text-center">@Html.DisplayFor(modelItem => item.TipoUsuario)</td>
                         <td class="text-center">
                             <div class="btn-group" role="group">
-                                <a class="btn btn-info" asp-action="DetalhesUsuario" asp-route-id="@item.Id">Detalhes</a>
-                                <a class="btn btn-warning" asp-action="EditarUsuario" asp-route-id="@item.Id">Editar</a>
-                                <a class="btn btn-danger" asp-action="DeletarUsuario" asp-route-id="@item.Id">Deletar</a>
+                                <a class="btn btn-info m-1 rounded" asp-controller="AdminUsuarios" asp-action="DetalhesUsuario" asp-route-UsuarioId="@item.Id">Detalhes</a>
+                                <a class="btn btn-warning m-1 rounded" asp-controller="AdminUsuarios" asp-action="EditarUsuario" asp-route-UsuarioId="@item.Id">Editar</a>
+                                <a class="btn btn-danger m-1 rounded" asp-controller="AdminUsuarios" asp-action="DeletarUsuario" asp-route-UsuarioId="@item.Id">Deletar</a>
                             </div>
                         </td>
                     </tr>

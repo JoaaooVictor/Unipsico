@@ -1,0 +1,44 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "Deletar usuário";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Deletar Usuário</h4>
+
+                    <p class="lead">Tem certeza de que deseja remover este Usuário?</p>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">Id do Usuário:</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4">Nome completo:</dt>
+                        <dd class="col-sm-8">@Model.NomeCompleto</dd>
+
+                        <dt class="col-sm-4">Cpf:</dt>
+                        <dd class="col-sm-8">@Model.Cpf</dd>
+
+                        <dt class="col-sm-4">E-mail:</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        <dt class="col-sm-4">Data de nascimento:</dt>
+                        <dd class="col-sm-8">@Model.DataNascimento</dd>
+                    </dl>
+
+                    <form asp-controller="AdminUsuarios" asp-action="DeleteConfirmed" asp-route-UsuarioId="@Model.Id" method="post">
+                        <input type="hidden" />
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger mr-2">Deletar</button>
+                            <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

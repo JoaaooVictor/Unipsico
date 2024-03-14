@@ -1,57 +1,60 @@
 ﻿@model RegisterViewModel
 
 <section class="vh-100">
-
-<div class="container py-5 h-100">
-    <div class="row d-flex align-iems-center justify-content-center h-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                <div class="card-body p-5">
-                    <h3 class="text-center p-5">Registrar Usuário</h3>
-                    <form class="form-horizontal" asp-controller="Account" asp-action="Register" method="post">
-                        <input type="hidden" asp-for="ReturnUrl" />
-                        <div class="form-outline form-group mb-4">
-                            <input asp-for="UserName" class="form-control form-control-lg" />
-                            <label asp-for="UserName" class="form-label">Nome de Usuário</label>
-                            <span asp-validation-for="UserName" class="text-danger"></span>
-                        <div class="form-group">
-                            <label asp-for="NomeCompleto" class="font-weight-bold">Nome de Usuário</label>
-                            <input asp-for="NomeCompleto" class="form-control" />
-                            <span asp-validation-for="NomeCompleto" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="font-weight-bold">E-mail</label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-outline form-group mb-4">
-                            <input asp-for="Cpf" class="form-control form-control-lg" />
-                            <label asp-for="Cpf" class="form-label">CPF</label>
-                            <span asp-validation-for="Cpf" class="text-danger"></span>
-                        </div>
-                        <div class="form-outline form-group mb-4">
-                            <input asp-for="DataNascimento" class="form-control form-control-lg"/>
-                            <label asp-for="DataNascimento" class="form-label">Data de nascimento</label>
-                            <span asp-validation-for="DataNascimento" class="text-danger"></span>
-                        </div>
-                        <div class="form-outline form-group mb-4">
-                            <input asp-for="Password" type="password" class="form-control form-control-lg" />
-                            <label asp-for="Password" class="form-label">Senha</label>
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-outline form-group mb-4">
-                            <input asp-for="Repassword" type="password" class="form-control form-control-lg" />
-                             <label asp-for="Repassword" class="form-label">Insira a senha novamente</label>
-                             <span asp-validation-for="Repassword" class="text-danger"></span>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            <button type="submit" class="btn botoes-cor btn-block">Registrar</button>
-                        </div>
-                    </form>
+                <div class="card shadow-2-strong rounded-3">
+                    <div class="card-body p-5">
+                        <h3 class="text-center mb-5">Registrar Usuário</h3>
+                        <form asp-controller="Account" asp-action="Register" method="post">
+                            <input type="hidden" asp-for="ReturnUrl" />
+                            <div class="mb-4">
+                                <label asp-for="NomeCompleto" class="form-label font-weight-bold">Nome de Usuário</label>
+                                <input asp-for="NomeCompleto" class="form-control" />
+                                <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label asp-for="Email" class="form-label font-weight-bold">E-mail</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label asp-for="Cpf" class="form-label">CPF</label>
+                                <input asp-for="Cpf" class="form-control" />
+                                <span asp-validation-for="Cpf" class="text-danger"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label asp-for="DataNascimento" class="form-label">Data de nascimento</label>
+                                <input asp-for="DataNascimento" type="date" class="form-control" />
+                                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label asp-for="Password" class="form-label">Senha</label>
+                                <input asp-for="Password" type="password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label asp-for="Repassword" class="form-label">Insira a senha novamente</label>
+                                <input asp-for="Repassword" type="password" class="form-control" />
+                                <span asp-validation-for="Repassword" class="text-danger"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label class="visually-hidden" asp-for="SelectedRole"></label>
+                                <select class="visually-hidden" asp-for="SelectedRole" class="form-control">
+                                    <option class="visually-hidden" disabled="disabled" value="Paciente"></option>
+                                </select>
+                                <input type="hidden" name="SelectedRole" value="Paciente" />
+                                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                                <button asp-controller="Home" asp-action="Index" class="text-center btn btn-primary ">Voltar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </section>
