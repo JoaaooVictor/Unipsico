@@ -21,7 +21,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int? page)
         {
             int pageSize = 10;
-            var datas = await _context.Datas.AsNoTracking().ToListAsync();
+            var datas = await _context.Datas.AsNoTracking().OrderBy(c => c.Data).ToListAsync();
 
             if (datas is not null && datas.Any())
             {

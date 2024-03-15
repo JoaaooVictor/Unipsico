@@ -9,7 +9,7 @@
                     <th class="text-center">DATA DA CONSULTA</th>
                     <th class="text-center">HORÁRIO DA CONSULTA</th>
                     <th class="text-center">STATUS DA DATA</th>
-                    <th class="text-center">AÇÕES</th> <!-- Coluna para as ações -->
+                    <th class="text-center">AÇÕES</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,8 +20,8 @@
                         <td class="text-center">@data.Data.ToString("hh:MM")</td>
                         <td class="text-center">@data.Status</td>
                         <td class="text-center">
-                            <a href="@Url.Action("Editar", "Datas", new { id = data.Id })" class="btn btn-primary btn-sm">Editar</a>
-                            <a href="@Url.Action("Excluir", "Datas", new { id = data.Id })" class="btn btn-danger btn-sm">Excluir</a>
+                            <a asp-controller="" asp-action="" class="btn btn-primary btn-sm">Editar</a>
+                            <a asp-controller="" asp-action="" class="btn btn-danger btn-sm">Excluir</a>
                         </td>
                     </tr>
                 }
