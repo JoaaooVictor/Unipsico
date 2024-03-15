@@ -4,7 +4,7 @@
     <div class="container py-5 h-100">
         <div class="row d-flex align-items-center justify-content-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card shadow-2-strong rounded-3">
+                <div class="card shadow-2-strong" style="border-radius: 1rem; background-color: rgba(255, 255, 255, 0.8);">
                     <div class="card-body p-5">
                         <h3 class=" mb-5">Novo Acesso</h3>
                         <form asp-controller="Account" asp-action="Register" method="post">
@@ -42,7 +42,7 @@
                             <div class="mb-4">
                                 <select class="visually-hidden" asp-for="SelectedRole" class="form-control">
                                     <option class="visually-hidden" disabled="disabled" value="Paciente"></option>
-                                </select>                      
+                                </select>
                                 <input type="hidden" name="SelectedRole" value="Paciente" />
                                 <label class="visually-hidden" asp-for="SelectedRole"></label>
                                 <span asp-validation-for="SelectedRole" class="text-danger"></span>
