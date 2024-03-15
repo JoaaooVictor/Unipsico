@@ -4,6 +4,7 @@ using AppUnipsico.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppUnipsico.Migrations
 {
     [DbContext(typeof(AppUnipsicoDb))]
-    partial class AppUnipsicoDbModelSnapshot : ModelSnapshot
+    [Migration("20240315030145_configurando estagios")]
+    partial class configurandoestagios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,10 +73,7 @@ namespace AppUnipsico.Migrations
                     b.Property<string>("AlunoId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("DataFimEstagio")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataInicioEstagio")
+                    b.Property<DateTime>("DataEstagio")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("InstituicaoId")
@@ -83,7 +83,7 @@ namespace AppUnipsico.Migrations
 
                     b.HasIndex("AlunoId");
 
-                    b.ToTable("Estagios");
+                    b.ToTable("Estagio");
                 });
 
             modelBuilder.Entity("AppUnipsico.Models.Instituicao", b =>
@@ -115,7 +115,7 @@ namespace AppUnipsico.Migrations
 
                     b.HasKey("InstituicaoId");
 
-                    b.ToTable("Instituicoes");
+                    b.ToTable("Instituicao");
                 });
 
             modelBuilder.Entity("AppUnipsico.Models.Usuario", b =>

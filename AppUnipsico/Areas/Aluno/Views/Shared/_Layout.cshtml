@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,14 +12,13 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Admin</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex">
-                    <a class="nav-link text-light" asp-area="Aluno" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="nav-link text-light" asp-area="Aluno" asp-controller="Estagios" asp-action="Index">Estagios</a>
-                    <a class="nav-link text-light" asp-area="Aluno" asp-controller="Presencas" asp-action="Index">Presenças</a>
+                    <a class="nav-link text-light" asp-area="Aluno" asp-controller="Aluno" asp-action="Estagios">Estagios</a>
+                    <a class="nav-link text-light" asp-area="Aluno" asp-controller="Aluno" asp-action="Presenças">Presenças</a>
                 </div>
             </div>
         </nav>
@@ -31,7 +30,8 @@
     </div>
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - AppUnipsico - Desenvolvido por: João Victor e Renan Lima <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <p class="lead fs-6 text-muted mb-0">Desenvolvido por <strong>João Victor</strong> &amp; <strong>Renan Lima</strong></p>
+            <p class="lead fs-6 text-muted mb-0">&copy; 2024 - Todos os direitos reservados</p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

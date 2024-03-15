@@ -24,11 +24,11 @@ namespace AppUnipsico.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var users = _userManager.Users
+            var usuarios = _userManager.Users
                 .OrderBy(u => u.UserName)
                 .ToList();
 
-            return View(users);
+            return View(usuarios);
         }
 
         [HttpGet]

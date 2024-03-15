@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Estagio>
+
+@{
+    ViewData["Title"] = "Lista de Estágios";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-3 text-center">Lista de Estágios</h1>
+    <br />
+    <p>
+        <a class="btn btn-primary form-control" asp-area="Admin" asp-controller="AdminEstagios" asp-action="CriarEstagio">Criar novo estágio</a>
+    </p>
+    <br />
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">Aluno</th>
+                    <th class="text-center">Instituição</th>
+                    <th class="text-center">Data de Início</th>
+                    <th class="text-center">Data de Término</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var estagio in Model)
+                {
+                    <tr>
+                        <td class="text-center">@estagio.Aluno.NomeCompleto</td>
+                        <td class="text-center">@estagio.Instituicao.Nome</td>
+                        <td class="text-center">@estagio.DataInicioEstagio.ToShortDateString()</td>
+                        <td class="text-center">@estagio.DataFimEstagio.ToShortDateString()</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-info m-1 rounded" asp-controller="AdminEstagios" asp-action="Details" asp-route-id="@estagio.EstagioId">Detalhes</a>
+                                <a class="btn btn-warning m-1 rounded" asp-controller="AdminEstagios" asp-action="Edit" asp-route-id="@estagio.EstagioId">Editar</a>
+                                <a class="btn btn-danger m-1 rounded" asp-controller="AdminEstagios" asp-action="Delete" asp-route-id="@estagio.EstagioId">Deletar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

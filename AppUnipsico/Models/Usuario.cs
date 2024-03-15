@@ -22,5 +22,6 @@ namespace AppUnipsico.Models
         public TipoUsuarioEnum TipoUsuario { get; set; }
 
         public virtual ICollection<Consulta> Consultas { get; set; }
+        public virtual ICollection<Estagio> Estagios { get; set; }
     }
 }

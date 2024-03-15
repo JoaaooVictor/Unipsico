@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,6 +20,7 @@
                     <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminConsultas" asp-action="Index">Consultas</a>
                     <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Index">Usuários</a>
                     <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminDatas" asp-action="Index">Datas de Consultas</a>
+                    <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminEstagios" asp-action="Index">Estagios</a>
                 </div>
             </div>
         </nav>
@@ -29,15 +30,15 @@
             @RenderBody()
         </main>
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     <footer class="border-top footer text-muted">
         <div class="container">
             <p class="lead fs-6 text-muted mb-0">Desenvolvido por <strong>João Victor</strong> &amp; <strong>Renan Lima</strong></p>
             <p class="lead fs-6 text-muted mb-0">&copy; 2024 - Todos os direitos reservados</p>
         </div>
     </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
