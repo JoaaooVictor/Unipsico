@@ -54,18 +54,18 @@
 
 
     <script>
-        // Seleciona todas as divs com a classe teste1
+        // Seleciona todas as divs com a classe verifica-se-tela-login
         const divsLogin = document.querySelectorAll('#verifica-se-tela-login');
 
-        // Itera sobre cada div com a classe teste1
         divsLogin.forEach(divsLogin => {
-            // Verifica se a div com a classe teste1 contém uma div com a classe teste2
+            // Verifica se a div com o id verifica-se-tela-login contém uma div com a classe tela-login
             if (divsLogin.querySelector('.tela-login')) {
-                // Remove o padding da div com a classe teste1
+                // Remove o padding da div com a classe tela-login   
+                //ANTIGAMENTE USAVA, MAS COM A UTILIZAÇÃO DO BACKGROUND NO BODY, FICOU INUTIL
                 //divTeste1.style.padding = '0';
                 //divTeste1.style.margin = '0';
 
-                // Adiciona a classe teste3 ao body
+                // Adiciona a classe background-login ao body
                 document.body.classList.add('background-login');
             }
         });
