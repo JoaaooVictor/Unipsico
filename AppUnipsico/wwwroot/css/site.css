@@ -21,7 +21,7 @@ body {
   margin-bottom: 60px;
 }
 
-.navbar-unifaat {
+.cor_unifaat {
     background-color: #00365d;
 }
 
@@ -32,7 +32,12 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.botoes-cor {
+.botoes-cor1 {
     background-color: #00365d;
+    color: white
+}
+
+.botoes-cor2 {
+    background-color: grey;
     color: white
 }
