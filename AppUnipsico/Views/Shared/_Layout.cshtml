@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - AppUnipsico</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
     <link rel="stylesheet" href="~/AppUnipsico.styles.css" asp-append-version="true" />
     <link href="./img/favicon.png" rel="icon">
     <link href="./img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -18,12 +19,11 @@
     <link href="./vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <link href="./css/style.css" rel="stylesheet">
 
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark cor_unifaat box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark cor_unifaat box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UNIPSICO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -36,12 +36,12 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div id="verifica-se-tela-login" class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-white">
         <div class="container d-flex justify-content-between">
             <p class="lead fs-6 text-muted mb-0">Desenvolvido por <strong>João Victor</strong> &amp; <strong>Renan Lima</strong></p>
             <p class="lead fs-6 text-muted mb-0">&copy; 2024 - Todos os direitos reservados</p>
@@ -51,5 +51,24 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <script>
+        // Seleciona todas as divs com a classe teste1
+        const divsLogin = document.querySelectorAll('#verifica-se-tela-login');
+
+        // Itera sobre cada div com a classe teste1
+        divsLogin.forEach(divsLogin => {
+            // Verifica se a div com a classe teste1 contém uma div com a classe teste2
+            if (divsLogin.querySelector('.tela-login')) {
+                // Remove o padding da div com a classe teste1
+                //divTeste1.style.padding = '0';
+                //divTeste1.style.margin = '0';
+
+                // Adiciona a classe teste3 ao body
+                document.body.classList.add('background-login');
+            }
+        });
+    </script>
 </body>
 </html>
