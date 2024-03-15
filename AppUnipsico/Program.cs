@@ -5,12 +5,18 @@ using AppUnipsico.Services.Impl;
 using AppUnipsico.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("App");
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddPaging(options =>
+{
+    options.ViewName = "Bootstrap4";
+    options.PageParameterName = "pageindex";
+});
 
 builder.Services.AddScoped<DataService>();
 builder.Services.AddScoped<DataRepository>();

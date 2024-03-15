@@ -1,5 +1,6 @@
 ﻿using AppUnipsico.Areas.Admin.ViewModels;
 using AppUnipsico.Data.Context;
+using AppUnipsico.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,22 +18,22 @@ namespace AppUnipsico.Areas.Admin.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            var datas = await _context.Datas.ToListAsync();
+            int pageSize = 10;
+            var datas = await _context.Datas.AsNoTracking().ToListAsync();
 
-            if (datas is not null)
+            if (datas is not null && datas.Any())
             {
-                var datasViewModel = new DatasViewModel
-                {
-                    Datas = datas,
-                    Mensagem = "Datas inclusas no banco de dados!"
-                };
+                int pageIndex = page ?? 1;
+                var paginatedData = Paginacao<Datas>.CreateAsync(datas, pageIndex, pageSize);
 
-                return View(datasViewModel);
+                return View(paginatedData);
             }
 
-            return View(new DatasViewModel { Datas = null, Mensagem = "Nenhum data encontrada no banco de dados!" });
+            return View(new Paginacao<Datas>(new List<Datas>(), 0, 0, pageSize));
         }
+
+
     }
 }

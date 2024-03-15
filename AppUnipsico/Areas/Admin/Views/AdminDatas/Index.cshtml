@@ -1,42 +1,48 @@
-﻿@model DatasViewModel
+﻿@model Paginacao<Datas>
 
-@if(Model.Datas is not null && Model.Datas.Any())
+@if (Model.Any())
 {
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="text-center card-title">@Model.Mensagem</h4>
-                    <br />
-                    <form id="formUpload" enctype="multipart/form-data">
-                        <input  class="text-center" type="file" id="fileInput" name="fileInput" accept=".xlsx,.xls">
-                        <button asp-area="" asp-controller="DatasController" asp-action="InserirDatasDisponiveis" formmethod="post" class="btn btn-success text-center" type="submit">Enviar Arquivo</button>
-                    </form>
-                    <br />
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead class="bg-primary text-white">
-                                <tr class="text-center">
-                                    <th class="text-center">DATA DA CONSULTA</th>
-                                    <th class="text-center">HORÁRIO DA CONSULTA</th>
-                                    <th class="text-center">STATUS DA DATA</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var datas in Model.Datas)
-                                {
-                                    <tr class="text-center">
-                                        <td class="text-center">@datas.Data.ToString("dd-MM-yyyy")</td>
-                                        <td class="text-center">@datas.Data.ToString("hh:MM")</td>
-                                        <td class="text-center">@datas.Status</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="bg-primary text-white">
+                <tr class="text-center">
+                    <th class="text-center">DATA DA CONSULTA</th>
+                    <th class="text-center">HORÁRIO DA CONSULTA</th>
+                    <th class="text-center">STATUS DA DATA</th>
+                    <th class="text-center">AÇÕES</th> <!-- Coluna para as ações -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var data in Model)
+                {
+                    <tr class="text-center">
+                        <td class="text-center">@data.Data.ToString("dd-MM-yyyy")</td>
+                        <td class="text-center">@data.Data.ToString("hh:MM")</td>
+                        <td class="text-center">@data.Status</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("Editar", "Datas", new { id = data.Id })" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="@Url.Action("Excluir", "Datas", new { id = data.Id })" class="btn btn-danger btn-sm">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        @if (Model.HasPreviousPage)
+        {
+            <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" class="btn btn-primary">&laquo; Anterior</a>
+        }
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <a asp-action="Index" asp-route-page="@i" class="btn btn-secondary @(i == Model.PageIndex ? "active" : "")">@i</a>
+        }
+
+        @if (Model.HasNextPage)
+        {
+            <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" class="btn btn-primary">Próximo &raquo;</a>
+        }
     </div>
 }
 else
@@ -45,8 +51,8 @@ else
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="text-center card-title">Mensagem</h4>
-                    <p class="text-center">@Model.Mensagem</p>
+                    <h4 class="text-center card-title">Mensagem:</h4>
+                    <p class="text-center">Nenhuma consulta encontrada</p>
                 </div>
             </div>
         </div>
