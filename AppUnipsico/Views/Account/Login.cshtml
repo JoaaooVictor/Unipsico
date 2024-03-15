@@ -1,6 +1,6 @@
 ﻿@model LoginViewModel
 
-<section class="vh-100">
+<section>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -18,14 +18,14 @@
 
             <div class="form-outline form-group mb-4">
               <input asp-for="Password" type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-              <label asp-for="Password" class="form-label" for="typePasswordX-2">Password</label>
+              <label asp-for="Password" class="form-label" for="typePasswordX-2">Senha</label>
             </div>
 
             <div class="d-flex justify-content-start mb-4">
                 <label class="form-check-label" for="form1Example3"> Não tem cadastro? <a asp-controller="Account" asp-action="Register">Clique aqui!</a>  </label>
             </div>
 
-            <button class="btn botoes-cor btn-lg btn-block" type="submit">Login</button>
+            <button class="btn botoes-cor1 btn btn-block" type="submit">Login</button>
             </form>
           </div>
 
