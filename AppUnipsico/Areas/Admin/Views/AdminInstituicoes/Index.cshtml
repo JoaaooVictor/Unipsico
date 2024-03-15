@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Instituicao>
+
 @{
+    ViewData["Title"] = "Lista de Instituições";
 }
+
+<div class="container mt-4">
+    <h1 class="mb-3 text-center">Instituições</h1>
+    <br />
+    <p>
+        <a class="btn btn-primary form-control" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="CriarInstituicao">Criar nova instituição</a>
+    </p>
+    <br />
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">Nome</th>
+                    <th class="text-center">Logradouro</th>
+                    <th class="text-center">Complemento</th>
+                    <th class="text-center">Número</th>
+                    <th class="text-center">Bairro</th>
+                    <th class="text-center">Cidade</th>
+                    <th class="text-center">CEP</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var instituicao in Model)
+                {
+                    <tr>
+                        <td class="text-center">@instituicao.Nome</td>
+                        <td class="text-center">@instituicao.Logradouro</td>
+                        <td class="text-center">@instituicao.Complemento</td>
+                        <td class="text-center">@instituicao.Numero</td>
+                        <td class="text-center">@instituicao.Bairro</td>
+                        <td class="text-center">@instituicao.Cidade</td>
+                        <td class="text-center">@instituicao.Cep</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-info m-1 rounded" asp-controller="AdminInstituicoes" asp-action="Details" asp-route-id="@instituicao.InstituicaoId">Detalhes</a>
+                                <a class="btn btn-warning m-1 rounded" asp-controller="AdminInstituicoes" asp-action="Edit" asp-route-id="@instituicao.InstituicaoId">Editar</a>
+                                <a class="btn btn-danger m-1 rounded" asp-controller="AdminInstituicoes" asp-action="Delete" asp-route-id="@instituicao.InstituicaoId">Deletar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

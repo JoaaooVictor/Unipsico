@@ -14,6 +14,7 @@ namespace AppUnipsico.Data.Context
         public DbSet<Datas> Datas { get; set; }
         public DbSet<Estagio> Estagios { get; set; }
         public DbSet<Instituicao> Instituicoes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

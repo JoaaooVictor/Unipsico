@@ -6,7 +6,7 @@
 }
 
 <div class="container mt-4">
-    <h1 class="mb-3 text-center">Listagem de usuários</h1>
+    <h1 class="mb-3 text-center">Usuários</h1>
     <br />
     <p>
         <a class="btn btn-primary form-control" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register">Criar novo usuário</a>
@@ -38,7 +38,6 @@
                         <td class="text-center">
                             <div class="btn-group" role="group">
                                 <a class="btn btn-info m-1 rounded" asp-controller="AdminUsuarios" asp-action="DetalhesUsuario" asp-route-UsuarioId="@item.Id">Detalhes</a>
-                                <a class="btn btn-warning m-1 rounded" asp-controller="AdminUsuarios" asp-action="EditarUsuario" asp-route-UsuarioId="@item.Id">Editar</a>
                                 <a class="btn btn-danger m-1 rounded" asp-controller="AdminUsuarios" asp-action="DeletarUsuario" asp-route-UsuarioId="@item.Id">Deletar</a>
                             </div>
                         </td>

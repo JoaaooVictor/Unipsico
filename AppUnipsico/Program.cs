@@ -1,3 +1,4 @@
+using AppUnipsico.Areas.Admin.Repositories;
 using AppUnipsico.Data.Context;
 using AppUnipsico.Models;
 using AppUnipsico.Repositories;
@@ -21,6 +22,7 @@ builder.Services.AddPaging(options =>
 builder.Services.AddScoped<DataService>();
 builder.Services.AddScoped<DataRepository>();
 builder.Services.AddScoped<ConsultaRepository>();
+builder.Services.AddScoped<InstituicoesRepository>();
 builder.Services.AddScoped<IDataService, DataService>();
 builder.Services.AddScoped<IConsultaService, ConsultaService>();
 builder.Services.AddScoped<ICriaUsuarioRoleInicialService, CriaUsuarioRoleInicialService>();

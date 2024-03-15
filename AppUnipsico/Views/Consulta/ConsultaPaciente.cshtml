@@ -18,18 +18,22 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Data da Consulta</th>
-                                    <th>Status</th>
-                                    <th>Id da Consulta</th>
+                                    <th class="text-center">Data da Consulta</th>
+                                    <th class="text-center">Horário do Consulta</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Nome do Paciente</th>
+                                    <th class="text-center">Data de Nascimento</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var consulta in Model.Consultas)
                                 {
                                     <tr>
-                                        <td>@consulta.DataConsulta.Data.ToShortDateString()</td>
-                                        <td>@consulta.StatusConsulta</td>
-                                        <td>@consulta.ConsultaId</td>
+                                        <td class="text-center">@consulta.DataConsulta.Data.ToShortDateString()</td>
+                                        <td class="text-center">@consulta.DataConsulta.Data.ToShortTimeString()</td>
+                                        <td class="text-center">@consulta.StatusConsulta</td>
+                                        <td class="text-center">@consulta.Usuario.NomeCompleto</td>
+                                        <td class="text-center">@consulta.Usuario.DataNascimento.ToShortDateString()</td>
                                     </tr>
                                 }
                             </tbody>

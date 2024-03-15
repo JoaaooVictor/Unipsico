@@ -5,7 +5,7 @@
 }
 
 <div class="container mt-4">
-    <h1 class="mb-3 text-center">Lista de Estágios</h1>
+    <h1 class="mb-3 text-center">Estágios</h1>
     <br />
     <p>
         <a class="btn btn-primary form-control" asp-area="Admin" asp-controller="AdminEstagios" asp-action="CriarEstagio">Criar novo estágio</a>
@@ -35,6 +35,7 @@
                                 <a class="btn btn-info m-1 rounded" asp-controller="AdminEstagios" asp-action="Details" asp-route-id="@estagio.EstagioId">Detalhes</a>
                                 <a class="btn btn-warning m-1 rounded" asp-controller="AdminEstagios" asp-action="Edit" asp-route-id="@estagio.EstagioId">Editar</a>
                                 <a class="btn btn-danger m-1 rounded" asp-controller="AdminEstagios" asp-action="Delete" asp-route-id="@estagio.EstagioId">Deletar</a>
+                                <a class="btn btn-danger m-1 rounded" asp-controller="AdminEstagios" asp-action="Delete" asp-route-id="@estagio.EstagioId">Gerar PDF</a>
                             </div>
                         </td>
                     </tr>

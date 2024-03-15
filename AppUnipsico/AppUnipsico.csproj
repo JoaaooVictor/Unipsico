@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Services\" />
     <Folder Include="Areas\Aluno\ViewsModels\" />
     <Folder Include="Migrations\" />
   </ItemGroup>

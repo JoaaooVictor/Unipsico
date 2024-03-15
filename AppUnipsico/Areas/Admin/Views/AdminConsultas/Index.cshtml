@@ -4,7 +4,7 @@
     ViewData["Title"] = "Lista de consultas";
 }
 
-<h1 class="text-center">Listagem de consultas</h1>
+<h1 class="text-center">Consultas</h1>
 <br />
 <p>
     <a class="btn btn-primary form-control" asp-action="Create">Criar nova Consulta</a>
@@ -38,9 +38,9 @@
                 </td>
                 <td class="text-center">
                     <div class="btn-group" role="group">
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ConsultaId">Detalhes</a>
-                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ConsultaId">Editar</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ConsultaId">Deletar</a>
+                        <a class="btn btn-info m-1 rounded" asp-action="Details" asp-route-id="@item.ConsultaId">Detalhes</a>
+                        <a class="btn btn-warning m-1 rounded" asp-action="Edit" asp-route-id="@item.ConsultaId">Editar</a>
+                        <a class="btn btn-danger m-1 rounded" asp-action="Delete" asp-route-id="@item.ConsultaId">Deletar</a>
                     </div>
                 </td>
             </tr>

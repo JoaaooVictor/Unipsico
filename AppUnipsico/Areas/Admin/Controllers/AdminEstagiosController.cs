@@ -30,18 +30,5 @@ namespace AppUnipsico.Areas.Admin.Controllers
                                         .ToListAsync();
             return View(estagios);
         }
-
-        [HttpGet]
-        public IActionResult CriarInstituicao()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CriarInstituicao(InstituicaoViewModel instituicaoViewModel)
-        {
-            return View();
-        }
-
     }
 }

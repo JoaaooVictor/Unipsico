@@ -11,6 +11,7 @@
     var isInRolePaciente = await userManager.IsInRoleAsync(user, "Paciente");
     var isInRoleAdmin = await userManager.IsInRoleAsync(user, "Admin");
     var isInRoleAluno = await userManager.IsInRoleAsync(user, "Aluno");
+    var isInRoleProfessor = await userManager.IsInRoleAsync(user, "Professor");
 
     if (isInRolePaciente)
     {
@@ -20,7 +21,7 @@
             <button type="submit" style="width:auto" class="nav-link btn btn-link py-0 text-info">Logout @user.NomeCompleto</button>
         </form>
     }
-    else if (isInRoleAdmin)
+    else if (isInRoleAdmin || isInRoleProfessor)
     {
         <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Dashboard Admin</a>
         <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-left">
