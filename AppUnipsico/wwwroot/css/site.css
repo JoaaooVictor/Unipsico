@@ -42,7 +42,7 @@ body {
     color: white
 }
 .background-login {
-    background-image: url(18012.jpg);
+    background-image: url(https://c.wallhere.com/photos/ff/94/2560x1920_px_abstract_Low_Poly-841105.jpg!d);
     display: block;
     height: 100%;
     padding: 0;
@@ -50,4 +50,9 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+}
+
+.card-opacidade {
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
 }
