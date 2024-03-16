@@ -38,9 +38,9 @@
                         <td class="text-center">@instituicao.Cep</td>
                         <td class="text-center">
                             <div class="btn-group" role="group">
-                                <a class="btn btn-info m-1 rounded" asp-controller="AdminInstituicoes" asp-action="Details" asp-route-id="@instituicao.InstituicaoId">Detalhes</a>
-                                <a class="btn btn-warning m-1 rounded" asp-controller="AdminInstituicoes" asp-action="Edit" asp-route-id="@instituicao.InstituicaoId">Editar</a>
-                                <a class="btn btn-danger m-1 rounded" asp-controller="AdminInstituicoes" asp-action="Delete" asp-route-id="@instituicao.InstituicaoId">Deletar</a>
+                                <a class="btn btn-info m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DetalhesInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Detalhes</a>
+                                <a class="btn btn-warning m-1 rounded" asp-controller="AdminInstituicoes" asp-action="EditarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Editar</a>
+                                <a class="btn btn-danger m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DeletarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Deletar</a>
                             </div>
                         </td>
                     </tr>

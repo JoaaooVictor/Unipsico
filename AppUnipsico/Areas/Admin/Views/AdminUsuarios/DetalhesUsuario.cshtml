@@ -11,11 +11,15 @@
                     <h4 class="text-center card-title">Detalhes do Usuário</h4>
                     <br />
                     <dl class="row">
-                        <dt class="col-sm-4">Id do Usuário:</dt>
-                        <dd class="col-sm-8">@Model.Usuario.Id</dd>
 
                         <dt class="col-sm-4">Nome completo:</dt>
                         <dd class="col-sm-8">@Model.Usuario.NomeCompleto</dd>
+
+                        @if (Model.Usuario.TipoUsuario == AppUnipsico.Enums.TipoUsuarioEnum.Aluno)
+                        {
+                            <dt class="col-sm-4">RA:</dt>
+                            <dd class="col-sm-8">@Model.Usuario.RA</dd>
+                        }
 
                         <dt class="col-sm-4">Cpf:</dt>
                         <dd class="col-sm-8">@Model.Usuario.Cpf</dd>
@@ -24,7 +28,7 @@
                         <dd class="col-sm-8">@Model.Usuario.Email</dd>
 
                         <dt class="col-sm-4">Data de nascimento:</dt>
-                        <dd class="col-sm-8">@Model.Usuario.DataNascimento</dd>
+                        <dd class="col-sm-8">@Model.Usuario.DataNascimento.ToShortDateString()</dd>
 
                         <dt class="col-sm-4">Data de registro no sistema:</dt>
                         <dd class="col-sm-8">@Model.Usuario.DataRegistro</dd>

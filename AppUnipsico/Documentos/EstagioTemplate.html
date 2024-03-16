@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autorização de Estágio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        .assinaturas {
+            margin-top: 20px;
+        }
+
+            .assinaturas p {
+                margin-bottom: 5px;
+                color: #555;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Autorização de Estágio</h2>
+        <p><strong>Instituição Autorizadora:</strong> UNIFAAT UNIVERSIDADES</p>
+
+        <p>Eu, <strong>{{NomeDoAluno}}</strong>, portador do Registro Acadêmico (RA) <strong>{{NumeroDoRa}}</strong>, regularmente matriculado no curso de <strong>Psícologia</strong> na UNIFAAT UNIVERSIDADES, por meio deste documento, autorizo a realização de estágio na instituição <strong>{{NomeInstituicaoEstagio}}</strong>, localizada em <strong>{{Endereco}}</strong>, fora da UNIFAAT.</p>
+
+        <p>Este estágio terá início em <strong>{{DataInicioEstagio}}</strong> e término em <strong>{{DataFinalEstagio}}</strong>.</p>
+
+        <div class="assinaturas">
+            <p><strong>Assinaturas:</strong></p>
+            <p><strong>Assinatura do Responsável pela Instituição Autorizadora - UNIFAAT UNIVERSIDADES</strong></p>
+            <p><strong>Assinatura do Estagiário - {{NomeDoAluno}}</strong></p>
+            <p><strong>Data:</strong> {{DataDaAssinatura}}</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿@model Instituicao
+
+@{
+    ViewData["Title"] = "Editar Instituição";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">Editar Instituição</h1>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Informações da Instituição</h4>
+                    <form asp-action="SalvarEdicaoInstituicao" asp-controller="AdminInstituicoes" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="InstituicaoId" />
+                        <div class="form-group">
+                            <label asp-for="Nome" class="control-label">Nome:</label>
+                            <input asp-for="Nome" class="form-control" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Logradouro" class="control-label">Logradouro:</label>
+                            <input asp-for="Logradouro" class="form-control" />
+                            <span asp-validation-for="Logradouro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Complemento" class="control-label">Complemento:</label>
+                            <input asp-for="Complemento" class="form-control" />
+                            <span asp-validation-for="Complemento" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Numero" class="control-label">Número:</label>
+                            <input asp-for="Numero" class="form-control" />
+                            <span asp-validation-for="Numero" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Bairro" class="control-label">Bairro:</label>
+                            <input asp-for="Bairro" class="form-control" />
+                            <span asp-validation-for="Bairro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Cidade" class="control-label">Cidade:</label>
+                            <input asp-for="Cidade" class="form-control" />
+                            <span asp-validation-for="Cidade" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Cep" class="control-label">CEP:</label>
+                            <input asp-for="Cep" class="form-control" />
+                            <span asp-validation-for="Cep" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary col-5">Salvar</button>
+                            <a asp-controller="AdminInstituicoes" asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

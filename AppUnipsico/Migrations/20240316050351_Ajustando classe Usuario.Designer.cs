@@ -4,6 +4,7 @@ using AppUnipsico.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppUnipsico.Migrations
 {
     [DbContext(typeof(AppUnipsicoDb))]
-    partial class AppUnipsicoDbModelSnapshot : ModelSnapshot
+    [Migration("20240316050351_Ajustando classe Usuario")]
+    partial class AjustandoclasseUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,7 +176,7 @@ namespace AppUnipsico.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("RA")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -197,10 +200,6 @@ namespace AppUnipsico.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("RA", "TipoUsuario")
-                        .IsUnique()
-                        .HasFilter("TipoUsuario = 2");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });

@@ -26,5 +26,26 @@ namespace AppUnipsico.Areas.Admin.Repositories
                                      .Include(i => i.Estagios)
                                      .ToListAsync();
         }
+
+        public async Task<Instituicao> SalvarEdicaoInstituicao(Instituicao instituicao)
+        {
+            _context.Attach(instituicao).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return instituicao;
+        }
+
+        public async Task<Instituicao> BuscarIntituicaoPorId(Guid instituicaoId)
+        {
+            return await _context.Instituicoes
+                                            .Where(i => i.InstituicaoId == instituicaoId)
+                                            .FirstOrDefaultAsync();
+        }
+
+        public async Task DeletarInstituicao(Instituicao instituicao)
+        {
+            _context.Instituicoes.Remove(instituicao);
+            await _context.SaveChangesAsync();
+        }
     }
 }

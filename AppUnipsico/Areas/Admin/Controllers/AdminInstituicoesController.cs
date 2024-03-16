@@ -5,6 +5,7 @@ using AppUnipsico.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AppUnipsico.Areas.Admin.Controllers
@@ -29,6 +30,23 @@ namespace AppUnipsico.Areas.Admin.Controllers
             var instituicoes = await _instituicoesRepository.BuscarInstituicoes();
 
             return View(instituicoes);
+        }
+
+        public async Task<IActionResult> DetalhesInstituicao(Guid instituicaoId)
+        {
+            if (string.IsNullOrEmpty(instituicaoId.ToString()))
+            {
+                return NotFound();
+            }
+
+            var instituicao = await _instituicoesRepository.BuscarIntituicaoPorId(instituicaoId);
+
+            if (instituicao == null)
+            {
+                return NotFound();
+            }
+
+            return View(instituicao);
         }
 
         [HttpGet]
@@ -62,6 +80,70 @@ namespace AppUnipsico.Areas.Admin.Controllers
             {
                 return View(instituicaoViewModel);
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditarInstituicao(Guid instituicaoId)
+        {
+            if (string.IsNullOrEmpty(instituicaoId.ToString()))
+            {
+                return NotFound();
+            }
+
+            var instituicao = await _instituicoesRepository.BuscarIntituicaoPorId(instituicaoId);
+
+            if (instituicao == null)
+            {
+                return NotFound();
+            }
+
+            return View(instituicao);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarEdicaoInstituicao(Instituicao instituicao)
+        {
+            if (ModelState.IsValid)
+            {
+                await _instituicoesRepository.SalvarEdicaoInstituicao(instituicao);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(instituicao);
+            }
+        }
+
+        public async Task<IActionResult> DeletarInstituicao(Guid instituicaoId)
+        {
+            if (string.IsNullOrEmpty(instituicaoId.ToString()))
+            {
+                return NotFound();
+            }
+
+            var instituicao = await _instituicoesRepository.BuscarIntituicaoPorId(instituicaoId);
+
+            if (instituicao == null)
+            {
+                return NotFound();
+            }
+
+            return View(instituicao);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeletarInstituicaoConfirmada(Guid instituicaoId)
+        {
+            var instituicao = await _instituicoesRepository.BuscarIntituicaoPorId(instituicaoId);
+            if (instituicao != null)
+            {
+               await _instituicoesRepository.DeletarInstituicao(instituicao);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

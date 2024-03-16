@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col">
                                     <label asp-for="Cep" class="form-label font-weight-bold">CEP</label>
-                                    <input asp-for="Cep" class="form-control" />
+                                    <input id="cep" asp-for="Cep" class="form-control" />
                                     <span asp-validation-for="Cep" class="text-danger"></span>
                                 </div>
                             </div>
@@ -65,3 +65,7 @@
         </div>
     </div>
 </section>
+
+<script>
+    $('#cep').mask('00000-000', { reverse: false });
+</script>

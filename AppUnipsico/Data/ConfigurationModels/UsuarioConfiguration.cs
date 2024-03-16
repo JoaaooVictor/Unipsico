@@ -12,6 +12,15 @@ namespace AppUnipsico.Data.ConfigurationModels
                 .HasMany(u => u.Consultas)
                 .WithOne(u => u.Usuario)
                 .HasForeignKey(u => u.UsuarioId);
+
+            builder
+                .HasIndex(u => new { u.RA, u.TipoUsuario })
+                .IsUnique()
+                .HasFilter("TipoUsuario = 2");
+
+            builder
+                .Property(u => u.RA)
+                .HasColumnType("varchar(10)");
         }
     }
 }

@@ -21,6 +21,9 @@ namespace AppUnipsico.Models
         [Display(Name = "Tipo de Usuário")]
         public TipoUsuarioEnum TipoUsuario { get; set; }
 
+        [Display(Name = "RA do Aluno")]
+        public string RA { get; set; }
+
         public virtual ICollection<Consulta> Consultas { get; set; }
         public virtual ICollection<Estagio> Estagios { get; set; }
     }

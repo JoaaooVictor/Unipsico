@@ -109,6 +109,7 @@ namespace AppUnipsico.Services.Impl
                 user.NormalizedUserName = "ALUNO@LOCALHOST";
                 user.Cpf = "00000000000";
                 user.EmailConfirmed = true;
+                user.RA = "6320031";
                 user.LockoutEnabled = false;
                 user.DataRegistro = DateTime.Now;
                 user.TipoUsuario = TipoUsuarioEnum.Aluno;
