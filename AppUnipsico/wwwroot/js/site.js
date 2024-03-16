@@ -25,3 +25,9 @@ function uploadFile() {
             console.error('Erro:', error);
         });
 }
+
+function mudaBackgroundTeladeLogineRegistro()
+{
+
+
+}

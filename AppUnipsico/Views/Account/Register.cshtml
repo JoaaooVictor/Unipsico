@@ -9,34 +9,38 @@
                         <h3 class=" mb-5">Novo Acesso</h3>
                         <form asp-controller="Account" asp-action="Register" method="post">
                             <input type="hidden" asp-for="ReturnUrl" />
-                            <div class="mb-4">
-                                <input asp-for="NomeCompleto" class="form-control" />
-                                <label asp-for="NomeCompleto" class="form-label font-weight-bold">Nome de Usuário</label>
-                                <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                            <div class="mb-4 d-flex gap-4">
+                                <div class="w-100">
+                                    <input asp-for="NomeCompleto" class="form-control" />
+                                    <label asp-for="NomeCompleto" class="ms-1 form-label font-weight-bold">Nome de Usuário</label>
+                                    <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                                </div>
+                                <div class="w-100">
+                                    <input asp-for="Cpf" id="cpf" class="form-control" />
+                                    <label asp-for="Cpf" class="ms-1 form-label">CPF</label>
+                                    <span asp-validation-for="Cpf" class="text-danger"></span>
+                                </div>
                             </div>
-                            <div class="mb-4">
-                                <input asp-for="Email" class="form-control" />
-                                <label asp-for="Email" class="form-label font-weight-bold">E-mail</label>
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-                            <div class="mb-4">
-                                <input asp-for="Cpf" class="form-control" />
-                                <label asp-for="Cpf" class="form-label">CPF</label>
-                                <span asp-validation-for="Cpf" class="text-danger"></span>
-                            </div>
-                            <div class="mb-4">
-                                <input asp-for="DataNascimento" type="date" class="form-control" />
-                                <label asp-for="DataNascimento" class="form-label">Data de nascimento</label>
-                                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                            <div class="mb-4 d-flex gap-4">
+                                <div class="w-100">
+                                    <input asp-for="Email" class="form-control" />
+                                    <label asp-for="Email" class="ms-1 form-label font-weight-bold">E-mail</label>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="w-100">
+                                    <input asp-for="DataNascimento" type="date" class="form-control" />
+                                    <label asp-for="DataNascimento" class="ms-1 form-label">Data de nascimento</label>
+                                    <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                                </div>
                             </div>
                             <div class="mb-4">
                                 <input asp-for="Password" type="password" class="form-control" />
-                                <label asp-for="Password" class="form-label">Senha</label>
+                                <label asp-for="Password" class="ms-1 form-label">Senha</label>
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="mb-4">
                                 <input asp-for="Repassword" type="password" class="form-control" />
-                                <label asp-for="Repassword" class="form-label">Insira a senha novamente</label>
+                                <label asp-for="Repassword" class="ms-1 form-label">Insira a senha novamente</label>
                                 <span asp-validation-for="Repassword" class="text-danger"></span>
                             </div>
                             <div class="mb-4">
@@ -57,4 +61,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $('#cpf').mask('000.000.000-00', { reverse: false });
+    </script>
+
 </section>
+
+
