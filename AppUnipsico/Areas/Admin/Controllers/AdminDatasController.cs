@@ -1,27 +1,25 @@
-﻿using AppUnipsico.Areas.Admin.ViewModels;
-using AppUnipsico.Data.Context;
+﻿using AppUnipsico.Areas.Admin.Repositories;
 using AppUnipsico.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AppUnipsico.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Policy = "RequireAdminProfessorRole")]
+    [Authorize(Policy = "RequireAdminRole")]
     public class AdminDatasController : Controller
     {
-        private readonly AppUnipsicoDb _context;
+        private readonly DatasRepository _datasRepository;
 
-        public AdminDatasController(AppUnipsicoDb context)
+        public AdminDatasController(DatasRepository datasRepository)
         {
-            _context = context;
+            _datasRepository = datasRepository;
         }
 
         public async Task<IActionResult> Index(int? page)
         {
             int pageSize = 10;
-            var datas = await _context.Datas.AsNoTracking().OrderBy(c => c.Data).ToListAsync();
+            var datas = await _datasRepository.BuscaDatasSemTracking();
 
             if (datas is not null && datas.Any())
             {
@@ -34,6 +32,41 @@ namespace AppUnipsico.Areas.Admin.Controllers
             return View(new Paginacao<Datas>(new List<Datas>(), 0, 0, pageSize));
         }
 
+        public async Task<IActionResult> DeletarData(Guid dataId)
+        {
+            if (string.IsNullOrEmpty(dataId.ToString()))
+            {
+                return NotFound();
+            }
 
+            var data = await _datasRepository.BuscaDataPorId(dataId);
+
+            if (data is null)
+            {
+                return NotFound();
+            }
+
+            return View(data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(Guid dataId)
+        {
+            if (string.IsNullOrEmpty(dataId.ToString()))
+            {
+                return NotFound();
+            }
+
+            var data = await _datasRepository.BuscaDataPorId(dataId);
+
+            if (data is null)
+            {
+                return NotFound();
+            }
+
+            await _datasRepository.DeletarData(data);
+
+            return RedirectToAction("Index");
+        }
     }
 }

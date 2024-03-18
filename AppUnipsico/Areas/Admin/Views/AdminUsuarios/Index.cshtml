@@ -9,7 +9,7 @@
     <h1 class="mb-3 text-center">Usuários</h1>
     <br />
     <p>
-        <a class="btn btn-primary form-control" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register">Criar novo usuário</a>
+        <a class="btn btn-outline-success rounded form-control" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register">Criar novo usuário</a>
     </p>
     <br />
     <div class="table-responsive">
@@ -37,8 +37,8 @@
                         <td class="text-center">@Html.DisplayFor(modelItem => item.TipoUsuario)</td>
                         <td class="text-center">
                             <div class="btn-group" role="group">
-                                <a class="btn btn-info m-1 rounded" asp-controller="AdminUsuarios" asp-action="DetalhesUsuario" asp-route-UsuarioId="@item.Id">Detalhes</a>
-                                <a class="btn btn-danger m-1 rounded" asp-controller="AdminUsuarios" asp-action="DeletarUsuario" asp-route-UsuarioId="@item.Id">Deletar</a>
+                                <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminUsuarios" asp-action="DetalhesUsuario" asp-route-UsuarioId="@item.Id">Detalhes</a>
+                                <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminUsuarios" asp-action="DeletarUsuario" asp-route-UsuarioId="@item.Id">Deletar</a>
                             </div>
                         </td>
                     </tr>

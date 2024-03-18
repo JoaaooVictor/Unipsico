@@ -20,6 +20,7 @@ builder.Services.AddPaging(options =>
 });
 
 builder.Services.AddScoped<DataService>();
+builder.Services.AddScoped<DatasRepository>();
 builder.Services.AddScoped<DataRepository>();
 builder.Services.AddScoped<EstagioRepository>();
 builder.Services.AddScoped<UsuarioRepository>();

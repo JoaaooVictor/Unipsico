@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AppUnipsico.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Policy = "RequireAdminRole")]
+    [Authorize(Policy = "RequireAdminProfessorRole")]
     public class AdminEstagiosController : Controller
     {
         private readonly UserManager<Usuario> _userManager;

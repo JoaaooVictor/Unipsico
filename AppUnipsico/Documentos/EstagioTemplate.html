@@ -6,62 +6,85 @@
     <title>Autorização de Estágio</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: #fff;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 30px auto;
             padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
+            border: 2px solid #000;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .header img {
+                width: 200px;
+                margin-bottom: 10px;
+            }
 
         h2 {
             text-align: center;
-            color: #333;
+            color: #000;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         p {
+            color: #000;
             margin-bottom: 10px;
-            color: #555;
+            line-height: 1.5;
         }
 
         strong {
-            color: #333;
+            font-weight: bold;
         }
 
         .assinaturas {
-            margin-top: 20px;
+            margin-top: 40px;
         }
 
             .assinaturas p {
                 margin-bottom: 5px;
-                color: #555;
+                color: #000;
             }
+
+                .assinaturas p strong {
+                    font-weight: bold;
+                }
+
+                .assinaturas p:last-child {
+                    margin-bottom: 0;
+                }
+
+        .linha-assinatura {
+            border-top: 1px solid #000;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-
     <div class="container">
+        <div class="header">
+            <img src="caminho/para/sua/imagem-da-universidade.jpg" alt="Logo da Universidade">
+        </div>
         <h2>Autorização de Estágio</h2>
         <p><strong>Instituição Autorizadora:</strong> UNIFAAT UNIVERSIDADES</p>
-
-        <p>Eu, <strong>{{NomeDoAluno}}</strong>, portador do Registro Acadêmico (RA) <strong>{{NumeroDoRa}}</strong>, regularmente matriculado no curso de <strong>Psícologia</strong> na UNIFAAT UNIVERSIDADES, por meio deste documento, autorizo a realização de estágio na instituição <strong>{{NomeInstituicaoEstagio}}</strong>, localizada em <strong>{{Endereco}}</strong>, fora da UNIFAAT.</p>
-
+        <p>O, <strong>{{NomeDoAluno}}</strong>, portador do Registro Acadêmico (RA) <strong>{{NumeroDoRa}}</strong>, regularmente matriculado no curso de <strong>Psicologia</strong> no Centro Universitário UNIFAAT, por meio deste documento, está autorizado a realizar estágio na instituição <strong>{{NomeInstituicaoEstagio}}</strong>, localizada em <strong>{{Endereco}}</strong>.</p>
         <p>Este estágio terá início em <strong>{{DataInicioEstagio}}</strong> e término em <strong>{{DataFinalEstagio}}</strong>.</p>
-
         <div class="assinaturas">
-            <p><strong>Assinaturas:</strong></p>
-            <p><strong>Assinatura do Responsável pela Instituição Autorizadora - UNIFAAT UNIVERSIDADES</strong></p>
-            <p><strong>Assinatura do Estagiário - {{NomeDoAluno}}</strong></p>
             <p><strong>Data:</strong> {{DataDaAssinatura}}</p>
         </div>
+        <div class="linha-assinatura"></div>
     </div>
 </body>
 </html>

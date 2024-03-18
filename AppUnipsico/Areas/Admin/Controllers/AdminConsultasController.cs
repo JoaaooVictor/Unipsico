@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AppUnipsico.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Policy = "RequireAdminProfessorRole")]
+    [Authorize(Policy = "RequireAdminRole")]
     public class AdminConsultasController : Controller
     {
         private readonly AppUnipsicoDb _context;

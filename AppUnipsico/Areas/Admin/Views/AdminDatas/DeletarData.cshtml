@@ -1,0 +1,37 @@
+﻿@model Datas
+
+@{
+    ViewData["Title"] = "Deletar data";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Excluir data de consulta</h4>
+
+                    <p class="lead">Tem certeza de que deseja remover esta data?</p>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">Id:</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4">Data:</dt>
+                        <dd class="col-sm-8">@Model.Data</dd>
+
+                        <dt class="col-sm-4">Status:</dt>
+                        <dd class="col-sm-8">@Model.Status</dd>
+                    </dl>
+
+                    <form asp-action="DeleteConfirmed" asp-route-DataId="@Model.Id" method="post">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger mr-2">Deletar</button>
+                            <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

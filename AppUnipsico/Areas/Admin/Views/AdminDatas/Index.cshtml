@@ -4,7 +4,7 @@
 {
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
-            <thead class="bg-primary text-white">
+            <thead class="bg-warning text-black">
                 <tr class="text-center">
                     <th class="text-center">DATA DA CONSULTA</th>
                     <th class="text-center">HORÁRIO DA CONSULTA</th>
@@ -16,12 +16,12 @@
                 @foreach (var data in Model)
                 {
                     <tr class="text-center">
-                        <td class="text-center">@data.Data.ToString("dd-MM-yyyy")</td>
-                        <td class="text-center">@data.Data.ToString("hh:MM")</td>
+                        <td class="text-center">@data.Data.ToShortDateString()</td>
+                        <td class="text-center">@data.Data.ToShortTimeString()</td>
                         <td class="text-center">@data.Status</td>
                         <td class="text-center">
-                            <a asp-controller="" asp-action="" class="btn btn-primary btn-sm">Editar</a>
-                            <a asp-controller="" asp-action="" class="btn btn-danger btn-sm">Excluir</a>
+                            <a asp-controller="" asp-action="" class="btn btn-outline-primary btn-sm">Editar</a>
+                            <a asp-controller="AdminDatas" asp-action="DeletarData" asp-route-DataId="@data.Id" class="btn btn-outline-danger btn-sm">Excluir</a>
                         </td>
                     </tr>
                 }

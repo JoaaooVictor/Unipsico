@@ -8,7 +8,7 @@
     <h1 class="mb-3 text-center">Instituições</h1>
     <br />
     <p>
-        <a class="btn btn-primary form-control" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="CriarInstituicao">Criar nova instituição</a>
+        <a class="btn btn-outline-success form-control" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="CriarInstituicao">Cadastrar instituição.</a>
     </p>
     <br />
     <div class="table-responsive">
@@ -38,9 +38,9 @@
                         <td class="text-center">@instituicao.Cep</td>
                         <td class="text-center">
                             <div class="btn-group" role="group">
-                                <a class="btn btn-info m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DetalhesInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Detalhes</a>
-                                <a class="btn btn-warning m-1 rounded" asp-controller="AdminInstituicoes" asp-action="EditarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Editar</a>
-                                <a class="btn btn-danger m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DeletarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Deletar</a>
+                                <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DetalhesInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Detalhes</a>
+                                <a class="btn btn-outline-warning m-1 rounded" asp-controller="AdminInstituicoes" asp-action="EditarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Editar</a>
+                                <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DeletarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Deletar</a>
                             </div>
                         </td>
                     </tr>
