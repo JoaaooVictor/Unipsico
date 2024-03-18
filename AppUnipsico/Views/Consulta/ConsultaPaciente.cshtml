@@ -4,47 +4,46 @@
     ViewBag.Title = "Consultas do Paciente";
 }
 
-@if (Model.Consultas.Any())
-{
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h5 class="card-title text-center">Consultas do Paciente</h5>
-            </div>
-            <div class="card-body">
-                @if (Model.Consultas.Any())
-                {
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-warning text-white">
+            <h5 class="card-title text-center">Consultas do Paciente</h5>
+        </div>
+        <div class="card-body">
+            @if (Model.Consultas.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Data da Consulta</th>
+                                <th class="text-center">Horário da Consulta</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Nome do Paciente</th>
+                                <th class="text-center">Data de Nascimento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var consulta in Model.Consultas)
+                            {
                                 <tr>
-                                    <th class="text-center">Data da Consulta</th>
-                                    <th class="text-center">Horário do Consulta</th>
-                                    <th class="text-center">Status</th>
-                                    <th class="text-center">Nome do Paciente</th>
-                                    <th class="text-center">Data de Nascimento</th>
+                                    <td class="text-center">@consulta.DataConsulta.Data.ToShortDateString()</td>
+                                    <td class="text-center">@consulta.DataConsulta.Data.ToShortTimeString()</td>
+                                    <td class="text-center">@consulta.StatusConsulta</td>
+                                    <td class="text-center">@consulta.Usuario.NomeCompleto</td>
+                                    <td class="text-center">@consulta.Usuario.DataNascimento.ToShortDateString()</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var consulta in Model.Consultas)
-                                {
-                                    <tr>
-                                        <td class="text-center">@consulta.DataConsulta.Data.ToShortDateString()</td>
-                                        <td class="text-center">@consulta.DataConsulta.Data.ToShortTimeString()</td>
-                                        <td class="text-center">@consulta.StatusConsulta</td>
-                                        <td class="text-center">@consulta.Usuario.NomeCompleto</td>
-                                        <td class="text-center">@consulta.Usuario.DataNascimento.ToShortDateString()</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                }
-                else
-                {
-                    <p class="text-center">Você não possui consultas agendadas no momento.</p>
-                }
-            </div>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center">
+                    <p class="lead">Você não possui consultas agendadas no momento.</p>
+                </div>
+            }
         </div>
     </div>
-}
+</div>

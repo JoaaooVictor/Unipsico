@@ -66,8 +66,8 @@
                                     @foreach (var consulta in Model.Consultas)
                                     {
                                         <tr>
-                                            <td>@consulta.DataConsulta.Data.ToString("dd-MM-yyyy")</td>
-                                            <td>@consulta.DataConsulta.Data.ToString("hh:MM")</td>
+                                            <td>@consulta.DataConsulta.Data.ToShortDateString()</td>
+                                            <td>@consulta.DataConsulta.Data.ToShortTimeString()</td>
                                             <td>@consulta.StatusConsulta</td>
                                         </tr>
                                     }

@@ -6,24 +6,24 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong card-opacidade">
                     <div class="card-body p-5">
-                        <h3 class=" mb-5">Novo Acesso</h3>
+                        <h3 class="mb-5 text-center">Novo Acesso</h3>
                         <form asp-controller="Account" asp-action="Register" method="post">
                             <input type="hidden" asp-for="ReturnUrl" />
                             <div class="mb-4 d-flex gap-4">
                                 <div class="w-100">
-                                    <input asp-for="NomeCompleto" class="form-control" />
-                                    <label asp-for="NomeCompleto" class="ms-1 form-label font-weight-bold">Nome de Usuário</label>
+                                    <input placeholder="" asp-for="NomeCompleto" class="form-control" />
+                                    <label asp-for="NomeCompleto" class="ms-1 form-label font-weight-bold">Nome do Paciente</label>
                                     <span asp-validation-for="NomeCompleto" class="text-danger"></span>
                                 </div>
                                 <div class="w-100">
-                                    <input asp-for="Cpf" id="cpf" class="form-control" />
+                                    <input placeholder="000.000.000-00" asp-for="Cpf" id="cpf" class="form-control" />
                                     <label asp-for="Cpf" class="ms-1 form-label">CPF</label>
                                     <span asp-validation-for="Cpf" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="mb-4 d-flex gap-4">
                                 <div class="w-100">
-                                    <input asp-for="Email" class="form-control" />
+                                    <input placeholder="email@gmail.com" asp-for="Email" class="form-control" />
                                     <label asp-for="Email" class="ms-1 form-label font-weight-bold">E-mail</label>
                                     <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
