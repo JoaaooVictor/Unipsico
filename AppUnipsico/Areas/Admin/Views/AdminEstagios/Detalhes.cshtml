@@ -1,0 +1,48 @@
+﻿@model Estagio
+
+@{
+    ViewData["Title"] = "Detalhes do Estágio";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">Detalhes do Estágio</h1>
+    <hr />
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Estágio</h4>
+
+            <dl class="row">
+                <dt class="col-sm-3">ID do Estágio:</dt>
+                <dd class="col-sm-9">@Model.EstagioId</dd>
+
+                <dt class="col-sm-3">Data de Início do Estágio:</dt>
+                <dd class="col-sm-9">@Model.DataInicioEstagio.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3">Data de Término do Estágio:</dt>
+                <dd class="col-sm-9">@Model.DataFimEstagio.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3">Aluno:</dt>
+                <dd class="col-sm-9">@Model.Aluno.NomeCompleto</dd>
+
+                <dt class="col-sm-3">RA do Aluno:</dt>
+                <dd class="col-sm-9">@Model.Aluno.RA</dd>
+
+                <dt class="col-sm-3">Instituição:</dt>
+                <dd class="col-sm-9">@Model.Instituicao.Nome</dd>
+
+                <dt class="col-sm-3">Endereço da Instituição:</dt>
+                <dd class="col-sm-9">
+                    @Model.Instituicao.Logradouro, @Model.Instituicao.Numero, @Model.Instituicao.Complemento<br />
+                    @Model.Instituicao.Bairro, @Model.Instituicao.Cidade, @Model.Instituicao.Cep
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.EstagioId" class="btn btn-primary mr-2">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+    </div>
+</div>
+

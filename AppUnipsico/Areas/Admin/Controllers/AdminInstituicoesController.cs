@@ -1,12 +1,8 @@
 ﻿using AppUnipsico.Areas.Admin.Repositories;
 using AppUnipsico.Areas.Admin.ViewModels;
-using AppUnipsico.Data.Context;
 using AppUnipsico.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace AppUnipsico.Areas.Admin.Controllers
 {
@@ -14,14 +10,11 @@ namespace AppUnipsico.Areas.Admin.Controllers
     [Authorize(Policy = "RequireAdminRole")]
     public class AdminInstituicoesController : Controller
     {
-        private readonly UserManager<Usuario> _userManager;
-        private readonly SignInManager<Usuario> _signInManager;
+
         private readonly InstituicoesRepository _instituicoesRepository;
 
-        public AdminInstituicoesController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, InstituicoesRepository instituicoesRepository)
+        public AdminInstituicoesController(InstituicoesRepository instituicoesRepository)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
             _instituicoesRepository = instituicoesRepository;
         }
 
@@ -140,7 +133,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
             var instituicao = await _instituicoesRepository.BuscarIntituicaoPorId(instituicaoId);
             if (instituicao != null)
             {
-               await _instituicoesRepository.DeletarInstituicao(instituicao);
+                await _instituicoesRepository.DeletarInstituicao(instituicao);
             }
 
             return RedirectToAction("Index");

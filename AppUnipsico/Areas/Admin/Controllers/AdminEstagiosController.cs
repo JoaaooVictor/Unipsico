@@ -27,11 +27,24 @@ namespace AppUnipsico.Areas.Admin.Controllers
             _instituicoesRepository = instituicoesRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(DateTime? dataInicio, DateTime? dataFim, string raAluno)
         {
-            var estagios = await _estagioRepository.BuscaTodosEstagios();
+            IEnumerable<Estagio> estagios;
 
-            if (estagios is null)
+            if (!string.IsNullOrEmpty(raAluno))
+            {
+                estagios = await _estagioRepository.BuscarEstagiosPorRaAluno(raAluno);
+            }
+            else if (dataInicio != null && dataFim != null)
+            {
+                estagios = await _estagioRepository.BuscarEstagiosPorData((DateTime)dataInicio, (DateTime)dataFim);
+            }
+            else
+            {
+                estagios = await _estagioRepository.BuscaTodosEstagios();
+            }
+
+            if (estagios == null)
             {
                 return NotFound();
             }
@@ -55,26 +68,48 @@ namespace AppUnipsico.Areas.Admin.Controllers
                 var aluno = await _userManager.Users.FirstOrDefaultAsync(u => u.RA == estagioViewModel.AlunoRa);
                 var instituicao = await _instituicoesRepository.BuscarIntituicaoPorId(estagioViewModel.Instituicao.InstituicaoId);
 
-                if (aluno != null && instituicao != null)
+                if (aluno is null)
                 {
-                    var estagio = new Estagio
-                    {
-                        EstagioId = Guid.NewGuid(),
-                        AlunoId = aluno.Id,
-                        Aluno = aluno,
-                        DataInicioEstagio = estagioViewModel.DataInicioEstagio,
-                        DataFimEstagio = estagioViewModel.DataFinalEstagio,
-                        Instituicao = instituicao,
-                        InstituicaoId = instituicao.InstituicaoId
-                    };
-
-                    await _estagioRepository.CriarEstagio(estagio);
+                    ViewBag.ErrorMessage = $"Aluno com RA: {estagioViewModel.AlunoRa} não encontrado.";
+                    return View("AlunoNaoEncontrado");
                 }
+
+                if (instituicao == null)
+                {
+                    ViewBag.ErrorMessage = "Instituição não encontrada.";
+                    return View("InstituicaoNaoEncontrada");
+                }
+
+                var estagio = new Estagio
+                {
+                    EstagioId = Guid.NewGuid(),
+                    AlunoId = aluno.Id,
+                    Aluno = aluno,
+                    DataInicioEstagio = estagioViewModel.DataInicioEstagio,
+                    DataFimEstagio = estagioViewModel.DataFinalEstagio,
+                    Instituicao = instituicao,
+                    InstituicaoId = instituicao.InstituicaoId
+                };
+
+                await _estagioRepository.CriarEstagio(estagio);
+
 
                 return RedirectToAction("Index");
             }
 
             return View(estagioViewModel);
+        }
+
+        public async Task<IActionResult> Detalhes(Guid estagioId)
+        {
+            if (string.IsNullOrEmpty(estagioId.ToString()))
+            {
+                return NotFound();
+            }
+
+            var estagio = await _estagioRepository.BuscaEstagioPorId(estagioId);
+
+            return View(estagio);
         }
 
         public async Task<IActionResult> GerarPdfEstagio(Guid estagioId)
@@ -95,7 +130,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
             HtmlConverter.ConvertToPdf(htmlContent, pdf, converter);
             pdf.Close();
 
-            return File(memoryStream.ToArray(), "application/pdf", Path.Combine($"{estagio.Aluno.RA}","_estagio.pdf"));
+            return File(memoryStream.ToArray(), "application/pdf", Path.Combine($"{estagio.Aluno.RA}", "_estagio.pdf"));
         }
     }
 }

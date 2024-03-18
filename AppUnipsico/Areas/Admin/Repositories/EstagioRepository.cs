@@ -30,6 +30,25 @@ namespace AppUnipsico.Areas.Admin.Repositories
                             .FirstOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<Estagio>> BuscarEstagiosPorData(DateTime dataInicio, DateTime dataFim)
+        {
+            return await _context.Estagios
+                .Where(e => e.DataInicioEstagio >= dataInicio && e.DataFimEstagio <= dataFim)
+                .Include(e => e.Aluno)
+                .Include(e => e.Instituicao)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Estagio>> BuscarEstagiosPorRaAluno(string raAluno)
+        {
+            return await _context.Estagios
+                .Where(e => e.Aluno.RA == raAluno)
+                .Include(e => e.Aluno)
+                .Include(e => e.Instituicao)
+                .ToListAsync();
+        }
+
+
         public async Task CriarEstagio(Estagio estagio)
         {
             await _context.Estagios.AddAsync(estagio);

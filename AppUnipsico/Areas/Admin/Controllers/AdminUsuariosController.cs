@@ -1,4 +1,5 @@
-﻿using AppUnipsico.Areas.Admin.ViewModels;
+﻿using AppUnipsico.Areas.Admin.Repositories;
+using AppUnipsico.Areas.Admin.ViewModels;
 using AppUnipsico.Data.Context;
 using AppUnipsico.Models;
 using AppUnipsico.ViewModels;
@@ -13,21 +14,16 @@ namespace AppUnipsico.Areas.Admin.Controllers
     [Authorize(Policy = "RequireAdminRole")]
     public class AdminUsuariosController : Controller
     {
+        private readonly UsuarioRepository _usuarioRepository;
         private readonly UserManager<Usuario> _userManager;
-        private readonly SignInManager<Usuario> _signInManager;
-        private readonly AppUnipsicoDb _context;
-        public AdminUsuariosController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, AppUnipsicoDb context)
+        public AdminUsuariosController(UserManager<Usuario> userManager, UsuarioRepository usuarioRepository)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context;
+            _usuarioRepository = usuarioRepository;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var usuarios = _userManager.Users
-                .OrderBy(u => u.UserName)
-                .ToList();
-
+            var usuarios = await _usuarioRepository.BuscaTodosUsuarios();
             return View(usuarios);
         }
 
@@ -45,16 +41,11 @@ namespace AppUnipsico.Areas.Admin.Controllers
             }
             else
             {
-                var usuario = await _userManager.FindByIdAsync(usuarioId);
+                var usuario = await _usuarioRepository.BuscaUsuarioPorId(usuarioId);
 
                 if (usuario is not null)
                 {
-                    var usuarioConsultas = await _context.Consultas
-                        .Where(c => c.UsuarioId == usuario.Id)
-                        .Include(c => c.Usuario)
-                        .Include(c => c.DataConsulta)
-                        .OrderBy(c => c.DataConsulta.Data)
-                        .ToListAsync();
+                    var usuarioConsultas = await _usuarioRepository.BuscaConsultasPorUsuario(usuario);
 
                     if (usuarioConsultas is not null && usuarioConsultas.Count > 0)
                     {
@@ -83,27 +74,14 @@ namespace AppUnipsico.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usuario = new Usuario
+                var usuarioCriado = await _usuarioRepository.CriaUsuario(registerViewModel);
+
+                if (usuarioCriado.Succeeded)
                 {
-                    UserName = registerViewModel.Email,
-                    NomeCompleto = registerViewModel.NomeCompleto,
-                    Cpf = registerViewModel.Cpf,
-                    DataNascimento = registerViewModel.DataNascimento,
-                    DataRegistro = DateTime.Now,
-                    Email = registerViewModel.Email,
-                };
-
-                var result = await _userManager.CreateAsync(usuario, registerViewModel.Password);
-
-                if (result.Succeeded)
-                {
-                    await _userManager.AddToRoleAsync(usuario, registerViewModel.SelectedRole);
-
                     return RedirectToAction("Index", new { area = "Admin" });
-
                 }
 
-                foreach (var error in result.Errors)
+                foreach (var error in usuarioCriado.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
