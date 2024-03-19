@@ -35,37 +35,26 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th class="text-center">Aluno</th>
-                            <th class="text-center">Instituição</th>
-                            <th class="text-center">Data de Início</th>
-                            <th class="text-center">Data de Término</th>
-                            <th class="text-center">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var estagio in Model)
-                        {
-                            <tr>
-                                <td class="text-center">@estagio.Aluno.NomeCompleto</td>
-                                <td class="text-center">@estagio.Instituicao.Nome</td>
-                                <td class="text-center">@estagio.DataInicioEstagio.ToShortDateString()</td>
-                                <td class="text-center">@estagio.DataFimEstagio.ToShortDateString()</td>
-                                <td class="text-center">
-                                    <div class="btn-group" role="group">
-                                        <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
-                                        <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId">Gerar PDF</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+        @foreach (var estagio in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-black text-white">
+                        Estágio de @estagio.Aluno.NomeCompleto
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><strong>Instituição:</strong> @estagio.Instituicao.Nome</p>
+                        <p class="card-text"><strong>Data de Início:</strong> @estagio.DataInicioEstagio.ToShortDateString()</p>
+                        <p class="card-text"><strong>Data de Término:</strong> @estagio.DataFimEstagio.ToShortDateString()</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
+                            <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId">Gerar PDF</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>

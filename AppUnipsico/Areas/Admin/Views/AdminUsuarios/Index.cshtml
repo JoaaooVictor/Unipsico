@@ -5,45 +5,36 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container mt-4">
+<div class="container-fluid">
     <h1 class="mb-3 text-center">Usuários</h1>
     <br />
     <p>
         <a class="btn btn-outline-success rounded form-control" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register">Criar novo usuário</a>
     </p>
     <br />
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th class="text-center">@Html.DisplayNameFor(model => model.NomeCompleto)</th>
-                    <th class="text-center">@Html.DisplayNameFor(model => model.Cpf)</th>
-                    <th class="text-center">@Html.DisplayNameFor(model => model.DataNascimento)</th>
-                    <th class="text-center">@Html.DisplayNameFor(model => model.DataRegistro)</th>
-                    <th class="text-center">@Html.DisplayNameFor(model => model.Email)</th>
-                    <th class="text-center">@Html.DisplayNameFor(model => model.TipoUsuario)</th>
-                    <th class="text-center">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.NomeCompleto)</td>
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.Cpf)</td>
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.DataNascimento)</td>
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.DataRegistro)</td>
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.Email)</td>
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.TipoUsuario)</td>
-                        <td class="text-center">
-                            <div class="btn-group" role="group">
-                                <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminUsuarios" asp-action="DetalhesUsuario" asp-route-UsuarioId="@item.Id">Detalhes</a>
-                                <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminUsuarios" asp-action="DeletarUsuario" asp-route-UsuarioId="@item.Id">Deletar</a>
-                            </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="row">
+        @foreach (var usuario in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white text-center rounded">
+                        @usuario.NomeCompleto
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><strong>CPF:</strong> @usuario.Cpf</p>
+                        <p class="card-text"><strong>Data de Nascimento:</strong> @usuario.DataNascimento.ToShortDateString()</p>
+                        <p class="card-text"><strong>Data de Registro:</strong> @usuario.DataRegistro.ToShortDateString()</p>
+                        <p class="card-text"><strong>Email:</strong> @usuario.Email</p>
+                        <p class="card-text"><strong>Tipo de Usuário:</strong> @usuario.TipoUsuario</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminUsuarios" asp-action="DetalhesUsuario" asp-route-UsuarioId="@usuario.Id">Detalhes</a>
+                            <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminUsuarios" asp-action="DeletarUsuario" asp-route-UsuarioId="@usuario.Id">Deletar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
