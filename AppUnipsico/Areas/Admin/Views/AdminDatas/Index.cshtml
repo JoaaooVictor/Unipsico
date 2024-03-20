@@ -1,5 +1,16 @@
 ﻿@model Paginacao<Datas>
 
+
+@{
+    ViewData["Title"] = "Datas de Consultas";
+}
+
+<div class="mt-4 container">
+<h1 class="text-center">Datas de Consultas Disponíveis</h1>
+<br/>
+<p>
+    <a class="btn btn-outline-success form-control" asp-action="Create">Enviar arquivo</a>
+</p>
 @if (Model.Any())
 {
     <div class="table-responsive">
@@ -58,3 +69,4 @@ else
         </div>
     </div>
 }
+</div>
