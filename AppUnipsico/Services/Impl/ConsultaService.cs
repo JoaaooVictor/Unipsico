@@ -2,7 +2,6 @@
 using AppUnipsico.Models;
 using AppUnipsico.Repositories;
 using AppUnipsico.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace AppUnipsico.Services.Impl
 {

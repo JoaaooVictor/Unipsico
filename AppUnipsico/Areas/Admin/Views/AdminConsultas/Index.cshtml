@@ -4,46 +4,42 @@
     ViewData["Title"] = "Lista de consultas";
 }
 
-<h1 class="text-center">Consultas</h1>
-<br />
-<p>
-    <a class="btn btn-outline-success form-control" asp-action="Create">Agendar consulta</a>
-</p>
-<br />
-<table class="table table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th class="text-center">Data Consulta</th>
-            <th class="text-center">Status Consulta</th>
-            <th class="text-center">Paciente Id</th>
-            <th class="text-center">Horário da Consulta</th>
-            <th class="text-center">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="text-center">
-                    @item.DataConsulta.Data.ToShortDateString()
-                </td>
-                <td class="text-center">
-                    @item.StatusConsulta
-                </td>
-                <td class="text-center">
-                    @item.Usuario.Id
-                </td>
-                <td class="text-center">
-                    @item.DataConsulta.Data.ToShortTimeString()
-                </td>
-                <td class="text-center">
-                    <div class="btn-group" role="group">
-                        <a class="btn btn-info m-1 rounded" asp-action="Details" asp-route-id="@item.ConsultaId">Detalhes</a>
-                        <a class="btn btn-warning m-1 rounded" asp-action="Edit" asp-route-id="@item.ConsultaId">Editar</a>
-                        <a class="btn btn-danger m-1 rounded" asp-action="Delete" asp-route-id="@item.ConsultaId">Deletar</a>
+<div class="container-fluid">
+    <div class="bg-light p-3 mb-3">
+        <h1 class="text-center text-black">Consultas</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <p>
+                <a class="btn text-center form-control btn-outline-success btn-lg" asp-action="CriarConsulta">Agendar consulta</a>
+            </p>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                Consulta
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>Data:</strong> @item.DataConsulta.Data.ToShortDateString()</li>
+                                    <li class="list-group-item"><strong>Status:</strong> @item.StatusConsulta</li>
+                                    <li class="list-group-item"><strong>Paciente:</strong> @item.Usuario.NomeCompleto</li>
+                                    <li class="list-group-item"><strong>Horário:</strong> @item.DataConsulta.Data.ToShortTimeString()</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-info rounded m-1" asp-action="DetalhesConsulta" asp-route-ConsultaId="@item.ConsultaId">Detalhes</a>
+                                    <a class="btn btn-warning rounded m-1" asp-action="EditarConsulta" asp-route-ConsultaId="@item.ConsultaId">Editar</a>
+                                    <a class="btn btn-danger rounded m-1" asp-action="DeletarConsulta" asp-route-ConsultaId="@item.ConsultaId">Deletar</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                }
+            </div>
+        </div>
+    </div>
+</div>

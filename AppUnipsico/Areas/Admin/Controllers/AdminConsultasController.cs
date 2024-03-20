@@ -1,9 +1,9 @@
-﻿using AppUnipsico.Data.Context;
+﻿using AppUnipsico.Areas.Admin.Repositories;
+using AppUnipsico.Areas.Admin.ViewModels;
 using AppUnipsico.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace AppUnipsico.Areas.Admin.Controllers
 {
@@ -11,146 +11,49 @@ namespace AppUnipsico.Areas.Admin.Controllers
     [Authorize(Policy = "RequireAdminRole")]
     public class AdminConsultasController : Controller
     {
-        private readonly AppUnipsicoDb _context;
+        private readonly ConsultasRepository _consultasRepository;
+        private readonly DatasRepository _datasRepository;
+        private readonly UserManager<Usuario> _userManager;
 
-        public AdminConsultasController(AppUnipsicoDb context)
+        public AdminConsultasController(ConsultasRepository consultasRepository, DatasRepository datasRepository, UserManager<Usuario> userManager)
         {
-            _context = context;
+            _consultasRepository = consultasRepository;
+            _datasRepository = datasRepository;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
         {
-            var appUnipsicoDb = _context.Consultas
-                .Include(c => c.Usuario)
-                .Include(c => c.DataConsulta);
+            var consultas = await _consultasRepository.BuscaTodasConsultas();
 
-            return View(await appUnipsicoDb.ToListAsync());
+            return View(consultas);
         }
 
-        public async Task<IActionResult> Details(string id)
+        [HttpGet]
+        public async Task<IActionResult> CriarConsulta()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            ViewBag.DatasDisponiveis = await _datasRepository.BuscaTodasDatasDisponiveis();
 
-            var consulta = await _context.Consultas
-                .Include(c => c.Usuario)
-                .Include(c => c.DataConsulta)
-                .FirstOrDefaultAsync(m => m.ConsultaId == id);
-            if (consulta == null)
-            {
-                return NotFound();
-            }
-
-            return View(consulta);
-        }
-
-        public IActionResult Create()
-        {
-            ViewData["ConsultaId"] = new SelectList(_context.Set<Usuario>(), "Id", "Id");
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ConsultaId,DataConsulta,StatusConsulta,UsuarioId")] Consulta consulta)
+        public async Task<IActionResult> CriarConsultaConfirmada(CriaConsultaViewModel criaConsultaViewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(consulta);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ConsultaId"] = new SelectList(_context.Set<Usuario>(), "Id", "Id", consulta.ConsultaId);
-            return View(consulta);
-        }
+                var paciente = _userManager.Users.FirstOrDefault(c => c.Cpf == criaConsultaViewModel.CpfPaciente 
+                                                                && c.TipoUsuario == Enums.TipoUsuarioEnum.Paciente); // Adicionar campo de Ativo
 
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var consulta = await _context.Consultas.FindAsync(id);
-            if (consulta == null)
-            {
-                return NotFound();
-            }
-            ViewData["ConsultaId"] = new SelectList(_context.Set<Usuario>(), "Id", "Id", consulta.ConsultaId);
-            return View(consulta);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ConsultaId,DataConsulta,StatusConsulta,UsuarioId")] Consulta consulta)
-        {
-            if (id != consulta.ConsultaId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                if(paciente is null)
                 {
-                    _context.Update(consulta);
-                    await _context.SaveChangesAsync();
+                    return View(criaConsultaViewModel);
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ConsultaExists(consulta.ConsultaId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ConsultaId"] = new SelectList(_context.Set<Usuario>(), "Id", "Id", consulta.ConsultaId);
-            return View(consulta);
-        }
 
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
+
             }
 
-            var consulta = await _context.Consultas
-                .Include(c => c.Usuario)
-                .Include(c => c.DataConsulta)
-                .FirstOrDefaultAsync(m => m.ConsultaId == id);
-            if (consulta == null)
-            {
-                return NotFound();
-            }
-
-            return View(consulta);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var consulta = await _context.Consultas.FindAsync(id);
-            if (consulta != null)
-            {
-                _context.Consultas.Remove(consulta);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ConsultaExists(string id)
-        {
-            return _context.Consultas.Any(e => e.ConsultaId == id);
+            return View();
         }
     }
 }

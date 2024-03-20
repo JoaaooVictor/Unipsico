@@ -1,4 +1,5 @@
 ﻿using AppUnipsico.Data.Context;
+using AppUnipsico.Enums;
 using AppUnipsico.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +30,11 @@ namespace AppUnipsico.Areas.Admin.Repositories
         {
              _context.Datas.Remove(data);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Datas>> BuscaTodasDatasDisponiveis()
+        {
+            return await _context.Datas.Where(d => d.Status == ConsultaEnum.Disponivel).OrderBy(d => d.Data).ToListAsync();
         }
     }
 }
