@@ -24,8 +24,9 @@
     else if (isInRoleAdmin || isInRoleProfessor)
     {
         <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Dashboard Admin</a>
-        <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-left">
-            <button type="submit" style="width:auto" class="nav-link btn btn-link py-0 text-info">Logout @user.NomeCompleto</button>
+        <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-left d-flex flex-row-reverse">
+            <button type="submit" style="width:auto" class=" bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
+
         </form>
     }
     else if (isInRoleAluno)

@@ -5,69 +5,68 @@
     ViewData["Title"] = "Datas de Consultas";
 }
 
-<div class="mt-4 container">
+<div class="container-fluid">
 
-<h1 class="text-center">Datas de Consultas Disponíveis</h1>
-<br/>
-<p>
-    <a class="btn btn-outline-success form-control" asp-action="Create">Enviar arquivo</a>
-</p>
-@if (Model.Any())
-{
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-            <thead class="bg-warning text-black">
-                <tr class="text-center">
-                    <th class="text-center">DATA DA CONSULTA</th>
-                    <th class="text-center">HORÁRIO DA CONSULTA</th>
-                    <th class="text-center">STATUS DA DATA</th>
-                    <th class="text-center">AÇÕES</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var data in Model)
-                {
+    <div class="p-3 mb-3">
+        <h1 class="mb-3 text-center">Datas de Consultas Disponíveis</h1>
+    </div>
+    <p><a class="btn btn-outline-success mb-3 form-control rounded" asp-action="Create">Enviar arquivo</a></p>
+    @if (Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="bg-warning text-black">
                     <tr class="text-center">
-                        <td class="text-center">@data.Data.ToShortDateString()</td>
-                        <td class="text-center">@data.Data.ToShortTimeString()</td>
-                        <td class="text-center">@data.Status</td>
-                        <td class="text-center">
-                            <a asp-controller="" asp-action="" class="btn btn-outline-primary btn-sm">Editar</a>
-                            <a asp-controller="AdminDatas" asp-action="DeletarData" asp-route-DataId="@data.Id" class="btn btn-outline-danger btn-sm">Excluir</a>
-                        </td>
+                        <th class="text-center">DATA DA CONSULTA</th>
+                        <th class="text-center">HORÁRIO DA CONSULTA</th>
+                        <th class="text-center">STATUS DA DATA</th>
+                        <th class="text-center">AÇÕES</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <div class="text-center">
-        @if (Model.HasPreviousPage)
-        {
-            <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" class="btn btn-primary">&laquo; Anterior</a>
-        }
+                </thead>
+                <tbody>
+                    @foreach (var data in Model)
+                    {
+                        <tr class="text-center">
+                            <td class="text-center">@data.Data.ToShortDateString()</td>
+                            <td class="text-center">@data.Data.ToShortTimeString()</td>
+                            <td class="text-center">@data.Status</td>
+                            <td class="text-center">
+                                <a asp-controller="" asp-action="" class="btn btn-outline-primary btn-sm">Editar</a>
+                                <a asp-controller="AdminDatas" asp-action="DeletarData" asp-route-DataId="@data.Id" class="btn btn-outline-danger btn-sm">Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            @if (Model.HasPreviousPage)
+            {
+                <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" class="btn btn-primary">&laquo; Anterior</a>
+            }
 
-        @for (int i = 1; i <= Model.TotalPages; i++)
-        {
-            <a asp-action="Index" asp-route-page="@i" class="btn btn-secondary @(i == Model.PageIndex ? "active" : "")">@i</a>
-        }
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <a asp-action="Index" asp-route-page="@i" class="btn btn-secondary @(i == Model.PageIndex ? "active" : "")">@i</a>
+            }
 
-        @if (Model.HasNextPage)
-        {
-            <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" class="btn btn-primary">Próximo &raquo;</a>
-        }
-    </div>
-}
-else
-{
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="text-center card-title">Mensagem:</h4>
-                    <p class="text-center">Nenhuma consulta encontrada</p>
+            @if (Model.HasNextPage)
+            {
+                <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" class="btn btn-primary">Próximo &raquo;</a>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-center card-title">Mensagem:</h4>
+                        <p class="text-center">Nenhuma consulta encontrada</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-}
+    }
 </div>

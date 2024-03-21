@@ -3,16 +3,13 @@
 @{
     ViewData["Title"] = "Lista de consultas";
 }
-
 <div class="container-fluid">
     <div class="p-3 mb-3">
-        <h1 class="text-center text-black">Consultas</h1>
+        <h1 class="mb-3 text-center">Consultas</h1>
     </div>
     <div class="row justify-content-center">
+        <p><a class="btn text-center form-control btn-outline-success btn" asp-action="CriarConsulta">Agendar consulta</a></p>
         <div class="col-md-10">
-            <p>
-                <a class="btn text-center form-control btn-outline-success btn-lg" asp-action="CriarConsulta">Agendar consulta</a>
-            </p>
             <div class="row">
                 @foreach (var item in Model)
                 {

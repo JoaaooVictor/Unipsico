@@ -1,10 +1,13 @@
-﻿<div class="container mt-4">
-    <h1 class="mb-3 text-center">Estágios</h1>
+﻿@{
+    ViewData["Title"] = "Estagios";
+}
+
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h1 class="mb-3 text-center">Estágios</h1>
+    </div>
+    <p><a class="btn btn-outline-success mb-3 form-control rounded" asp-area="Admin" asp-controller="AdminEstagios" asp-action="CriarEstagio">Criar novo estágio</a></p>
     <div class="row">
-        <br />
-        <p>
-            <a class="btn btn-outline-success m-3 form-control rounded" asp-area="Admin" asp-controller="AdminEstagios" asp-action="CriarEstagio">Criar novo estágio</a>
-        </p>
         <div class="col-md-12">
             <form asp-action="Index" method="get" class="mb-4">
                 <div class="row">

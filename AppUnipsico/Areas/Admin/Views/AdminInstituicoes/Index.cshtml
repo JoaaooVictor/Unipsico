@@ -4,13 +4,11 @@
     ViewData["Title"] = "Lista de Instituições";
 }
 
-<div class="container mt-4">
-    <h1 class="mb-3 text-center">Instituições</h1>
-    <br />
-    <p>
-        <a class="btn btn-outline-success form-control" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="CriarInstituicao">Cadastrar instituição.</a>
-    </p>
-    <br />
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h1 class="mb-3 text-center">Instituições</h1>
+    </div>
+    <p><a class="btn btn-outline-success mb-3 form-control rounded" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="CriarInstituicao">Cadastrar instituição.</a></p>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead class="thead-dark">

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
@@ -23,11 +23,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark cor_unifaat box-shadow">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark cor_unifaat box-shadow p-0">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UNIPSICO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse">
@@ -61,6 +60,19 @@
                 document.body.classList.add('background-login');
             }
         });
+    </script>
+    <script>
+        // Seleciona todas as divs com a classe logout-form
+        const divsLogoutForm = document.querySelectorAll('#logoutForm');
+
+        // Verifica se há a navbar
+        const navbar = document.querySelector('.navbar-collapse');
+
+        // Se houver uma navbar e pelo menos uma div logout-form na página
+        if (navbar && divsLogoutForm.length > 0) {
+            // Adiciona a classe d-flex à navbar
+            navbar.classList.add('justify-content-between');
+        }
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)
