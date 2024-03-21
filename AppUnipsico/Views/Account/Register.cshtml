@@ -10,38 +10,38 @@
                         <form asp-controller="Account" asp-action="Register" method="post">
                             <input type="hidden" asp-for="ReturnUrl" />
                             <div class="mb-4 d-flex gap-4">
-                                <div class="w-100">
+                                <div class="w-100 d-flex flex-column">
                                     <input placeholder="" asp-for="NomeCompleto" class="form-control" />
                                     <label asp-for="NomeCompleto" class="ms-1 form-label font-weight-bold">Nome do Paciente</label>
-                                    <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                                    <span asp-validation-for="NomeCompleto" class="text-danger ms-1 "></span>
                                 </div>
-                                <div class="w-100">
+                                <div class="w-100  d-flex flex-column">
                                     <input placeholder="000.000.000-00" asp-for="Cpf" id="cpf" class="form-control" />
                                     <label asp-for="Cpf" class="ms-1 form-label">CPF</label>
-                                    <span asp-validation-for="Cpf" class="text-danger"></span>
+                                    <span asp-validation-for="Cpf" class="text-danger ms-1 "></span>
                                 </div>
                             </div>
                             <div class="mb-4 d-flex gap-4">
-                                <div class="w-100">
+                                <div class="w-100  d-flex flex-column">
                                     <input placeholder="email@gmail.com" asp-for="Email" class="form-control" />
                                     <label asp-for="Email" class="ms-1 form-label font-weight-bold">E-mail</label>
-                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                    <span asp-validation-for="Email" class="text-danger ms-1 "></span>
                                 </div>
-                                <div class="w-100">
+                                <div class="w-100 d-flex flex-column">
                                     <input asp-for="DataNascimento" type="date" class="form-control" />
                                     <label asp-for="DataNascimento" class="ms-1 form-label">Data de nascimento</label>
-                                    <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                                    <span asp-validation-for="DataNascimento" class="text-danger ms-1 "></span>
                                 </div>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-4 d-flex flex-column">
                                 <input asp-for="Password" type="password" class="form-control" />
                                 <label asp-for="Password" class="ms-1 form-label">Senha</label>
-                                <span asp-validation-for="Password" class="text-danger"></span>
+                                <span asp-validation-for="Password" class="text-danger ms-1"></span>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-4 d-flex flex-column">
                                 <input asp-for="Repassword" type="password" class="form-control" />
-                                <label asp-for="Repassword" class="ms-1 form-label">Insira a senha novamente</label>
-                                <span asp-validation-for="Repassword" class="text-danger"></span>
+                                <label asp-for="Repassword" class="ms-1 form-label">Confirme a Senha</label>
+                                <span asp-validation-for="Repassword" class="text-danger ms-1"></span>
                             </div>
                             <div class="mb-4">
                                 <select class="visually-hidden" asp-for="SelectedRole" class="form-control">
@@ -49,7 +49,7 @@
                                 </select>
                                 <input type="hidden" name="SelectedRole" value="Paciente" />
                                 <label class="visually-hidden" asp-for="SelectedRole"></label>
-                                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+                                <span asp-validation-for="SelectedRole" class="text-danger ms-1"></span>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn botoes-cor1 btn-block">Registrar</button>

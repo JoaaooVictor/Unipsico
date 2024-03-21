@@ -8,7 +8,7 @@ namespace AppUnipsico.ViewModels
         [EmailAddress(ErrorMessage = "Informe um endereço de email válido.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "O Nome é obrigatório.")]
+        [Required(ErrorMessage = "O campo Nome é obrigatório.")]
         [Display(Name = "Nome Completo")]
         public string NomeCompleto { get; set; }
 
@@ -19,16 +19,16 @@ namespace AppUnipsico.ViewModels
         ErrorMessage = "A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, um número e um caractere especial.")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "O campo Confirme a senha é obrigatório.")]
+        [Required(ErrorMessage = "O campo Confirme a Senha é obrigatório.")]
         [Display(Name = "Confirme a senha")]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "As senhas não conferem")]
         public string Repassword { get; set; }
 
-        [Required(ErrorMessage = "Preencha o cpf!")]
+        [Required(ErrorMessage = "O campo CPF é obrigatório.")]
         public string Cpf { get; set; }
 
-        [Required(ErrorMessage = "Preencha a data de nascimento!")]
+        [Required(ErrorMessage = "O campo Data de Nascimento é obrigatório")]
         [Display(Name = "Data do Nascimento")]
         [DataType(DataType.DateTime)]
         public DateTime DataNascimento { get; set; }

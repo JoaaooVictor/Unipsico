@@ -4,7 +4,7 @@ namespace AppUnipsico.ViewModels
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Informe o nome")]
+        [Required(ErrorMessage = "Informe o e-mail")]
         [Display(Name = "Usuário")]
         public string UserName { get; set; }
 

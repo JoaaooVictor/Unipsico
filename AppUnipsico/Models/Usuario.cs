@@ -9,7 +9,7 @@ namespace AppUnipsico.Models
         [Display(Name = "Nome completo")]
         public string NomeCompleto { get; set; }
 
-        [Display(Name = "Cpf")]
+        [Display(Name = "CPF")]
         public string Cpf { get; set; }
 
         [Display(Name = "Data de Nascimento")]

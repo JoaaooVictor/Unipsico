@@ -3,6 +3,7 @@ using AppUnipsico.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace AppUnipsico.Controllers
 {
@@ -54,11 +55,15 @@ namespace AppUnipsico.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
-
-                return Redirect(loginViewModel.ReturnUrl);
+                else
+                {
+                    ModelState.AddModelError("Password", "Senha incorreta, tente novamente");
+                }
             }
-
-            ModelState.AddModelError("", "Falha ao realizar login");
+            else
+            {
+                ModelState.AddModelError("UserName", "E-mail não está cadastrado");
+            }
             return View(loginViewModel);
         }
 
@@ -72,6 +77,7 @@ namespace AppUnipsico.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
+
             if (ModelState.IsValid)
             {
                 var user = new Usuario
