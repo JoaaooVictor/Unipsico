@@ -11,11 +11,6 @@ namespace AppUnipsico.Data.ConfigurationModels
             builder
                  .HasKey(i => i.InstituicaoId);
 
-            builder
-                .HasMany(i => i.Estagios)
-                .WithOne(e => e.Instituicao)
-                .HasForeignKey(i => i.EstagioId)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

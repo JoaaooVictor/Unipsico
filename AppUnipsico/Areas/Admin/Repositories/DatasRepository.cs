@@ -16,7 +16,10 @@ namespace AppUnipsico.Areas.Admin.Repositories
 
         public async Task<List<Datas>> BuscaDatasSemTracking()
         {
-            return await _context.Datas.AsNoTracking().OrderBy(c => c.Data).ToListAsync();
+            return await _context.Datas.AsNoTracking()
+                                       .OrderByDescending(c => c.Data)
+                                       .ThenBy(c => c.Status)
+                                       .ToListAsync();
         }
 
         public async Task<Datas> BuscaDataPorId(Guid dataId)
@@ -28,13 +31,26 @@ namespace AppUnipsico.Areas.Admin.Repositories
 
         public async Task DeletarData(Datas data)
         {
-             _context.Datas.Remove(data);
+            _context.Datas.Remove(data);
             await _context.SaveChangesAsync();
         }
 
         public async Task<List<Datas>> BuscaTodasDatasDisponiveis()
         {
             return await _context.Datas.Where(d => d.Status == ConsultaEnum.Disponivel).OrderBy(d => d.Data).ToListAsync();
+        }
+
+        public async Task AtualizaStatusDaData(Guid dataConsultaId, ConsultaEnum consultaEnum)
+        {
+            var data = await BuscaDataPorId(dataConsultaId);
+
+            if (data is not null)
+            {
+                data.Status = consultaEnum;
+            }
+
+            _context.Datas.Update(data);
+            await _context.SaveChangesAsync();
         }
     }
 }

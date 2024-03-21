@@ -88,7 +88,6 @@ namespace AppUnipsico.Areas.Admin.Controllers
                     DataInicioEstagio = estagioViewModel.DataInicioEstagio,
                     DataFimEstagio = estagioViewModel.DataFinalEstagio,
                     Instituicao = instituicao,
-                    InstituicaoId = instituicao.InstituicaoId
                 };
 
                 await _estagioRepository.CriarEstagio(estagio);

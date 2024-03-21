@@ -16,6 +16,12 @@ namespace AppUnipsico.Data.ConfigurationModels
                 .WithMany(a => a.Estagios)
                 .HasForeignKey(e => e.AlunoId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .HasOne(c => c.Instituicao)
+                .WithMany(i => i.Estagios)
+                .HasForeignKey(c => c.InstituicaoId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

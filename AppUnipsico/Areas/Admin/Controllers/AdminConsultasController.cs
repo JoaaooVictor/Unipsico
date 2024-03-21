@@ -1,9 +1,12 @@
 ﻿using AppUnipsico.Areas.Admin.Repositories;
 using AppUnipsico.Areas.Admin.ViewModels;
+using AppUnipsico.Enums;
 using AppUnipsico.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.InteropServices;
 
 namespace AppUnipsico.Areas.Admin.Controllers
 {
@@ -42,18 +45,42 @@ namespace AppUnipsico.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var paciente = _userManager.Users.FirstOrDefault(c => c.Cpf == criaConsultaViewModel.CpfPaciente 
-                                                                && c.TipoUsuario == Enums.TipoUsuarioEnum.Paciente); // Adicionar campo de Ativo
+                var paciente = await _userManager.Users.FirstOrDefaultAsync(c => c.Cpf == criaConsultaViewModel.CpfPaciente
+                                                                && c.TipoUsuario == Enums.TipoUsuarioEnum.Paciente);
 
-                if(paciente is null)
+                if (paciente is null)
                 {
-                    return View(criaConsultaViewModel);
+                    return View("PacienteNaoCadastrado");
                 }
 
+                var dataConsulta = await _datasRepository.BuscaDataPorId(criaConsultaViewModel.DataId);
+
+                if (dataConsulta is null)
+                {
+                    return View("DataNaoEncotrada");
+                }
+
+                var consulta = new Consulta
+                {
+                    ConsultaId = Guid.NewGuid().ToString(),
+                    StatusConsulta = ConsultaEnum.Agendada,
+                    DataConsultaId = dataConsulta.Id,
+                    DataConsulta = dataConsulta,
+                    Usuario = paciente,
+                    UsuarioId = paciente.Id,
+                };
+
+                var sucesso = await _consultasRepository.CriaConsulta(consulta);
+
+                if (!sucesso.Erro)
+                {
+                    await _datasRepository.AtualizaStatusDaData(dataConsulta.Id, ConsultaEnum.Agendada);
+                    return RedirectToAction("Index");
+                }
 
             }
 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
