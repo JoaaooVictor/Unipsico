@@ -21,6 +21,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
             _userManager = userManager;
             _usuarioRepository = usuarioRepository;
         }
+
         public async Task<IActionResult> Index()
         {
             var usuarios = await _usuarioRepository.BuscaTodosUsuarios();
@@ -37,7 +38,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
         {
             if (usuarioId is null)
             {
-                return BadRequest();
+                return NotFound();
             }
             else
             {
@@ -68,13 +69,12 @@ namespace AppUnipsico.Areas.Admin.Controllers
             }
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
+        public async Task<IActionResult> Register(RegistraUsuarioViewModel registraUsuarioViewModel)
         {
             if (ModelState.IsValid)
             {
-                var usuarioCriado = await _usuarioRepository.CriaUsuario(registerViewModel);
+                var usuarioCriado = await _usuarioRepository.CriaUsuario(registraUsuarioViewModel);
 
                 if (usuarioCriado.Succeeded)
                 {
@@ -87,7 +87,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
                 }
             }
 
-            return View(registerViewModel);
+            return View(registraUsuarioViewModel);
         }
 
         public async Task<IActionResult> DeletarUsuario(string usuarioId)

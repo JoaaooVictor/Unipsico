@@ -1,0 +1,37 @@
+﻿@model Consulta
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">Detalhes da Consulta</h1>
+    <hr />
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Consulta</h4>
+
+            <dl class="row">
+                <dt class="col-sm-3">Status da Consulta:</dt>
+                <dd class="col-sm-9">@Model.StatusConsulta</dd>
+
+                <dt class="col-sm-3">Nome do Paciente:</dt>
+                <dd class="col-sm-9">@Model.Usuario.NomeCompleto</dd>
+
+                <dt class="col-sm-3">CPF do Paciente:</dt>
+                <dd class="col-sm-9">@Model.Usuario.Cpf</dd>
+
+                <dt class="col-sm-3">Data de Nascimento do Paciente:</dt>
+                <dd class="col-sm-9">@Model.Usuario.DataNascimento.ToLongDateString()</dd>
+
+                <dt class="col-sm-3">Data da Consulta:</dt>
+                <dd class="col-sm-9">@Model.DataConsulta.Data.ToShortTimeString()</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+    </div>
+</div>

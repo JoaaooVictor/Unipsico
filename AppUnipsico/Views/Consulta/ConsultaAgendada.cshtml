@@ -10,7 +10,7 @@
         <p><strong>Id da Consulta:</strong> @Model.ConsultaId</p>
         <p><strong>Data da Consulta:</strong> @Model.DataConsulta.Data</p>
         <p><strong>Nome do Paciente:</strong> @Model.Usuario.Email</p>
-        <p><strong>Cpf do Paciente:</strong> @FormatUtility.FormatCpf(Model.Usuario.Cpf)</p>
+        <p><strong>Cpf do Paciente:</strong> @FormatUtility.InserePontoTracoCpf(Model.Usuario.Cpf)</p>
         <p><strong>Data Nascimento do Paciente:</strong> @Model.Usuario.DataNascimento</p>
         <a asp-controller="Home" asp-action="Index">Voltar para a página inicial</a>
     </div>

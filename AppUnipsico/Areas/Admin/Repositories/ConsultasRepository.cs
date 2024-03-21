@@ -42,5 +42,14 @@ namespace AppUnipsico.Areas.Admin.Repositories
 
             return trataRetornoDto;
         }
+
+        public async Task<Consulta> BuscaConsultaPorId(string consultaId)
+        {
+            return await _context.Consultas
+                                    .Where(c => c.ConsultaId == consultaId)
+                                    .Include(c => c.Usuario)
+                                    .Include(c => c.DataConsulta)
+                                    .FirstOrDefaultAsync();
+        }
     }
 }

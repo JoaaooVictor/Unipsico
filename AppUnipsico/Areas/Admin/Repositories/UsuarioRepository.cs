@@ -4,7 +4,6 @@ using AppUnipsico.Models;
 using AppUnipsico.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol;
 
 namespace AppUnipsico.Areas.Admin.Repositories
 {
@@ -41,29 +40,34 @@ namespace AppUnipsico.Areas.Admin.Repositories
                         .ToListAsync();
         }
 
-        public async Task<IdentityResult> CriaUsuario(RegisterViewModel registerViewModel)
+        public async Task<IdentityResult> CriaUsuario(RegistraUsuarioViewModel registraUsuarioViewModel)
         {
-            var tipoUsuario = VerificaTipoUsuario(registerViewModel);
+            var tipoUsuario = VerificaTipoUsuario(registraUsuarioViewModel);
 
             var usuario = new Usuario
             {
-                UserName = registerViewModel.Email,
-                NomeCompleto = registerViewModel.NomeCompleto,
-                Cpf = registerViewModel.Cpf,
-                DataNascimento = registerViewModel.DataNascimento,
+                UserName = registraUsuarioViewModel.Email,
+                NomeCompleto = registraUsuarioViewModel.NomeCompleto,
+                Cpf = registraUsuarioViewModel.Cpf,
+                DataNascimento = registraUsuarioViewModel.DataNascimento,
                 DataRegistro = DateTime.Now,
-                Email = registerViewModel.Email,
+                Email = registraUsuarioViewModel.Email,
                 TipoUsuario = tipoUsuario,
             };
 
-            return await _userManager.CreateAsync(usuario, registerViewModel.Password);
+            if (registraUsuarioViewModel.SelectedRole == "Aluno")
+            {
+                usuario.RA = registraUsuarioViewModel.RA;
+            }
+
+            return await _userManager.CreateAsync(usuario, registraUsuarioViewModel.Password);
         }
 
-        public TipoUsuarioEnum VerificaTipoUsuario(RegisterViewModel registerViewModel)
+        public TipoUsuarioEnum VerificaTipoUsuario(RegistraUsuarioViewModel registraUsuarioViewModel)
         {
             TipoUsuarioEnum tipoUsuario;
 
-            switch (registerViewModel.SelectedRole)
+            switch (registraUsuarioViewModel.SelectedRole)
             {
                 case "Aluno":
                     tipoUsuario = TipoUsuarioEnum.Aluno;

@@ -2,6 +2,7 @@
 using AppUnipsico.Areas.Admin.ViewModels;
 using AppUnipsico.Enums;
 using AppUnipsico.Models;
+using AppUnipsico.Utillies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -45,8 +46,9 @@ namespace AppUnipsico.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var paciente = await _userManager.Users.FirstOrDefaultAsync(c => c.Cpf == criaConsultaViewModel.CpfPaciente
-                                                                && c.TipoUsuario == Enums.TipoUsuarioEnum.Paciente);
+                var formatadoCpf = FormatUtility.RemovePontoTracoCpf(criaConsultaViewModel.CpfPaciente);
+                var paciente = await _userManager.Users.FirstOrDefaultAsync(c => c.Cpf == formatadoCpf
+                                                                && c.TipoUsuario == TipoUsuarioEnum.Paciente);
 
                 if (paciente is null)
                 {
@@ -81,6 +83,19 @@ namespace AppUnipsico.Areas.Admin.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DetalhesConsulta(string consultaId)
+        {
+            var consulta = await _consultasRepository.BuscaConsultaPorId(consultaId);
+
+            if(consulta is null)
+            {
+                return NotFound();
+            }
+
+            return View(consulta);
         }
     }
 }
