@@ -1,4 +1,4 @@
-﻿namespace AppUnipsico.Utillies
+﻿namespace AppUnipsico.Utilities
 {
     public static class FormatUtility
     {

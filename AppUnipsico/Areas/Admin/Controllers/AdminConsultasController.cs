@@ -2,12 +2,11 @@
 using AppUnipsico.Areas.Admin.ViewModels;
 using AppUnipsico.Enums;
 using AppUnipsico.Models;
-using AppUnipsico.Utillies;
+using AppUnipsico.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime.InteropServices;
 
 namespace AppUnipsico.Areas.Admin.Controllers
 {
@@ -90,7 +89,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
         {
             var consulta = await _consultasRepository.BuscaConsultaPorId(consultaId);
 
-            if(consulta is null)
+            if (consulta is null)
             {
                 return NotFound();
             }

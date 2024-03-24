@@ -1,17 +1,19 @@
-﻿@using AppUnipsico.Utillies
+﻿@using AppUnipsico.Utilities
 @model Consulta
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-header">
-        <h2>Detalhes da Consulta</h2>
-    </div>
-    <div class="card-body">
-        <p><strong>Id da Consulta:</strong> @Model.ConsultaId</p>
-        <p><strong>Data da Consulta:</strong> @Model.DataConsulta.Data</p>
-        <p><strong>Nome do Paciente:</strong> @Model.Usuario.Email</p>
-        <p><strong>Cpf do Paciente:</strong> @FormatUtility.InserePontoTracoCpf(Model.Usuario.Cpf)</p>
-        <p><strong>Data Nascimento do Paciente:</strong> @Model.Usuario.DataNascimento</p>
-        <a asp-controller="Home" asp-action="Index">Voltar para a página inicial</a>
+<div class="container">
+    <div class="card mt-5">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Detalhes da Consulta</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text"><strong>Id da Consulta:</strong> @Model.ConsultaId</p>
+            <p class="card-text"><strong>Data da Consulta:</strong> @Model.DataConsulta.Data</p>
+            <p class="card-text"><strong>Nome do Paciente:</strong> @Model.Usuario.Email</p>
+            <p class="card-text"><strong>CPF do Paciente:</strong> @FormatUtility.InserePontoTracoCpf(Model.Usuario.Cpf)</p>
+            <p class="card-text"><strong>Data de Nascimento do Paciente:</strong> @Model.Usuario.DataNascimento</p>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Voltar para a página inicial</a>
+        </div>
     </div>
 </div>
