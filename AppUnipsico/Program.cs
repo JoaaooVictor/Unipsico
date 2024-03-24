@@ -1,4 +1,5 @@
 using AppUnipsico.Areas.Admin.Repositories;
+using AppUnipsico.Areas.Aluno.Repositories;
 using AppUnipsico.Data.Context;
 using AppUnipsico.Models;
 using AppUnipsico.Repositories;
@@ -22,10 +23,11 @@ builder.Services.AddPaging(options =>
 builder.Services.AddScoped<DataService>();
 builder.Services.AddScoped<DatasRepository>();
 builder.Services.AddScoped<DataRepository>();
+builder.Services.AddScoped<AppUnipsico.Areas.Aluno.Repositories.AlunoRepository>();
 builder.Services.AddScoped<EstagioRepository>();
 builder.Services.AddScoped<UsuarioRepository>();
-builder.Services.AddScoped<ConsultasRepository>();
 builder.Services.AddScoped<ConsultaRepository>();
+builder.Services.AddScoped<ConsultasRepository>();
 builder.Services.AddScoped<InstituicoesRepository>();
 builder.Services.AddScoped<IDataService, DataService>();
 builder.Services.AddScoped<IConsultaService, ConsultaService>();
