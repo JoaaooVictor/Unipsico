@@ -18,6 +18,8 @@ namespace AppUnipsico.Areas.Aluno.Repositories
         {
             return await _context.Estagios
                             .Where(e => e.AlunoId == alunoId)
+                            .Include(e => e.Aluno)
+                            .Include(e => e.Instituicao)
                             .ToListAsync();
         }
     }

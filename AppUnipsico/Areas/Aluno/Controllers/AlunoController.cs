@@ -37,5 +37,10 @@ namespace AppUnipsico.Areas.Aluno.Controllers
 
             return View(estagios);
         }
+
+        public IActionResult Presencas()
+        {
+            return View();
+        }
     }
 }

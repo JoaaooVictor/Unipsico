@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Aluno\ViewsModels\**" />
+    <Content Remove="Areas\Aluno\ViewsModels\**" />
+    <EmbeddedResource Remove="Areas\Aluno\ViewsModels\**" />
+    <None Remove="Areas\Aluno\ViewsModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EPPlus" Version="7.0.10" />
     <PackageReference Include="itext7" Version="8.0.3" />
     <PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.3" />
@@ -27,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Aluno\ViewsModels\" />
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\img\background\" />
   </ItemGroup>

@@ -8,30 +8,32 @@
     <div class="p-3 mb-3">
         <h1 class="mb-3 text-center">Estágios</h1>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <form asp-action="Estagios" method="get" class="mb-4">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="dataInicio">Data de Início:</label>
-                            <input type="date" class="form-control" id="dataInicio" name="dataInicio" />
+    @if (Model.Any())
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Estagios" method="get" class="mb-4">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="dataInicio">Data de Início:</label>
+                                <input type="date" class="form-control" id="dataInicio" name="dataInicio" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="dataFim">Data de Término:</label>
+                                <input type="date" class="form-control" id="dataFim" name="dataFim" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-outline-primary mt-4">Filtrar</button>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="dataFim">Data de Término:</label>
-                            <input type="date" class="form-control" id="dataFim" name="dataFim" />
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="submit" class="btn btn-outline-primary mt-4">Filtrar</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-
+    }
     <div class="row">
         @if (Model.Any())
         {
@@ -60,7 +62,12 @@
         else
         {
             <div class="col-md-12">
-                <p>Nenhum estágio encontrado.</p>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-4">Nenhum estágio encontrado</h5>
+                        <p class="card-text">Infelizmente, não há nenhum estágio disponível no momento.</p>
+                    </div>
+                </div>
             </div>
         }
     </div>
