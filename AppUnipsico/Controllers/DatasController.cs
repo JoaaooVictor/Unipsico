@@ -23,16 +23,5 @@ namespace AppUnipsico.Controllers
 
             return View(dataDisponivelViewModel);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> InserirDatasDisponiveis(IFormFile file)
-        {
-            if(file is not null)
-            {
-                await _datasServices.InserirDatasDisponiveis(file);
-            }
-
-            return Ok();
-        }
     }
 }

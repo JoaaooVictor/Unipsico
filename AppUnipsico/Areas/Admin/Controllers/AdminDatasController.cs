@@ -1,5 +1,6 @@
 ﻿using AppUnipsico.Areas.Admin.Repositories;
 using AppUnipsico.Models;
+using AppUnipsico.Services.Impl;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,12 @@ namespace AppUnipsico.Areas.Admin.Controllers
     public class AdminDatasController : Controller
     {
         private readonly DatasRepository _datasRepository;
+        private readonly DataService _datasServices;
 
-        public AdminDatasController(DatasRepository datasRepository)
+        public AdminDatasController(DatasRepository datasRepository, DataService dataDisponivelService)
         {
             _datasRepository = datasRepository;
+            _datasServices = dataDisponivelService;
         }
 
         public async Task<IActionResult> Index(int? page)
@@ -65,6 +68,16 @@ namespace AppUnipsico.Areas.Admin.Controllers
             }
 
             await _datasRepository.DeletarData(data);
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public async Task<IActionResult> InserirDatasDisponiveis(IFormFile file)
+        {
+            if (file is not null)
+            {
+                await _datasServices.InserirDatasDisponiveis(file);
+            }
 
             return RedirectToAction("Index");
         }

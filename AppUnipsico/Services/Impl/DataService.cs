@@ -47,7 +47,6 @@ namespace AppUnipsico.Services.Impl
                                 datas.Add(new Datas { Data = dataHora, Id = Guid.NewGuid(), Status = Enums.ConsultaEnum.Disponivel });
                             }
                         }
-
                         await _dataRepository.SalvarConsultasExcel(datas);
                     }
                 }
