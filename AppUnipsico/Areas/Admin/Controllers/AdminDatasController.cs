@@ -79,7 +79,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
                 await _datasServices.InserirDatasDisponiveis(file);
             }
 
-            return Ok();
+            return RedirectToAction("Index");
         }
     }
 }
