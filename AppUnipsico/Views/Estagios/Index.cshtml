@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Buscar Estágio";
+}
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h3 class="mb-0 text-center">Buscar Estágio</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Estagios" asp-action="BuscaEstagio" method="post">
+                        <div class="form-group">
+                            <label class="text-center" for="inputIdEstagio">ID do Estágio:</label>
+                            <input type="text" class="form-control" id="estagioId" name="EstagioId">
+                        </div>
+                        <br />
+                        <button type="submit" class="btn btn-outline-warning form-control">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

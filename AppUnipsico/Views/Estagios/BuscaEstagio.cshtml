@@ -1,0 +1,20 @@
+﻿@model Estagio
+
+<div class="col-md-4 mb-4">
+    <div class="card">
+        <div class="card-header bg-black text-white">
+            Estágio de @Model.Aluno.NomeCompleto
+        </div>
+        <div class="card-body">
+            <p class="card-text"><strong>Instituição:</strong> @Model.Instituicao.Nome</p>
+            <p class="card-text"><strong>Data de Início:</strong> @Model.DataInicioEstagio.ToShortDateString()</p>
+            <p class="card-text"><strong>Data de Término:</strong> @Model.DataFimEstagio.ToShortDateString()</p>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group" role="group">
+                <a class="btn btn-outline-info m-1 rounded" asp-controller="Estagios" asp-action="Detalhes" asp-route-EstagioId="@Model.EstagioId">Detalhes</a>
+                <a class="btn btn-outline-danger m-1 rounded" asp-controller="Estagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@Model.EstagioId">Gerar PDF</a>
+            </div>
+        </div>
+    </div>
+</div>
