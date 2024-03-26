@@ -61,19 +61,6 @@
             }
         });
     </script>
-    <script>
-        // Seleciona todas as divs com a classe logout-form
-        const divsLogoutForm = document.querySelectorAll('#logoutForm');
-
-        // Verifica se há a navbar
-        const navbar = document.querySelector('.navbar-collapse');
-
-        // Se houver uma navbar e pelo menos uma div logout-form na página
-        if (navbar && divsLogoutForm.length > 0) {
-            // Adiciona a classe d-flex à navbar
-            navbar.classList.add('justify-content-between');
-        }
-    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
