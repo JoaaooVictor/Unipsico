@@ -41,8 +41,8 @@
     </div>
 
     <div class="text-center mt-3">
-        <a asp-action="Edit" asp-route-id="@Model?.EstagioId" class="btn btn-primary mr-2">Editar</a>
-        <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+        <a asp-action="GerarPdfEstagio" asp-controller="Estagios" asp-route-estagioId="@Model.EstagioId" class="btn btn-danger mr-2">Gerar PDF</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">Voltar</a>
     </div>
 </div>
 
