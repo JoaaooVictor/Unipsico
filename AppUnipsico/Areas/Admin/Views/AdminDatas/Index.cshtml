@@ -11,7 +11,7 @@
         <h1 class="mb-3 text-center">Datas de Consultas Disponíveis</h1>
     </div>
     <form class="d-flex justify-content-center gap-5" asp-controller="AdminDatas" asp-action="InserirDatasDisponiveis" method="post" enctype="multipart/form-data">
-        <input type="file" name="excelFile" accept=".xlsx, .xls">
+        <input type="file" name="file" accept=".xlsx, .xls">
         <button class="btn btn-success mb-3 form-control rounded w-25" type="submit">Enviar Excel</button>
     </form>
     @if (Model.Any())
