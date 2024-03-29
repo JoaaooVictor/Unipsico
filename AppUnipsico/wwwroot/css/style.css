@@ -1485,4 +1485,6 @@ section {
             color: #00365d;
         }
 
-
+.botao-logout {
+    margin-left: auto;
+}

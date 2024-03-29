@@ -1,18 +1,31 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<Usuario> userManager
+@inject SignInManager<Usuario> signInManager
+@{
+    var user = await userManager.GetUserAsync(User);
+}
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Admin</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] - Aluno</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
     <link rel="stylesheet" href="~/AppUnipsico.styles.css" asp-append-version="true" />
+    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/img/favicon.png" rel="icon">
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 p-0">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,6 +35,9 @@
                     <a class="nav-link text-light" asp-area="Aluno" asp-controller="Aluno" asp-action="Estagios">Estagios</a>
                     <a class="nav-link text-light" asp-area="Aluno" asp-controller="Aluno" asp-action="Presencas">Presenças</a>
                 </div>
+                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="botao-logout">
+                    <button type="submit" style="width:auto" class="bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
+                </form>
             </div>
         </nav>
     </header>
@@ -30,7 +46,7 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer-unifaat text-muted">
         <div class="container d-flex justify-content-between">
             <p class="lead fs-6 text-muted mb-0">Desenvolvido por <strong>João Victor</strong> &amp; <strong>Renan Lima</strong></p>
             <p class="lead fs-6 text-muted mb-0">&copy; 2024 - Todos os direitos reservados</p>

@@ -8,6 +8,9 @@ html {
   }
 }
 
+th{
+    font-weight: 400;
+}
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
@@ -21,8 +24,13 @@ body {
   margin-bottom: 60px;
 }
 
-.cor_unifaat {
+.cor-unifaat {
     background-color: #00365d;
+}
+
+.cor-unifaat2 {
+    background-color: grey;
+    color: white
 }
 
 .login-box {
