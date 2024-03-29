@@ -1,5 +1,6 @@
 ﻿using AppUnipsico.Areas.Admin.Repositories;
 using AppUnipsico.Areas.Admin.ViewModels;
+using AppUnipsico.Enums;
 using AppUnipsico.Models;
 using iText.Html2pdf;
 using iText.Kernel.Pdf;
@@ -37,7 +38,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
             }
             else if (dataInicio != null && dataFim != null)
             {
-                estagios = await _estagioRepository.BuscarEstagiosPorData((DateTime)dataInicio, (DateTime)dataFim);
+                estagios = await _estagioRepository.BuscarEstagiosPorData((DateTime)dataInicio);
             }
             else
             {
@@ -85,9 +86,9 @@ namespace AppUnipsico.Areas.Admin.Controllers
                     EstagioId = Guid.NewGuid(),
                     AlunoId = aluno.Id,
                     Aluno = aluno,
-                    DataInicioEstagio = estagioViewModel.DataInicioEstagio,
-                    DataFimEstagio = estagioViewModel.DataFinalEstagio,
+                    DataEstagio = estagioViewModel.DataEstagio,
                     Instituicao = instituicao,
+                    StatusEstagio = EstagioEnum.Aprovado,
                 };
 
                 await _estagioRepository.CriarEstagio(estagio);

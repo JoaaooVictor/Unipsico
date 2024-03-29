@@ -1,12 +1,13 @@
-﻿using System.Drawing;
+﻿using AppUnipsico.Enums;
+using System.Drawing;
 
 namespace AppUnipsico.Models
 {
     public class Estagio
     {
         public Guid EstagioId { get; set; }
-        public DateTime DataInicioEstagio { get; set; }
-        public DateTime DataFimEstagio { get; set; }
+        public DateTime DataEstagio { get; set; }
+        public EstagioEnum StatusEstagio { get; set; }
 
         public string AlunoId { get; set; }
         public virtual Usuario Aluno { get; set; }

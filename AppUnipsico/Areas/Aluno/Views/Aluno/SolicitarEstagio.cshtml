@@ -1,4 +1,4 @@
-﻿@model EstagioViewModel
+﻿@model AlunoEstagioViewModel
 
 <section class="tela-login">
     <div class="container py-5 h-100">
@@ -7,16 +7,17 @@
                 <div class="card shadow-2-strong card-opacidade">
                     <div class="card-body p-5">
                         <h3 class="mb-5">Novo Estágio</h3>
-                        <form asp-controller="AdminEstagios" asp-action="CriarEstagio" method="post">
+                        <form asp-area="Aluno" asp-controller="Aluno" asp-action="SolicitarEstagio" method="post">
                             <div class="mb-4">
-                                <input asp-for="DataEstagio" type="date" class="form-control" />
-                                <label asp-for="DataEstagio" class="form-label">Data de Início do Estágio</label>
-                                <span asp-validation-for="DataEstagio" class="text-danger"></span>
+                                <input asp-for="DataEstagio" type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                <label asp-for="DataEstagio" class="form-label">Data do Estágio</label>
+                                <span class="text-danger">@Html.ValidationMessageFor(model => model.DataEstagio)</span>
                             </div>
                             <div class="mb-4">
-                                <input asp-for="AlunoRa" class="form-control" />
-                                <label asp-for="AlunoRa" class="form-label font-weight-bold">RA do Aluno</label>
-                                <span asp-validation-for="AlunoRa" class="text-danger"></span>
+                                <input asp-for="AlunoRa" type="hidden" />
+                                <input type="text" class="form-control" disabled value="@Model.Aluno.RA" />
+                                <label class="form-label font-weight-bold">RA do Aluno</label>
+                                <span class="text-danger">@Html.ValidationMessageFor(model => model.AlunoRa)</span>
                             </div>
                             <div class="mb-4">
                                 <select asp-for="Instituicao.InstituicaoId" class="form-control">
@@ -29,8 +30,8 @@
                                 <span asp-validation-for="Instituicao.InstituicaoId" class="text-danger"></span>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn botoes-cor1 btn-block">Registrar Estágio</button>
-                                <a asp-area="" asp-controller="Home" asp-action="Index" class="btn text-center botoes-cor2">Voltar</a>
+                                <button type="submit" class="btn botoes-cor1 btn-block">Solicitar Estágio</button>
+                                <a asp-area="Aluno" asp-controller="Home" asp-action="Index" class="btn text-center botoes-cor2">Voltar</a>
                             </div>
                         </form>
                     </div>

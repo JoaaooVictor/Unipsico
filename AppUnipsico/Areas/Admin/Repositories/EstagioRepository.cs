@@ -30,10 +30,10 @@ namespace AppUnipsico.Areas.Admin.Repositories
                             .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Estagio>> BuscarEstagiosPorData(DateTime dataInicio, DateTime dataFim)
+        public async Task<IEnumerable<Estagio>> BuscarEstagiosPorData(DateTime dataInicio)
         {
             return await _context.Estagios
-                .Where(e => e.DataInicioEstagio >= dataInicio && e.DataFimEstagio <= dataFim)
+                .Where(e => e.DataEstagio >= dataInicio)
                 .Include(e => e.Aluno)
                 .Include(e => e.Instituicao)
                 .ToListAsync();
@@ -64,8 +64,7 @@ namespace AppUnipsico.Areas.Admin.Repositories
             htmlContent = htmlContent.Replace("{{NumeroDoRa}}", estagio.Aluno.RA);
             htmlContent = htmlContent.Replace("{{AlunoRa}}", estagio.Aluno.RA);
             htmlContent = htmlContent.Replace("{{Endereco}}", estagio.Instituicao.Logradouro);
-            htmlContent = htmlContent.Replace("{{DataInicioEstagio}}", estagio.DataInicioEstagio.ToShortDateString());
-            htmlContent = htmlContent.Replace("{{DataFinalEstagio}}", estagio.DataFimEstagio.ToShortDateString());
+            htmlContent = htmlContent.Replace("{{DataInicioEstagio}}", estagio.DataEstagio.ToShortDateString());
             htmlContent = htmlContent.Replace("{{NomeInstituicaoEstagio}}", estagio.Instituicao.Nome);
             htmlContent = htmlContent.Replace("{{DataDaAssinatura}}", DateTime.Now.ToLongDateString());
 

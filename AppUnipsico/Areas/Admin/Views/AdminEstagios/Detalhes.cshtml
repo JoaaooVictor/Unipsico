@@ -13,14 +13,11 @@
             <h4 class="card-title">Estágio</h4>
 
             <dl class="row">
-                <dt class="col-sm-3">ID do Estágio:</dt>
-                <dd class="col-sm-9">@Model.EstagioId</dd>
-
                 <dt class="col-sm-3">Data de Início do Estágio:</dt>
-                <dd class="col-sm-9">@Model.DataInicioEstagio.ToString("dd/MM/yyyy")</dd>
+                <dd class="col-sm-9">@Model.DataEstagio.ToString("dd/MM/yyyy")</dd>
 
-                <dt class="col-sm-3">Data de Término do Estágio:</dt>
-                <dd class="col-sm-9">@Model.DataFimEstagio.ToString("dd/MM/yyyy")</dd>
+                <dt class="col-sm-3">Status:</dt>
+                <dd class="col-sm-9">@Model.StatusEstagio</dd>
 
                 <dt class="col-sm-3">Aluno:</dt>
                 <dd class="col-sm-9">@Model.Aluno.NomeCompleto</dd>
