@@ -54,6 +54,10 @@ namespace AppUnipsico.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
+                    else
+                    {
+                        return RedirectToAction("ConsultaPaciente", "Consulta");
+                    }
                 }
                 else
                 {

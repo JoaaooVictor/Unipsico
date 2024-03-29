@@ -17,9 +17,11 @@
     {
         <a class="nav-link text-light" asp-area="" asp-controller="Datas" asp-action="Index">Datas Disponíveis</a>
         <a class="nav-link text-light" asp-area="" asp-controller="Consulta" asp-action="ConsultaPaciente">Suas Consultas</a>
-        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="navbar-left">
-            <button type="submit" style="width:auto" class="bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
-        </form>
+        <div class="botao-logout">
+            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="navbar-left">
+                <button type="submit" style="width:auto" class="bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
+            </form>
+        </div>
     }
     else if (isInRoleAdmin || isInRoleProfessor)
     {
@@ -34,9 +36,11 @@
     else if (isInRoleAluno)
     {
         <a class="nav-link text-light" asp-area="Aluno" asp-controller="Aluno" asp-action="Index">Dashboard Aluno</a>
-        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="navbar-left">
-            <button type="submit" style="width:auto" class="bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
-        </form>
+        <div class="botao-logout">
+            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="navbar-left">
+                <button type="submit" style="width:auto" class="bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
+            </form>
+        </div>
     }
 }
 else

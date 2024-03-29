@@ -3,47 +3,48 @@
 @{
     ViewData["Title"] = "Lista de Instituições";
 }
-
 <div class="container-fluid">
     <div class="p-3 mb-3">
         <h1 class="mb-3 text-center">Instituições</h1>
     </div>
-    <p><a class="btn btn-outline-success mb-3 form-control rounded" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="CriarInstituicao">Cadastrar instituição.</a></p>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th class="text-center">Nome</th>
-                    <th class="text-center">Logradouro</th>
-                    <th class="text-center">Complemento</th>
-                    <th class="text-center">Número</th>
-                    <th class="text-center">Bairro</th>
-                    <th class="text-center">Cidade</th>
-                    <th class="text-center">CEP</th>
-                    <th class="text-center">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var instituicao in Model)
-                {
+    <div class="row justify-content-center">
+        <a class="btn btn-success mb-3 form-control rounded w-50" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="CriarInstituicao">Cadastrar instituição.</a>
+        <div class="table-responsive mt-5">
+            <table class="table table-striped">
+                <thead class="thead-dark">
                     <tr>
-                        <td class="text-center">@instituicao.Nome</td>
-                        <td class="text-center">@instituicao.Logradouro</td>
-                        <td class="text-center">@instituicao.Complemento</td>
-                        <td class="text-center">@instituicao.Numero</td>
-                        <td class="text-center">@instituicao.Bairro</td>
-                        <td class="text-center">@instituicao.Cidade</td>
-                        <td class="text-center">@instituicao.Cep</td>
-                        <td class="text-center">
-                            <div class="btn-group" role="group">
-                                <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DetalhesInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Detalhes</a>
-                                <a class="btn btn-outline-warning m-1 rounded" asp-controller="AdminInstituicoes" asp-action="EditarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Editar</a>
-                                <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DeletarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Deletar</a>
-                            </div>
-                        </td>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Logradouro</th>
+                        <th class="text-center">Complemento</th>
+                        <th class="text-center">Número</th>
+                        <th class="text-center">Bairro</th>
+                        <th class="text-center">Cidade</th>
+                        <th class="text-center">CEP</th>
+                        <th class="text-center">Ações</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var instituicao in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@instituicao.Nome</td>
+                            <td class="text-center">@instituicao.Logradouro</td>
+                            <td class="text-center">@instituicao.Complemento</td>
+                            <td class="text-center">@instituicao.Numero</td>
+                            <td class="text-center">@instituicao.Bairro</td>
+                            <td class="text-center">@instituicao.Cidade</td>
+                            <td class="text-center">@instituicao.Cep</td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DetalhesInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Detalhes</a>
+                                    <a class="btn btn-outline-warning m-1 rounded" asp-controller="AdminInstituicoes" asp-action="EditarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Editar</a>
+                                    <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminInstituicoes" asp-action="DeletarInstituicao" asp-route-InstituicaoId="@instituicao.InstituicaoId">Deletar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

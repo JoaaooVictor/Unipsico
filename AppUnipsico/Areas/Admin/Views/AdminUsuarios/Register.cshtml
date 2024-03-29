@@ -1,64 +1,62 @@
 ﻿@model RegistraUsuarioViewModel
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="text-center">Registrar Usuário</h3>
-                </div>
-                <div class="card-body text-center">
-                    <img src="~/img/registrado.png" alt="Registrar Usuário" style="width: 100px; height: auto;" class="mb-4" />
-                    <form asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register" method="post">
-                        <hr />
+<div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong card-opacidade">
+                <div class="card-body p-5">
+                    <h3 class="mb-5">Registrar Usuário</h3>
+                    <form asp-area="Admin" asp-controller="AdminUsuarios" asp-action=" Register" class="form-horizontal" method="post">
                         <input type="hidden" asp-for="ReturnUrl" />
-                        <div class="form-group">
-                            <label asp-for="NomeCompleto" class="font-weight-bold">Nome completo</label>
+                        <div class="form-outline form-group mb-4 d-flex flex-column">
                             <input asp-for="NomeCompleto" class="form-control" />
+                            <label asp-for="NomeCompleto">Nome completo</label>
                             <span asp-validation-for="NomeCompleto" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="font-weight-bold">E-mail</label>
+                        <div class="form-outline form-group mb-4 d-flex flex-column">
                             <input asp-for="Email" class="form-control" />
+                            <label asp-for="Email">E-mail</label>
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Cpf" class="font-weight-bold">CPF</label>
-                            <input asp-for="Cpf" class="form-control" />
-                            <span asp-validation-for="Cpf" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="DataNascimento" class="font-weight-bold">Data de Nascimento</label>
-                            <input asp-for="DataNascimento" class="form-control" />
-                            <span asp-validation-for="DataNascimento" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="SelectedRole"></label>
+                        <div mb-4 d-flex gap-4>
+                            <div class="form-outline form-group mb-4 d-flex flex-column">
+                                <input asp-for="Cpf" class="form-control" />
+                                <label asp-for="Cpf">CPF</label>
+                                <span asp-validation-for="Cpf" class="text-danger"></span>
+                            </div>
+                            <div class="form-outline form-group mb-4 d-flex flex-column">
+                                <input asp-for="DataNascimento" class="form-control" />
+                                <label asp-for="DataNascimento">Data de Nascimento</label>
+                                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                            </div>
+                        </div>               
+                        <div class="form-outline form-group mb-4 d-flex flex-column">
                             <select asp-for="SelectedRole" class="form-control" id="SelectedRole">
                                 <option value="" disabled>Escolha um perfil</option>
                                 <option value="Aluno">Aluno</option>
                                 <option value="Professor">Professor</option>
                                 <option value="Admin">Administrador</option>
                             </select>
+                            <label asp-for="SelectedRole"></label>
                             <span asp-validation-for="SelectedRole" class="text-danger"></span>
                         </div>
-                        <div id="raInput" class="form-group" style="display: none;">
-                            <label asp-for="RA" class="font-weight-bold">RA</label>
+                        <div class="form-outline form-group mb-4 d-flex flex-column" style="display: none;" id="raInput">
                             <input asp-for="RA" class="form-control" />
+                            <label asp-for="RA">RA</label>
                             <span asp-validation-for="RA" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Password" class="font-weight-bold">Senha</label>
-                            <input asp-for="Password" type="password" class="form-control" />
+                        <div class="form-outline form-group mb-4 d-flex flex-column">
+                            <input asp-for="Password" type="password" class="form-control"/>
+                            <label asp-for="Password">Senha</label>
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Repassword" class="font-weight-bold">Confirmar Senha</label>
+                        <div class="form-outline form-group mb-4 d-flex flex-column">
                             <input asp-for="Repassword" type="password" class="form-control" />
+                            <label asp-for="Repassword">Confirmar Senha</label>
                             <span asp-validation-for="Repassword" class="text-danger"></span>
                         </div>
                         <br />
-                        <div class="form-group">
+                        <div class="form-outline form-group mb-4 d-flex flex-column">
                             <button type="submit" class="btn btn-success btn-block">Registrar</button>
                         </div>
                     </form>

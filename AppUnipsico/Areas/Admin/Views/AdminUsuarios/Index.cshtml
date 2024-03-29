@@ -9,30 +9,33 @@
     <div class="p-3 mb-3">
         <h1 class="mb-3 text-center">Usuários</h1>
     </div>
-    <p><a class="btn btn-outline-success mb-3 form-control rounded" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register">Criar novo usuário</a></p>
-    <div class="row">
-        @foreach (var usuario in Model)
-        {
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-header bg-secondary text-white text-center rounded">
-                        @usuario.NomeCompleto
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text"><strong>CPF:</strong> @usuario.Cpf</p>
-                        <p class="card-text"><strong>Data de Nascimento:</strong> @usuario.DataNascimento.ToShortDateString()</p>
-                        <p class="card-text"><strong>Data de Registro:</strong> @usuario.DataRegistro.ToShortDateString()</p>
-                        <p class="card-text"><strong>Email:</strong> @usuario.Email</p>
-                        <p class="card-text"><strong>Tipo de Usuário:</strong> @usuario.TipoUsuario</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="btn-group" role="group">
-                            <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminUsuarios" asp-action="DetalhesUsuario" asp-route-UsuarioId="@usuario.Id">Detalhes</a>
-                            <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminUsuarios" asp-action="DeletarUsuario" asp-route-UsuarioId="@usuario.Id">Deletar</a>
+    <div class="row justify-content-center">
+        <a class="btn btn-success mb-3 form-control rounded w-50" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register">Criar novo usuário</a>
+        <div class="mt-5 row">
+            @foreach (var usuario in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-secondary text-white text-center rounded">
+                            @usuario.NomeCompleto
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><strong>CPF:</strong> @usuario.Cpf</p>
+                            <p class="card-text"><strong>Data de Nascimento:</strong> @usuario.DataNascimento.ToShortDateString()</p>
+                            <p class="card-text"><strong>Data de Registro:</strong> @usuario.DataRegistro.ToShortDateString()</p>
+                            <p class="card-text"><strong>Email:</strong> @usuario.Email</p>
+                            <p class="card-text"><strong>Tipo de Usuário:</strong> @usuario.TipoUsuario</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-outline-info m-1 rounded" asp-controller="AdminUsuarios" asp-action="DetalhesUsuario" asp-route-UsuarioId="@usuario.Id">Detalhes</a>
+                                <a class="btn btn-outline-danger m-1 rounded" asp-controller="AdminUsuarios" asp-action="DeletarUsuario" asp-route-UsuarioId="@usuario.Id">Deletar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
+        
     </div>
 </div>
