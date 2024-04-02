@@ -9,28 +9,31 @@
     <div class="p-3 mb-3">
         <h1 class="mb-3 text-center">Estágios</h1>
     </div>
-    <div>
-        <a class="btn btn-outline-success form-control m-1 rounded" asp-controller="Aluno" asp-action="SolicitarEstagio">Solicitar estágio</a>
+    <div class="text-center">
+        <a class="btn btn-success rounded col-md-6" asp-controller="Aluno" asp-action="SolicitarEstagio">Solicitar estágio</a>
     </div>
     @if (Model.Any())
     {
         <br />
         <div class="row justify-content-center mb-4">
             <div class="col-md-8">
-                <!-- Increased width -->
-                <form asp-action="Estagios" method="get">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="dataInicio">Data de Início:</label>
-                                <input type="date" class="form-control" id="dataInicio" name="dataInicio" />
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <form asp-action="Estagios" method="get">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dataInicio">Data de Início:</label>
+                                        <input type="date" class="form-control" id="dataInicio" name="dataInicio" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 align-self-end">
+                                    <button type="submit" class="btn btn-outline-primary mt-4">Filtrar</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 align-self-end">
-                            <button type="submit" class="btn btn-outline-primary mt-4">Filtrar</button>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
 
@@ -39,10 +42,10 @@
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Solicitado))
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card border-primary">
-                            <div class="card-header bg-primary text-white">
-                                Estágio de @estagio.Aluno.NomeCompleto
+                    <div class="col-md-2 mb-2 m-2">
+                        <div class="card border-warning">
+                            <div class="card-header bg-warning text-center">
+                                 @estagio.Aluno.NomeCompleto
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><strong>Instituição:</strong> @estagio.Instituicao.Nome</p>
@@ -51,7 +54,7 @@
                             </div>
                             <div class="card-footer text-center">
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-outline-info m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
+                                    <a class="btn btn-outline-primary m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +74,7 @@
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Aprovado))
                 {
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-2 mb-2 m-2">
                         <div class="card border-success">
                             <div class="card-header bg-success text-white">
                                 Estágio de @estagio.Aluno.NomeCompleto
@@ -83,7 +86,7 @@
                             </div>
                             <div class="card-footer text-center">
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-outline-info m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
+                                    <a class="btn btn-outline-primary m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
                                     <a class="btn btn-outline-danger m-1 rounded" asp-controller="Aluno" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId">Gerar PDF</a>
                                 </div>
                             </div>
