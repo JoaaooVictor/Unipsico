@@ -16,7 +16,8 @@
     {
         <br />
         <div class="row justify-content-center mb-4">
-            <div class="col-md-6">
+            <div class="col-md-8">
+                <!-- Increased width -->
                 <form asp-action="Estagios" method="get">
                     <div class="row">
                         <div class="col-md-6">
@@ -48,10 +49,9 @@
                                 <p class="card-text"><strong>Data de solicitação:</strong> @estagio.DataEstagio.ToShortDateString()</p>
                                 <p class="card-text"><strong>Status do estágio:</strong> @estagio.StatusEstagio</p>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer text-center">
                                 <div class="btn-group" role="group">
                                     <a class="btn btn-outline-info m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
-                                    <a class="btn btn-outline-danger m-1 rounded" asp-controller="Aluno" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId">Gerar PDF</a>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="bg-light rounded">
-            <h2 class="text-center mb-3">Estágios Concluídos</h2>
+            <h2 class="text-center mb-3">Estágios Aprovados</h2>
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Aprovado))
                 {
@@ -81,7 +81,7 @@
                                 <p class="card-text"><strong>Data de solicitação:</strong> @estagio.DataEstagio.ToShortDateString()</p>
                                 <p class="card-text"><strong>Status do estágio:</strong> @estagio.StatusEstagio</p>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer text-center">
                                 <div class="btn-group" role="group">
                                     <a class="btn btn-outline-info m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
                                     <a class="btn btn-outline-danger m-1 rounded" asp-controller="Aluno" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId">Gerar PDF</a>
