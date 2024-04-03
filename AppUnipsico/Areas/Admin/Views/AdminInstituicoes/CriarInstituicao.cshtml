@@ -1,9 +1,9 @@
 ﻿@model InstituicaoViewModel
 
 <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card shadow-2-strong rounded-3">
+            <div class="card card-opacidade">
                 <div class="card-body p-5">
                     <h3 class="text-center mb-5">Cadastro de Instituição</h3>
                     <form asp-area="Admin" asp-controller="AdminEstagios" asp-action="CriarInstituicao" method="post">
@@ -54,8 +54,8 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button asp-controller="AdminInstituicoes" asp-action="CriarInstituicao" type="submit" class="btn btn-primary btn-block">Cadastrar Instituição</button>
-                            <a asp-controller="Admin" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                            <button asp-controller="AdminInstituicoes" asp-action="CriarInstituicao" type="submit" class="btn botoes-cor1 btn btn-block">Cadastrar Instituição</button>
+                            <a asp-controller="Admin" asp-action="Index" class="btn botoes-cor2 btn btn-block">Cancelar</a>
                         </div>
                     </form>
                 </div>

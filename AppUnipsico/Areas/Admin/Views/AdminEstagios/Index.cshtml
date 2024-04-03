@@ -8,7 +8,7 @@
     @if (Model.Any())
     {
         <br />
-        <div class="row justify-content-center mb-3">
+        <div class="row justify-content-center mb-4">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body bg-light">
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div class="bg-light rounded mb-4">
+        <div class="bg-light rounded mb-4 p-5">
             <h2 class="text-center mb-3">Estágios Pendentes de aprovação</h2>
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Solicitado))
@@ -73,7 +73,7 @@
             </div>
         </div>
         <br />
-        <div class="bg-light rounded">
+        <div class="bg-light rounded mb-4 p-5">
             <h2 class="text-center mb-3">Estágios Aprovados</h2>
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Aprovado))
@@ -106,7 +106,7 @@
             </div>
         </div>
         <br />
-        <div class="bg-light rounded">
+        <div class="bg-light rounded mb-4 p-5">
             <h2 class="text-center mb-3">Estágios Reprovados</h2>
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Reprovado))
