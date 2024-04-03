@@ -34,7 +34,6 @@
                             <td class="text-center">@data.Data.ToShortTimeString()</td>
                             <td class="text-center">@data.Status</td>
                             <td class="text-center">
-                                <a asp-controller="" asp-action="" class="btn btn-outline-primary btn-sm">Editar</a>
                                 <a asp-controller="AdminDatas" asp-action="DeletarData" asp-route-DataId="@data.Id" class="btn btn-outline-danger btn-sm">Excluir</a>
                             </td>
                         </tr>
