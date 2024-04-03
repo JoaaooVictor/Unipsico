@@ -1,5 +1,4 @@
 ﻿using AppUnipsico.Areas.Admin.Repositories;
-using AppUnipsico.Areas.Admin.ViewModels;
 using AppUnipsico.Areas.Aluno.ViewModels;
 using AppUnipsico.Enums;
 using AppUnipsico.Models;

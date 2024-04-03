@@ -28,15 +28,15 @@ namespace AppUnipsico.Areas.Admin.Controllers
             _instituicoesRepository = instituicoesRepository;
         }
 
-        public async Task<IActionResult> Index(DateTime? dataInicio, DateTime? dataFim, string raAluno)
+        public async Task<IActionResult> Index(DateTime? dataInicio, string raAluno)
         {
-            IEnumerable<Estagio> estagios;
+            List<Estagio> estagios;
 
             if (!string.IsNullOrEmpty(raAluno))
             {
                 estagios = await _estagioRepository.BuscarEstagiosPorRaAluno(raAluno);
             }
-            else if (dataInicio != null && dataFim != null)
+            else if (dataInicio != null)
             {
                 estagios = await _estagioRepository.BuscarEstagiosPorData((DateTime)dataInicio);
             }
@@ -131,6 +131,32 @@ namespace AppUnipsico.Areas.Admin.Controllers
             pdf.Close();
 
             return File(memoryStream.ToArray(), "application/pdf", Path.Combine($"{estagio.Aluno.RA}", "_estagio.pdf"));
+        }
+
+        public async Task<IActionResult> AprovarEstagio(Guid estagioId)
+        {
+            var estagio = await _estagioRepository.BuscaEstagioPorId(estagioId);
+
+            if (estagio is not null)
+            {
+                estagio.StatusEstagio = EstagioEnum.Aprovado;
+                await _estagioRepository.AtualizaStatusEstagio(estagio);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> ReprovarEstagio(Guid estagioId)
+        {
+            var estagio = await _estagioRepository.BuscaEstagioPorId(estagioId);
+
+            if (estagio is not null)
+            {
+                estagio.StatusEstagio = EstagioEnum.Reprovado;
+                await _estagioRepository.AtualizaStatusEstagio(estagio);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

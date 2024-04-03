@@ -13,7 +13,7 @@ namespace AppUnipsico.Areas.Admin.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Estagio>> BuscaTodosEstagios()
+        public async Task<List<Estagio>> BuscaTodosEstagios()
         {
             return await _context.Estagios
                             .Include(e => e.Aluno)
@@ -30,7 +30,7 @@ namespace AppUnipsico.Areas.Admin.Repositories
                             .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Estagio>> BuscarEstagiosPorData(DateTime dataInicio)
+        public async Task<List<Estagio>> BuscarEstagiosPorData(DateTime dataInicio)
         {
             return await _context.Estagios
                 .Where(e => e.DataEstagio >= dataInicio)
@@ -39,7 +39,7 @@ namespace AppUnipsico.Areas.Admin.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Estagio>> BuscarEstagiosPorRaAluno(string raAluno)
+        public async Task<List<Estagio>> BuscarEstagiosPorRaAluno(string raAluno)
         {
             return await _context.Estagios
                 .Where(e => e.Aluno.RA == raAluno)
@@ -70,6 +70,12 @@ namespace AppUnipsico.Areas.Admin.Repositories
 
 
             return htmlContent;
+        }
+
+        public async Task AtualizaStatusEstagio(Estagio estagio)
+        {
+            _context.Estagios.Update(estagio);
+            await _context.SaveChangesAsync();
         }
     }
 }
