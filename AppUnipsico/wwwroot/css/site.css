@@ -59,7 +59,10 @@ body {
     background-position: center;
     background-size: cover;
 }
-
+.logo-unipsico{
+    height: auto;
+    width: 150px
+}
 .card-opacidade {
     border-radius: 1rem;
     background-color: rgba(255, 255, 255, 0.8);
