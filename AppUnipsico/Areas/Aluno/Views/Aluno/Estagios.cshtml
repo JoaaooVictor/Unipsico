@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="bg-light rounded">
+        <div class="bg-light rounded mb-4 p-5">
             <h2 class="text-center mb-3">Estágios Aprovados</h2>
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Aprovado))
@@ -69,8 +69,7 @@
                 }
             </div>
         </div>
-        <br />
-        <div class="bg-light rounded mb-4">
+        <div class="bg-light rounded mb-4 p-5">
             <h2 class="text-center mb-3">Estágios Pendentes</h2>
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Solicitado))
@@ -101,7 +100,6 @@
                 }
             </div>
         </div>
-
     }
     else
     {
