@@ -11,7 +11,7 @@ using ReflectionIT.Mvc.Paging;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("AppNot");
+var connectionString = builder.Configuration.GetConnectionString("AppJo");
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddPaging(options =>
