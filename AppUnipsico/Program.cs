@@ -32,7 +32,6 @@ builder.Services.AddScoped<InstituicoesRepository>();
 builder.Services.AddScoped<IDataService, DataService>();
 builder.Services.AddScoped<IConsultaService, ConsultaService>();
 builder.Services.AddScoped<ICriaUsuarioRoleInicialService, CriaUsuarioRoleInicialService>();
-
 builder.Services.AddIdentity<Usuario, IdentityRole>()
     .AddEntityFrameworkStores<AppUnipsicoDb>()
     .AddDefaultTokenProviders();
@@ -50,8 +49,6 @@ builder.Services.AddDbContext<AppUnipsicoDb>(opt =>
 {
     opt.UseSqlServer(connectionString);
 });
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,17 +56,27 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppUnipsicoDb>();
+    db.Database.Migrate();
+}
+
+app.UseMigrationsEndPoint();
+
 CriarPerfisUsuarios(app);
+
 void CriarPerfisUsuarios(WebApplication app)
 {
     var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
@@ -80,7 +87,6 @@ void CriarPerfisUsuarios(WebApplication app)
         service.CriaUsuarios();
     }
 }
-
 app.MapControllerRoute(
   name: "areas",
   pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
