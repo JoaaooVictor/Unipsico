@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <a class="btn text-center form-control btn-success w-50 btn" asp-action="CriarConsulta">Agendar consulta</a>
         <div class="col-md-10">
-            <div class="row">
+            <div class="row mt-5">
                 @foreach (var item in Model)
                 {
                     <div class="col-md-4 mb-4">
@@ -28,9 +28,9 @@
                             </div>
                             <div class="card-footer text-center">
                                 <div class="btn-group" role="group">
-                                    <a class="btn btn-info rounded m-1" asp-action="DetalhesConsulta" asp-route-ConsultaId="@item.ConsultaId">Detalhes</a>
-                                    <a class="btn btn-warning rounded m-1" asp-action="EditarConsulta" asp-route-ConsultaId="@item.ConsultaId">Editar</a>
-                                    <a class="btn btn-danger rounded m-1" asp-action="DeletarConsulta" asp-route-ConsultaId="@item.ConsultaId">Deletar</a>
+                                    <a class="btn btn-primary rounded m-1" asp-action="DetalhesConsulta" asp-route-ConsultaId="@item.ConsultaId">Detalhes</a>
+                                    <a class="btn btn-outline-warning rounded m-1" asp-action="EditarConsulta" asp-route-ConsultaId="@item.ConsultaId">Editar</a>
+                                    <a class="btn btn-outline-danger rounded m-1" asp-action="DeletarConsulta" asp-route-ConsultaId="@item.ConsultaId">Deletar</a>
                                 </div>
                             </div>
                         </div>

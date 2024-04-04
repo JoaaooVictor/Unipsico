@@ -1,42 +1,40 @@
 ﻿@model CriaConsultaViewModel
 
-<section class="vh-100">
-    <div class="container py-5 h-100">
-        <div class="row d-flex align-items-center justify-content-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-light shadow rounded-3">
-                    <div class="card-body p-5">
-                        <h3 class="text-center mb-5">Criação de Consulta</h3>
-                        <form asp-area="Admin" asp-controller="AdminConsultas" asp-action="CriarConsultaConfirmada" method="post">
-                            <h4 class="text-center mb-4">Selecionar Data</h4>
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <label for="DataId" class="form-label font-weight-bold">Data da Consulta</label>
-                                    <select id="DataId" name="DataId" asp-for="DataId" class="form-select">
-                                        @foreach (var data in ViewBag.DatasDisponiveis)
-                                        {
-                                            <option value="@data.Id">@data.Data</option>
-                                        }
-                                    </select>
-                                </div>
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card card-opacidade">
+                <div class="card-body p-5">
+                    <h3 class="text-center mb-5">Criação de Consulta</h3>
+                    <form asp-area="Admin" asp-controller="AdminConsultas" asp-action="CriarConsultaConfirmada" method="post">
+                        <h4 class="text-center mb-4">Selecionar Data</h4>
+                        <div class="row mb-4">
+                            <div class="col">                            
+                                <select id="DataId" name="DataId" asp-for="DataId" class="form-select">
+                                    @foreach (var data in ViewBag.DatasDisponiveis)
+                                    {
+                                        <option value="@data.Id">@data.Data</option>
+                                    }
+                                </select>
+                                <label for="DataId" class="ms-1 mt-1 form-label">Data da Consulta</label>
                             </div>
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <label for="cpfPaciente" class="form-label font-weight-bold">CPF do Paciente</label>
-                                    <input type="text" id="cpfPaciente" name="CpfPaciente" class="form-control" placeholder="Informe o CPF do paciente" />
-                                </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <input type="text" id="cpfPaciente" name="CpfPaciente" class="form-control" placeholder="Informe o CPF do paciente" />
+                                <label for="cpfPaciente" class="ms-1 mt-1 form-label">CPF do Paciente</label>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary rounded-pill px-4">Criar Consulta</button>
-                                <a asp-controller="Admin" asp-action="Index" class="btn btn-secondary rounded-pill px-4">Cancelar</a>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn botoes-cor1 btn btn-block">Criar Consulta</button>
+                            <a asp-controller="Admin" asp-action="Index" class="btn botoes-cor2 btn btn-block">Cancelar</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 <script>
     $('#cpfPaciente').mask('000.000.000-00', { reverse: false });
 </script>
