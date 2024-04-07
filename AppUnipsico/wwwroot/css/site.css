@@ -192,3 +192,23 @@ body {
     }
 }
 
+.footer-unifaat {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+@media (max-width: 768px) {
+    .footer-unifaat-responsivo {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.container-pai{
+    position:absolute;
+    right: 0;
+    left: 0;
+}
