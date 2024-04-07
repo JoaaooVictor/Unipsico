@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AppUnipsico.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class DBGeral : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,10 +30,12 @@ namespace AppUnipsico.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NomeCompleto = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cpf = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TipoUsuario = table.Column<int>(type: "int", nullable: false),
+                    RA = table.Column<string>(type: "varchar(10)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -65,6 +67,24 @@ namespace AppUnipsico.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Datas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Instituicoes",
+                columns: table => new
+                {
+                    InstituicaoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Logradouro = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Complemento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Numero = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Bairro = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cidade = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cep = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Instituicoes", x => x.InstituicaoId);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,19 +198,52 @@ namespace AppUnipsico.Migrations
                 columns: table => new
                 {
                     ConsultaId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DataConsulta = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StatusConsulta = table.Column<int>(type: "int", nullable: false),
-                    UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    UsuarioId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    DataConsultaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Consultas", x => x.ConsultaId);
                     table.ForeignKey(
-                        name: "FK_Consultas_AspNetUsers_ConsultaId",
-                        column: x => x.ConsultaId,
+                        name: "FK_Consultas_AspNetUsers_UsuarioId",
+                        column: x => x.UsuarioId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Consultas_Datas_DataConsultaId",
+                        column: x => x.DataConsultaId,
+                        principalTable: "Datas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Estagios",
+                columns: table => new
+                {
+                    EstagioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DataEstagio = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StatusEstagio = table.Column<int>(type: "int", nullable: false),
+                    AlunoId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    InstituicaoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Estagios", x => x.EstagioId);
+                    table.ForeignKey(
+                        name: "FK_Estagios_AspNetUsers_AlunoId",
+                        column: x => x.AlunoId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Estagios_Instituicoes_InstituicaoId",
+                        column: x => x.InstituicaoId,
+                        principalTable: "Instituicoes",
+                        principalColumn: "InstituicaoId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -226,11 +279,38 @@ namespace AppUnipsico.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_RA_TipoUsuario",
+                table: "AspNetUsers",
+                columns: new[] { "RA", "TipoUsuario" },
+                unique: true,
+                filter: "TipoUsuario = 2");
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Consultas_DataConsultaId",
+                table: "Consultas",
+                column: "DataConsultaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Consultas_UsuarioId",
+                table: "Consultas",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Estagios_AlunoId",
+                table: "Estagios",
+                column: "AlunoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Estagios_InstituicaoId",
+                table: "Estagios",
+                column: "InstituicaoId");
         }
 
         /// <inheritdoc />
@@ -255,13 +335,19 @@ namespace AppUnipsico.Migrations
                 name: "Consultas");
 
             migrationBuilder.DropTable(
-                name: "Datas");
+                name: "Estagios");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Datas");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Instituicoes");
         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppUnipsico.Migrations
 {
     [DbContext(typeof(AppUnipsicoDb))]
-    [Migration("20240315033850_dbset-esquecido")]
-    partial class dbsetesquecido
+    [Migration("20240407173501_DBGeral")]
+    partial class DBGeral
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,6 +68,7 @@ namespace AppUnipsico.Migrations
             modelBuilder.Entity("AppUnipsico.Models.Estagio", b =>
                 {
                     b.Property<Guid>("EstagioId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AlunoId")
@@ -79,9 +80,14 @@ namespace AppUnipsico.Migrations
                     b.Property<Guid>("InstituicaoId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("StatusEstagio")
+                        .HasColumnType("int");
+
                     b.HasKey("EstagioId");
 
                     b.HasIndex("AlunoId");
+
+                    b.HasIndex("InstituicaoId");
 
                     b.ToTable("Estagios");
                 });
@@ -172,6 +178,9 @@ namespace AppUnipsico.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RA")
+                        .HasColumnType("varchar(10)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -194,6 +203,10 @@ namespace AppUnipsico.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("RA", "TipoUsuario")
+                        .IsUnique()
+                        .HasFilter("TipoUsuario = 2");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -358,8 +371,8 @@ namespace AppUnipsico.Migrations
 
                     b.HasOne("AppUnipsico.Models.Instituicao", "Instituicao")
                         .WithMany("Estagios")
-                        .HasForeignKey("EstagioId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("InstituicaoId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Aluno");
