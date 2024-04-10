@@ -41,9 +41,9 @@
                                 <label class="ms-1 mt-1 form-label" asp-for="SelectedRole"></label>
                                 <span asp-validation-for="SelectedRole" class="text-danger"></span>
                             </div>
-                            <div class="form-outline form-group mb-4 d-flex flex-column w-100" style="display: none;" id="raInput">
-                                <input asp-for="RA" class="form-control" />
-                                <label class="ms-1 mt-1 form-label" asp-for="RA">RA</label>
+                            <div class="form-outline form-group mb-4 d-flex flex-column w-100">
+                                <input id="raInput" asp-for="RA" class="form-control" />
+                                <label id="raLabel" asp-for="RA" class="ms-1 mt-1 form-label" >RA</label>
                                 <span asp-validation-for="RA" class="text-danger"></span>
                             </div>
                         </div>                  
@@ -73,11 +73,15 @@
         document.getElementById('SelectedRole').addEventListener('change', function () {
             var selectedRole = this.value;
             var raInput = document.getElementById('raInput');
+            var raLabel = document.getElementById('raLabel');
+
 
             if (selectedRole === 'Aluno') {
                 raInput.style.display = 'block';
+                raLabel.style.display = 'block';
             } else {
                 raInput.style.display = 'none';
+                raLabel.style.display = 'none';
             }
         });
     </script>
