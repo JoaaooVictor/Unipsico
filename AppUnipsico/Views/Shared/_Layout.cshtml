@@ -3,25 +3,24 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Clínica de Psicologia da UNIFAAT - Melhor curso da região" name="description">
+    <meta content="psicologia, UNIFAAT, curso, clínica" name="keywords">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - AppUnipsico</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/AppUnipsico.styles.css" asp-append-version="true" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/AppUnipsico.styles.css" asp-append-version="true"/>
     <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="~/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-altura navbar-expand-sm navbar-toggleable-sm cor-unifaat box-shadow p-0 mb-5">
             <div class="container-fluid">
-                <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/unifaat/logo-unifaat-branco.svg" class="logo-unipsico"></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/unifaat/logo-unipsico-branco.svg" class="logo-unipsico"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,14 +31,14 @@
         </nav>
     </header>
     <div id="verifica-se-tela-login" class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 mb-3">
             @RenderBody()
         </main>
     </div>
     <footer class="border-top footer-unifaat text-muted bg-white">
-        <div class="container d-flex justify-content-between">
-            <p class="lead fs-6 text-muted mb-0">Desenvolvido por <strong>João Victor</strong> &amp; <strong>Renan Lima</strong></p>
-            <p class="lead fs-6 text-muted mb-0">&copy; 2024 - Todos os direitos reservados</p>
+        <div class="container d-flex justify-content-center">
+            <p class="text-justify fs-6 text-muted m-2">Desenvolvido por <strong>João Victor</strong> &amp; <strong>Renan Lima</strong></p>
+            <p class="text-justify fs-6 text-muted m-2">&copy; 2024 - Todos os direitos reservados</p>
         </div>
     </footer>
 

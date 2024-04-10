@@ -3,9 +3,22 @@ using AppUnipsico.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace AppUnipsico.Data.Context
 {
+
+    public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<AppUnipsicoDb>
+    {
+        public AppUnipsicoDb CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AppUnipsicoDb>();
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Unipsico;Trusted_Connection=True;MultipleActiveResultSets=true");
+
+            return new AppUnipsicoDb(optionsBuilder.Options);
+        }
+    }
+
     public class AppUnipsicoDb : IdentityDbContext<Usuario>
     {
         public AppUnipsicoDb(DbContextOptions options) : base(options) { }
