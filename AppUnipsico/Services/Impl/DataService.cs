@@ -1,4 +1,6 @@
-﻿using AppUnipsico.Models;
+﻿using AppUnipsico.Areas.Admin.ViewModels;
+using AppUnipsico.Enums;
+using AppUnipsico.Models;
 using AppUnipsico.Repositories;
 using AppUnipsico.Services.Interfaces;
 using OfficeOpenXml;
@@ -24,7 +26,7 @@ namespace AppUnipsico.Services.Impl
             await _dataRepository.AtualizaStatusData(dataId);
         }
 
-        public async Task InserirDatasDisponiveis(IFormFile file)
+        public async Task InsereDatasDisponiveis(IFormFile file)
         {
             if (file is not null)
             {
@@ -56,6 +58,21 @@ namespace AppUnipsico.Services.Impl
         public async Task<Datas> BuscaDataPorId(Guid dataId)
         {
             return await _dataRepository.BuscaDataConsultaPorId(dataId);
+        }
+
+        public async Task InsereDataUnica(InsereDataUnicaViewModel dataUnicaViewModel)
+        {
+            if (dataUnicaViewModel is not null)
+            {
+                var data = new Datas
+                {
+                    Id = Guid.NewGuid(),    
+                    Data = dataUnicaViewModel.DataUnica,
+                    Status = ConsultaEnum.Disponivel,
+                };
+
+                await _dataRepository.InsereDataUnica(data);
+            }
         }
     }
 }

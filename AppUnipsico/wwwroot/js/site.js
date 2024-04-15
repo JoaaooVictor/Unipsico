@@ -8,7 +8,7 @@ function uploadFile() {
     var file = fileInput.files[0];
     formData.append('file', file);
 
-    fetch('Controllers/DatasController/InserirDatasDisponiveis', {
+    fetch('Controllers/DatasController/InsereDatasDisponiveis', {
         method: 'POST',
         body: formData
     })

@@ -1,4 +1,5 @@
 ﻿using AppUnipsico.Areas.Admin.Repositories;
+using AppUnipsico.Areas.Admin.ViewModels;
 using AppUnipsico.Models;
 using AppUnipsico.Services.Impl;
 using Microsoft.AspNetCore.Authorization;
@@ -71,12 +72,30 @@ namespace AppUnipsico.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
         [HttpPost]
-        public async Task<IActionResult> InserirDatasDisponiveis(IFormFile file)
+        public async Task<IActionResult> InsereDatasDisponiveis(IFormFile file)
         {
             if (file is not null)
             {
-                await _datasServices.InserirDatasDisponiveis(file);
+                await _datasServices.InsereDatasDisponiveis(file);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult InsereDataUnica()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> InsereDataUnica(InsereDataUnicaViewModel dataUnicaViewModel)
+        {
+            if (dataUnicaViewModel is not null)
+            {
+                await _datasServices.InsereDataUnica(dataUnicaViewModel);
             }
 
             return RedirectToAction("Index");

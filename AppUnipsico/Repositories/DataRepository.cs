@@ -46,5 +46,11 @@ namespace AppUnipsico.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task InsereDataUnica(Datas datas)
+        {
+            await _context.Datas.AddAsync(datas);
+            await _context.SaveChangesAsync();
+        }
     }
 }

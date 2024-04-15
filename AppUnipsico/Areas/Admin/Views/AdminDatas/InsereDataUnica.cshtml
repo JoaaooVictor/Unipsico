@@ -1,0 +1,26 @@
+﻿@model InsereDataUnicaViewModel
+
+<section class="tela-insere-data">
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card card-opacidade">
+                    <div class="card-body p-5">
+                        <h3 class="mb-5">Insira uma Data</h3>
+                        <form asp-controller="AdminDatas" asp-action="InsereDataUnica" method="post">
+                            <div class="mb-4">
+                                <label asp-for="DataUnica" class="form-label">Data da Consulta:</label>
+                                <input asp-for="DataUnica" type="datetime-local" class="form-control" />
+                                <span asp-validation-for="DataUnica" class="text-danger"></span>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn botoes-cor1 btn-block">Salvar</button>
+                                <a asp-area="" asp-controller="Home" asp-action="Index" class="btn text-center botoes-cor2">Voltar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
