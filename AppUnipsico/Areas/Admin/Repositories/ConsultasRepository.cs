@@ -51,5 +51,17 @@ namespace AppUnipsico.Areas.Admin.Repositories
                                     .Include(c => c.DataConsulta)
                                     .FirstOrDefaultAsync();
         }
+
+        public async Task SalvaEdicaoConsulta(Consulta consulta)
+        {
+            _context.Attach(consulta).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeletarConsulta(Consulta consulta)
+        {
+            _context.Consultas.Remove(consulta);
+            await _context.SaveChangesAsync();
+        }
     }
 }

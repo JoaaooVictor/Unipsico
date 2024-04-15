@@ -1,0 +1,51 @@
+﻿@model Consulta
+
+@{
+    ViewData["Title"] = "Editar Consulta";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">Editar Consulta</h1>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Informações da Consulta</h4>
+                    <form asp-action="SalvarEdicaoConsulta" asp-controller="AdminConsultas" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ConsultaId" />
+                        <div class="form-group">
+                            <label asp-for="StatusConsulta" class="control-label">Status da Consulta:</label>
+                            <select asp-for="StatusConsulta" class="form-control">
+                                <option value="1">Disponível</option>
+                                <option value="2">Agendada</option>
+                                <option value="3">Concluída</option>
+                                <option value="4">Cancelada</option>
+                                <option value="5">Falta</option>
+                                <option value="6">Remarcada</option>
+                            </select>
+                            <span asp-validation-for="StatusConsulta" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Usuario.NomeCompleto" class="control-label">Nome do usuário:</label>
+                            <input asp-for="Usuario.NomeCompleto" class="form-control" readonly />
+                            <span asp-validation-for="Usuario.NomeCompleto" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DataConsulta.Data" class="control-label">Data da Consulta:</label>
+                            <input asp-for="DataConsulta.Data" class="form-control" readonly />
+                            <span asp-validation-for="DataConsulta.Data" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-outline-primary col-5">Salvar</button>
+                            <a asp-controller="AdminConsultas" asp-action="Index" class="btn btn-outline-secondary col-5">Voltar para a Lista</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

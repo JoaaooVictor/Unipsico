@@ -104,7 +104,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
             }
             else
             {
-                return View(instituicao);
+                return View("EditarInstituicao", instituicao);
             }
         }
 

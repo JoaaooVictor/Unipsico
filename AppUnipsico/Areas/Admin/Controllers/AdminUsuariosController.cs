@@ -1,6 +1,5 @@
 ﻿using AppUnipsico.Areas.Admin.Repositories;
 using AppUnipsico.Areas.Admin.ViewModels;
-using AppUnipsico.Data.Context;
 using AppUnipsico.Models;
 using AppUnipsico.ViewModels;
 using Microsoft.AspNetCore.Authorization;

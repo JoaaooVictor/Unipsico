@@ -96,5 +96,66 @@ namespace AppUnipsico.Areas.Admin.Controllers
 
             return View(consulta);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditarConsulta(string consultaId)
+        {
+            var consulta = await _consultasRepository.BuscaConsultaPorId(consultaId);
+
+            if (consulta is null)
+            {
+                return NotFound();
+            }
+
+            return View(consulta);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarEdicaoConsulta(Consulta consulta)
+        {
+            var consultaEncontrada = await _consultasRepository.BuscaConsultaPorId(consulta.ConsultaId);
+
+            if (consultaEncontrada is null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                consultaEncontrada.StatusConsulta = consulta.StatusConsulta;
+                await _consultasRepository.SalvaEdicaoConsulta(consultaEncontrada);
+                return RedirectToAction("Index");
+            }
+
+            return View("EditarConsulta", consulta);
+        }
+
+        public async Task<IActionResult> DeletarConsulta(string consultaId)
+        {
+            var consulta = await _consultasRepository.BuscaConsultaPorId(consultaId);
+
+            if (consulta is null)
+            {
+                return NotFound();
+            }
+
+            return View(consulta);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletarConsultaConfirmada(string consultaId)
+        {
+            var consulta = await _consultasRepository.BuscaConsultaPorId(consultaId);
+
+            if (consulta is not null)
+            {
+                await _consultasRepository.DeletarConsulta(consulta);
+                await _datasRepository.DeletarData(consulta.DataConsulta);
+
+                return View("Index");
+            }
+
+            return View("EditarConsulta", consulta);
+        }
     }
 }

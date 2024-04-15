@@ -27,12 +27,10 @@ namespace AppUnipsico.Areas.Admin.Repositories
                                      .ToListAsync();
         }
 
-        public async Task<Instituicao> SalvarEdicaoInstituicao(Instituicao instituicao)
+        public async Task SalvarEdicaoInstituicao(Instituicao instituicao)
         {
             _context.Attach(instituicao).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
-            return instituicao;
         }
 
         public async Task<Instituicao> BuscarIntituicaoPorId(Guid instituicaoId)

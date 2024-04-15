@@ -1,5 +1,4 @@
 using AppUnipsico.Areas.Admin.Repositories;
-using AppUnipsico.Areas.Aluno.Repositories;
 using AppUnipsico.Data.Context;
 using AppUnipsico.Models;
 using AppUnipsico.Repositories;
