@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Lista de consultas";
 }
+
 <div class="container-fluid">
     <div class="p-3 mb-3">
         <h1 class="mb-3 text-center">Consultas</h1>
@@ -11,28 +12,39 @@
         <a class="btn text-center form-control btn-success w-50 btn" asp-action="CriarConsulta">Agendar consulta</a>
         <div class="col-md-10">
             <div class="row mt-5">
-                @foreach (var item in Model)
+                @if (Model.Any())
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <div class="card-header cor-unifaat text-white">
-                                Consulta
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><strong>Data:</strong> @item.DataConsulta.Data.ToShortDateString()</li>
-                                    <li class="list-group-item"><strong>Status:</strong> @item.StatusConsulta</li>
-                                    <li class="list-group-item"><strong>Paciente:</strong> @item.Usuario.NomeCompleto</li>
-                                    <li class="list-group-item"><strong>Horário:</strong> @item.DataConsulta.Data.ToShortTimeString()</li>
-                                </ul>
-                            </div>
-                            <div class="card-footer text-center">
-                                <div class="btn-group" role="group">
-                                    <a class="btn btn-primary rounded m-1" asp-action="DetalhesConsulta" asp-route-ConsultaId="@item.ConsultaId">Detalhes</a>
-                                    <a class="btn btn-outline-warning rounded m-1" asp-action="EditarConsulta" asp-route-ConsultaId="@item.ConsultaId">Editar</a>
-                                    <a class="btn btn-outline-danger rounded m-1" asp-action="DeletarConsulta" asp-route-ConsultaId="@item.ConsultaId">Deletar</a>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-header cor-unifaat text-white">
+                                    Consulta
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><strong>Data:</strong> @item.DataConsulta.Data.ToShortDateString()</li>
+                                        <li class="list-group-item"><strong>Status:</strong> @item.StatusConsulta</li>
+                                        <li class="list-group-item"><strong>Paciente:</strong> @item.Usuario.NomeCompleto</li>
+                                        <li class="list-group-item"><strong>Horário:</strong> @item.DataConsulta.Data.ToShortTimeString()</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-primary rounded m-1" asp-action="DetalhesConsulta" asp-route-ConsultaId="@item.ConsultaId">Detalhes</a>
+                                        <a class="btn btn-outline-warning rounded m-1" asp-action="EditarConsulta" asp-route-ConsultaId="@item.ConsultaId">Editar</a>
+                                        <a class="btn btn-outline-danger rounded m-1" asp-action="DeletarConsulta" asp-route-ConsultaId="@item.ConsultaId">Deletar</a>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-md-12">
+                        <div class="alert alert-info" role="alert">
+                            Não foram encontradas consultas.
                         </div>
                     </div>
                 }

@@ -152,10 +152,10 @@ namespace AppUnipsico.Areas.Admin.Controllers
                 await _consultasRepository.DeletarConsulta(consulta);
                 await _datasRepository.DeletarData(consulta.DataConsulta);
 
-                return View("Index");
+                return RedirectToAction("Index");
             }
 
-            return View("EditarConsulta", consulta);
+            return View("Index", consulta);
         }
     }
 }
