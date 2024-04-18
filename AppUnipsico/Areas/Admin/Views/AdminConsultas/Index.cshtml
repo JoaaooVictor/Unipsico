@@ -16,7 +16,7 @@
                 {
                     @foreach (var item in Model)
                     {
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-3 mb-3">
                             <div class="card">
                                 <div class="card-header cor-unifaat text-white">
                                     Consulta
@@ -30,7 +30,7 @@
                                     </ul>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <div class="btn-group" role="group">
+                                    <div class="btn-group btn-group-sm" role="group">
                                         <a class="btn btn-primary rounded m-1" asp-action="DetalhesConsulta" asp-route-ConsultaId="@item.ConsultaId">Detalhes</a>
                                         <a class="btn btn-outline-warning rounded m-1" asp-action="EditarConsulta" asp-route-ConsultaId="@item.ConsultaId">Editar</a>
                                         <a class="btn btn-outline-danger rounded m-1" asp-action="DeletarConsulta" asp-route-ConsultaId="@item.ConsultaId">Deletar</a>
@@ -52,3 +52,5 @@
         </div>
     </div>
 </div>
+
+
