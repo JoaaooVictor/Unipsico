@@ -7,7 +7,7 @@
 
 <div class="container-fluid">
     <div class="p-3 mb-3">
-        <h1 class="mb-3 text-center">Estágios</h1>
+        <h3 class="mb-3 text-left" style="color: white">Estágios</h3>
     </div>
     <div class="text-center">
         <a class="btn btn-success rounded col-md-6" asp-controller="Aluno" asp-action="SolicitarEstagio">Solicitar estágio</a>
@@ -37,25 +37,27 @@
             </div>
         </div>
         <br />
-        <div class="bg-light rounded mb-4 p-5">
-            <h2 class="text-center mb-3">Estágios Aprovados</h2>
+        <h3 class="text-left mb-3">Estágios Aprovados</h3>
+        <div class="bg-light mb-4 p-5" style="border-radius: 15px">
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Aprovado))
                 {
                     <div class="col-md-2 mb-2 m-2">
-                        <div class="card border-success">
-                            <div class="card-header bg-success text-white text-center">
-                                @estagio.Aluno.NomeCompleto
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text"><strong>Instituição:</strong> @estagio.Instituicao.Nome</p>
-                                <p class="card-text"><strong>Data de solicitação:</strong> @estagio.DataEstagio.ToShortDateString()</p>
-                                <p class="card-text"><strong>Status do estágio:</strong> @estagio.StatusEstagio</p>
-                            </div>
-                            <div class="card-footer text-center">
-                                <div class="btn-group" role="group">
-                                    <a class="btn btn-outline-primary m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
-                                    <a class="btn btn-outline-danger m-1 rounded" asp-controller="Aluno" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId">Gerar PDF</a>
+                        <div class="card" style="border-top: 5px solid #2dce89">
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div>
+                                            <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
+                                            <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
+                                            <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
+                                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <a type="button" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId" class="btn btn-info mt-2"><i class="fas fa-info" aria-hidden="true"></i></a>
+                                        <a type="button" asp-controller="Aluno" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId" class="btn btn-danger"><i class="fas fa-file-pdf" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -70,24 +72,27 @@
             </div>
         </div>
         <br />
-        <div class="bg-light rounded mb-4 p-5">
-            <h2 class="text-center mb-3">Estágios Pendentes</h2>
+        <h3 class="text-left mb-3">Estágios Pendentes</h3>
+        <div class="bg-light mb-4 p-5" style="border-radius: 15px">
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Solicitado))
                 {
                     <div class="col-md-2 mb-2 m-2">
-                        <div class="card border-warning">
-                            <div class="card-header bg-warning text-center">
-                                 @estagio.Aluno.NomeCompleto
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text"><strong>Instituição:</strong> @estagio.Instituicao.Nome</p>
-                                <p class="card-text"><strong>Data de solicitação:</strong> @estagio.DataEstagio.ToShortDateString()</p>
-                                <p class="card-text"><strong>Status do estágio:</strong> @estagio.StatusEstagio</p>
-                            </div>
-                            <div class="card-footer text-center">
-                                <div class="btn-group" role="group">
-                                    <a class="btn btn-outline-primary m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
+                        <div class="card" style="border-top: 5px solid #e3b427">
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div>
+                                            <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
+                                            <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
+                                            <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
+                                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <a type="button" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId" class="btn btn-info mt-2"><i class="fas fa-info" aria-hidden="true"></i></a>
+                                        <a type="button" asp-controller="Aluno" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId" class="btn btn-danger"><i class="fas fa-file-pdf" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -102,24 +107,27 @@
             </div>
         </div>
         <br />
-        <div class="bg-light rounded">
-            <h2 class="text-center mb-3">Estágios Reprovados</h2>
+        <h3 class="mb-3 text-left">Estágios Reprovados</h3>
+        <div class="bg-light mb-4 p-5" style="border-radius: 15px">
             <div class="row justify-content-center">
                 @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Reprovado))
                 {
                     <div class="col-md-2 mb-2 m-2">
-                        <div class="card border-danger">
-                            <div class="card-header bg-danger text-white text-center">
-                                @estagio.Aluno.NomeCompleto
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text"><strong>Instituição:</strong> @estagio.Instituicao.Nome</p>
-                                <p class="card-text"><strong>Data de solicitação:</strong> @estagio.DataEstagio.ToShortDateString()</p>
-                                <p class="card-text"><strong>Status do estágio:</strong> @estagio.StatusEstagio</p>
-                            </div>
-                            <div class="card-footer text-center">
-                                <div class="btn-group" role="group">
-                                    <a class="btn btn-primary m-1 rounded" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId">Detalhes</a>
+                        <div class="card" style="border-top: 5px solid #f5365c">
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div>
+                                            <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
+                                            <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
+                                            <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
+                                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <a type="button" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId" class="btn btn-info mt-2"><i class="fas fa-info" aria-hidden="true"></i></a>
+                                        <a type="button" asp-controller="Aluno" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId" class="btn btn-danger"><i class="fas fa-file-pdf" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
