@@ -1,20 +1,26 @@
 ﻿@model ValidaConsultaViewModel
 
-<div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Agendar Consulta</h5>
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h3 class="text-left" style="color: white">Confirmar agendamento</h3>
     </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col">
-                <p><strong>CPF:</strong> @Model.Usuario.Cpf</p>
-                <p><strong>Email:</strong> @Model.Usuario.Email</p>
-                <p><strong>Data da Consulta:</strong> @Model.Datas.Data</p>
+    <hr />
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Agendar Consulta</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <p><strong>CPF:</strong> @Model.Usuario.Cpf</p>
+                    <p><strong>Email:</strong> @Model.Usuario.Email</p>
+                    <p><strong>Data da Consulta:</strong> @Model.Datas.Data</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="card-footer text-center">
-        <a asp-controller="Datas" asp-action="Index" class="btn btn-secondary">Fechar</a>
-        <a asp-area="" asp-controller="Consulta" asp-action="Agendar" asp-route-DataConsultaId="@Model.DataConsultaId" class="btn btn-primary">Confirmar Agendamento</a>
+        <div class="card-footer text-center">
+            <a asp-controller="Datas" asp-action="Index" class="btn btn-secondary">Fechar</a>
+            <a asp-area="" asp-controller="Consulta" asp-action="Agendar" asp-route-DataConsultaId="@Model.DataConsultaId" class="btn btn-primary">Confirmar Agendamento</a>
+        </div>
     </div>
 </div>

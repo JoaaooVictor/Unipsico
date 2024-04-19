@@ -6,47 +6,10 @@
     var user = await userManager.GetUserAsync(User);
 }
 
-@if (signInManager.IsSignedIn(User) && user != null)
+@if (!signInManager.IsSignedIn(User) && user == null)
 {
-    var isInRolePaciente = await userManager.IsInRoleAsync(user, "Paciente");
-    var isInRoleAdmin = await userManager.IsInRoleAsync(user, "Admin");
-    var isInRoleAluno = await userManager.IsInRoleAsync(user, "Aluno");
-    var isInRoleProfessor = await userManager.IsInRoleAsync(user, "Professor");
-
-    if (isInRolePaciente)
-    {
-        <a class="nav-link text-light" asp-area="" asp-controller="Datas" asp-action="Index">Datas Disponíveis</a>
-        <a class="nav-link text-light" asp-area="" asp-controller="Consulta" asp-action="ConsultaPaciente">Suas Consultas</a>
-        <div class="botao-logout">
-            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="navbar-left">
-                <button type="submit" style="width:auto" class="bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
-            </form>
-        </div>
-    }
-    else if (isInRoleAdmin || isInRoleProfessor)
-    {
-        <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Dashboard Admin</a>
-        <div class="botao-logout">
-            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="navbar-right d-flex flex-row-reverse">
-                <button type="submit" style="width:auto" class="bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
-            </form>
-        </div>
-
-    }
-    else if (isInRoleAluno)
-    {
-        <a class="nav-link text-light" asp-area="Aluno" asp-controller="Aluno" asp-action="Index">Dashboard Aluno</a>
-        <div class="botao-logout">
-            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="navbar-left">
-                <button type="submit" style="width:auto" class="bi bi-box-arrow-in-right nav-link btn btn-link py-0 text-info d-flex align-items-center gap-3">Logout @user.NomeCompleto</button>
-            </form>
-        </div>
-    }
-}
-else
-{
-        <a class="nav-link text-left" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@string.Format("{0}{1}", Context.Request.Path, Context.Request.QueryString)" style="color:white">&nbsp; Login &nbsp;</a>
-        <a class="nav-link text-left" asp-controller="Account" asp-action="Register" style="color:white">&nbsp;Registro&nbsp;&nbsp;</a>
-        <a class="nav-link text-left" asp-area="" asp-controller="Estagios" asp-action="Index" style="color:white">&nbsp;Verificar Estágio&nbsp;&nbsp;</a>
+    <a class="nav-link text-left" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@string.Format("{0}{1}", Context.Request.Path, Context.Request.QueryString)" style="color:white">&nbsp; Login &nbsp;</a>
+    <a class="nav-link text-left" asp-controller="Account" asp-action="Register" style="color:white">&nbsp;Registro&nbsp;&nbsp;</a>
+    <a class="nav-link text-left" asp-area="" asp-controller="Estagios" asp-action="Index" style="color:white">&nbsp;Verificar Estágio&nbsp;&nbsp;</a>
 }
 

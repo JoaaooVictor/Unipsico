@@ -1,17 +1,16 @@
 ﻿@model Instituicao
-
 @{
     ViewData["Title"] = "Detalhes";
 }
 
-<div class="container mt-4">
-    <h1 class="text-center">Detalhes da Instituição</h1>
-    <hr />
-
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h3 class="text-left" style="color: white">Detalhes da Instituição</h3>
+    </div>
+    <br />
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Instituição</h4>
-
             <dl class="row">
                 <dt class="col-sm-3">Nome:</dt>
                 <dd class="col-sm-9">@Model.Nome</dd>
@@ -36,9 +35,8 @@
             </dl>
         </div>
     </div>
-
-    <div class="text-center mt-3">
-        <a asp-action="EditarInstituicao" asp-route-InstituicaoId="@Model.InstituicaoId" class="btn btn-primary mr-2">Editar</a>
-        <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
-    </div>
+</div>
+<div class="text-center mt-3">
+    <a asp-action="EditarInstituicao" asp-route-InstituicaoId="@Model.InstituicaoId" class="btn btn-primary mr-2">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
 </div>

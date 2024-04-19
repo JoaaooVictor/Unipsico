@@ -1,11 +1,14 @@
 ﻿@model CriaConsultaViewModel
 
-<div class="container py-5 h-100">
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h3 class="text-left" style="color: white">Criação de Consulta</h3>
+    </div>
+    <hr />
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card card-opacidade">
+            <div class="card">
                 <div class="card-body p-5">
-                    <h3 class="text-center mb-5">Criação de Consulta</h3>
                     <form asp-area="Admin" asp-controller="AdminConsultas" asp-action="CriarConsultaConfirmada" method="post">
                         <h4 class="text-center mb-4">Selecionar Data</h4>
                         <div class="row mb-4">
