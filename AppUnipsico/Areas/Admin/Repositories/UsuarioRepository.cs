@@ -60,7 +60,14 @@ namespace AppUnipsico.Areas.Admin.Repositories
                 usuario.RA = registraUsuarioViewModel.RA;
             }
 
-            return await _userManager.CreateAsync(usuario, registraUsuarioViewModel.Password);
+            var usuarioCriado = await _userManager.CreateAsync(usuario, registraUsuarioViewModel.Password);
+
+            if (usuarioCriado.Succeeded)
+            {
+                await AdicionaRoleUsuario(tipoUsuario, usuario);
+            }
+
+            return usuarioCriado;
         }
 
         public TipoUsuarioEnum VerificaTipoUsuario(RegistraUsuarioViewModel registraUsuarioViewModel)
@@ -85,6 +92,27 @@ namespace AppUnipsico.Areas.Admin.Repositories
             }
 
             return tipoUsuario;
+        }
+
+        public async Task AdicionaRoleUsuario(TipoUsuarioEnum tipoUsuario, Usuario usuario)
+        {
+            switch (tipoUsuario)
+            {
+                case TipoUsuarioEnum.Admin:
+                    await _userManager.AddToRoleAsync(usuario, "Admin");
+                    break;
+                case TipoUsuarioEnum.Aluno:
+                    await _userManager.AddToRoleAsync(usuario, "Aluno");
+                    break;
+                case TipoUsuarioEnum.Professor:
+                    await _userManager.AddToRoleAsync(usuario, "Professor");
+                    break;
+                case TipoUsuarioEnum.Paciente:
+                    await _userManager.AddToRoleAsync(usuario, "Paciente");
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }
