@@ -1,6 +1,5 @@
 ﻿@model Paginacao<Datas>
 
-
 @{
     ViewData["Title"] = "Datas de Consultas";
 }
@@ -14,17 +13,17 @@
         <button class="btn btn-success mb-3 form-control rounded w-25" type="submit">Enviar Excel</button>
     </form>
     <div class="d-flex justify-content-center m-3">
-        <a class="btn btn-outline-success" asp-controller="AdminDatas" asp-action="InsereDataUnica">Inserir Data Manualmente</a>
+        <a class="btn btn-outline-success" asp-controller="AdminDatas" asp-action="InsereDataUnica">Inserir data</a>
     </div>
     @if (Model.Any())
     {
-        <div class="table-responsive mt-5">
-            <table class="table table-bordered table-striped">
+        <div class="table-responsive mt-3" style="border-radius: 15px">
+            <table class="table table-striped">
                 <thead class="cor-unifaat text-white">
                     <tr class="text-center">
-                        <th class="text-center">Data da Consulta</th>
-                        <th class="text-center">Horário da Consulta</th>
-                        <th class="text-center">Status da Data</th>
+                        <th class="text-center">Data</th>
+                        <th class="text-center">Horário</th>
+                        <th class="text-center">Status</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </thead>

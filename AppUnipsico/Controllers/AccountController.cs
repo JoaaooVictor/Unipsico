@@ -1,4 +1,5 @@
 ﻿using AppUnipsico.Models;
+using AppUnipsico.Utilities;
 using AppUnipsico.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -81,14 +82,15 @@ namespace AppUnipsico.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
-
             if (ModelState.IsValid)
             {
+                var cpfFormatado = FormatUtility.RemovePontoTracoCpf(registerViewModel.Cpf);
+
                 var user = new Usuario
                 {
                     UserName = registerViewModel.Email,
                     NomeCompleto = registerViewModel.NomeCompleto,
-                    Cpf = registerViewModel.Cpf,
+                    Cpf = cpfFormatado,
                     DataNascimento = registerViewModel.DataNascimento,
                     DataRegistro = DateTime.Now,
                     Email = registerViewModel.Email,
@@ -100,7 +102,7 @@ namespace AppUnipsico.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "Paciente");
-                    RedirectToAction("Login", "Account");
+                    return View("Login");
                 }
                 else
                 {

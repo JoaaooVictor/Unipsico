@@ -10,33 +10,44 @@
     <br />
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Instituição</h4>
-            <dl class="row">
-                <dt class="col-sm-3">Nome:</dt>
-                <dd class="col-sm-9">@Model.Nome</dd>
-
-                <dt class="col-sm-3">Logradouro:</dt>
-                <dd class="col-sm-9">@Model.Logradouro</dd>
-
-                <dt class="col-sm-3">Complemento:</dt>
-                <dd class="col-sm-9">@Model.Complemento</dd>
-
-                <dt class="col-sm-3">Número:</dt>
-                <dd class="col-sm-9">@Model.Numero</dd>
-
-                <dt class="col-sm-3">Bairro:</dt>
-                <dd class="col-sm-9">@Model.Bairro</dd>
-
-                <dt class="col-sm-3">Cidade:</dt>
-                <dd class="col-sm-9">@Model.Cidade</dd>
-
-                <dt class="col-sm-3">CEP:</dt>
-                <dd class="col-sm-9">@Model.Cep</dd>
-            </dl>
+            <h4 class="card-title text-center">Instituição</h4>
+            <br />
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="col-sm-3">Nome:</th>
+                        <td class="col-sm-9">@Model.Nome</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="col-sm-3">Logradouro:</th>
+                        <td class="col-sm-9">@Model.Logradouro</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="col-sm-3">Complemento:</th>
+                        <td class="col-sm-9">@Model.Complemento</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="col-sm-3">Número:</th>
+                        <td class="col-sm-9">@Model.Numero</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="col-sm-3">Bairro:</th>
+                        <td class="col-sm-9">@Model.Bairro</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="col-sm-3">Cidade:</th>
+                        <td class="col-sm-9">@Model.Cidade</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="col-sm-3">CEP:</th>
+                        <td class="col-sm-9">@Model.Cep</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 <div class="text-center mt-3">
     <a asp-action="EditarInstituicao" asp-route-InstituicaoId="@Model.InstituicaoId" class="btn btn-primary mr-2">Editar</a>
-    <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+    <a asp-action="Index" asp-controller="AdminInstituicoes" class="btn btn-secondary">Voltar para a Lista</a>
 </div>

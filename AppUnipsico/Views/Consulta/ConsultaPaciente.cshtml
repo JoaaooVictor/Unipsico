@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
     <div class="p-3 mb-3">
-        <h3 class="text-left" style="color: white">Consultas do Paciente</h3>
+        <h3 class="text-left" style="color: white">Suas Consultas</h3>
     </div>
     <hr />
     <div class="card">
@@ -20,7 +20,6 @@
                                 <th class="text-center">Data da Consulta</th>
                                 <th class="text-center">Horário da Consulta</th>
                                 <th class="text-center">Status</th>
-                                <th class="text-center">Nome do Paciente</th>
                                 <th class="text-center">Data de Nascimento</th>
                             </tr>
                         </thead>
@@ -31,7 +30,6 @@
                                     <td class="text-center">@consulta.DataConsulta.Data.ToShortDateString()</td>
                                     <td class="text-center">@consulta.DataConsulta.Data.ToShortTimeString()</td>
                                     <td class="text-center">@consulta.StatusConsulta</td>
-                                    <td class="text-center">@consulta.Usuario.NomeCompleto</td>
                                     <td class="text-center">@consulta.Usuario.DataNascimento.ToShortDateString()</td>
                                 </tr>
                             }

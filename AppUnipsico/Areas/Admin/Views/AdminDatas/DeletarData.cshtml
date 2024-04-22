@@ -4,15 +4,15 @@
     ViewData["Title"] = "Deletar data";
 }
 
-<div class="container mt-4">
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h3 class="mb-3 text-left" style="color: white">Deletar data da consulta</h3>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Excluir data de consulta</h4>
-
                     <p class="lead">Tem certeza de que deseja remover esta data?</p>
-
                     <dl class="row">
                         <dt class="col-sm-4">Id:</dt>
                         <dd class="col-sm-8">@Model.Id</dd>
@@ -23,7 +23,6 @@
                         <dt class="col-sm-4">Status:</dt>
                         <dd class="col-sm-8">@Model.Status</dd>
                     </dl>
-
                     <form asp-action="DeleteConfirmed" asp-route-DataId="@Model.Id" method="post">
                         <div class="text-center">
                             <button type="submit" class="btn btn-danger mr-2">Deletar</button>

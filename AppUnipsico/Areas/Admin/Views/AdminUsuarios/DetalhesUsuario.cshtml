@@ -8,66 +8,80 @@
         <h3 class="text-left" style="color: white">Detalhes do Usuário</h3>
     </div>
     <br />
-    <div class="card">
-        <div class="card-body">
-            <h4 class="text-center card-title">Detalhes do Usuário</h4>
-            <dl class="row">
-                <dt class="col-sm-4">Nome completo:</dt>
-                <dd class="col-sm-8">@Model.Usuario.NomeCompleto</dd>
-
-                @if (Model.Usuario.TipoUsuario == AppUnipsico.Enums.TipoUsuarioEnum.Aluno)
-                {
-                    <dt class="col-sm-4">RA:</dt>
-                    <dd class="col-sm-8">@Model.Usuario.RA</dd>
-                }
-
-                <dt class="col-sm-4">Cpf:</dt>
-                <dd class="col-sm-8">@Model.Usuario.Cpf</dd>
-
-                <dt class="col-sm-4">E-mail:</dt>
-                <dd class="col-sm-8">@Model.Usuario.Email</dd>
-
-                <dt class="col-sm-4">Data de nascimento:</dt>
-                <dd class="col-sm-8">@Model.Usuario.DataNascimento.ToShortDateString()</dd>
-
-                <dt class="col-sm-4">Data de registro no sistema:</dt>
-                <dd class="col-sm-8">@Model.Usuario.DataRegistro</dd>
-
-                <dt class="col-sm-4">Tipo de usuário:</dt>
-                <dd class="col-sm-8">@Model.Usuario.TipoUsuario
-                <dd>
-
-            </dl>
-            <div class="text-center">
-                <a class="btn btn-secondary" asp-action="Index">Voltar</a>
+    <div class="row justify-content-center">
+        <div class="card col-8">
+            <div class="card-body">
+                <h4 class="text-center card-title">Detalhes do Usuário</h4>
+                <br />
+                <table class="table table-striped" style="border-radius: 15px">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Nome completo:</th>
+                            <td>@Model.Usuario.NomeCompleto</td>
+                        </tr>
+                        @if (Model.Usuario.TipoUsuario == AppUnipsico.Enums.TipoUsuarioEnum.Aluno)
+                        {
+                            <tr>
+                                <th scope="row">RA:</th>
+                                <td>@Model.Usuario.RA</td>
+                            </tr>
+                        }
+                        <tr>
+                            <th scope="row">Cpf:</th>
+                            <td>@Model.Usuario.Cpf</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">E-mail:</th>
+                            <td>@Model.Usuario.Email</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Data de nascimento:</th>
+                            <td>@Model.Usuario.DataNascimento.ToShortDateString()</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Data de registro no sistema:</th>
+                            <td>@Model.Usuario.DataRegistro</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tipo de usuário:</th>
+                            <td>@Model.Usuario.TipoUsuario</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <a class="btn btn-secondary" asp-action="Index">Voltar</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+
 @if (Model.Consultas is not null && Model.Consultas.Any())
 {
+    <br />
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-6">
             <div class="card">
                 <div class="card-body">
                     <h4 class="text-center card-title">Detalhes das consultas</h4>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                    <br />
+                    <div class="table-responsive" style="border-radius: 15px">
+                        <table class="table table-striped">
                             <thead class="bg-primary text-white">
                                 <tr>
-                                    <th>Data da consulta</th>
-                                    <th>Horário da consulta</th>
-                                    <th>Status da Consulta</th>
+                                    <th class="text-center">Data da consulta</th>
+                                    <th class="text-center">Horário da consulta</th>
+                                    <th class="text-center">Status da Consulta</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var consulta in Model.Consultas)
                                 {
                                     <tr>
-                                        <td>@consulta.DataConsulta.Data.ToShortDateString()</td>
-                                        <td>@consulta.DataConsulta.Data.ToShortTimeString()</td>
-                                        <td>@consulta.StatusConsulta</td>
+                                        <td class="text-center">@consulta.DataConsulta.Data.ToShortDateString()</td>
+                                        <td class="text-center">@consulta.DataConsulta.Data.ToShortTimeString()</td>
+                                        <td class="text-center">@consulta.StatusConsulta</td>
                                     </tr>
                                 }
                             </tbody>

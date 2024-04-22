@@ -1,71 +1,81 @@
 ﻿@model RegisterViewModel
-
-<section class="tela-login">
-    <div class="container py-5 h-100">
-        <div class="row d-flex align-items-center justify-content-center h-100  gap-5">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card card-opacidade">
-                    <div class="card-body p-5">
-                        <h3 class="mb-5">Novo Acesso</h3>
-                        <form asp-controller="Account" asp-action="Register" method="post">
-                            <input type="hidden" asp-for="ReturnUrl" />
-                            <div class="mb-4 d-flex gap-4">
-                                <div class="w-100 d-flex flex-column">
-                                    <input placeholder="" asp-for="NomeCompleto" class="form-control" />
-                                    <label asp-for="NomeCompleto" class="ms-1 mt-1 form-label font-weight-bold">Nome do Paciente</label>
-                                    <span asp-validation-for="NomeCompleto" class="text-danger ms-1 "></span>
-                                </div>
-                                <div class="w-100  d-flex flex-column">
-                                    <input placeholder="000.000.000-00" asp-for="Cpf" id="cpf" class="form-control" />
-                                    <label asp-for="Cpf" class="ms-1 mt-1 form-label">CPF</label>
-                                    <span asp-validation-for="Cpf" class="text-danger ms-1 "></span>
-                                </div>
+@{
+    ViewData["Title"] = "Registre-se";
+}
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h3 class="text-left" style="color: white">Registre-se</h3>
+    </div>
+    <br />
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <div class="card">
+                <div class="card-body p-5">
+                    <h3 class="mb-5">Novo Acesso</h3>
+                    <form asp-area="" asp-controller="Account" asp-action="Register" method="post">
+                        <input type="hidden" asp-for="ReturnUrl" />
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="ms-1 mt-1 form-label" asp-for="NomeCompleto">Nome completo</label>
+                                <input asp-for="NomeCompleto" class="form-control" />
+                                <span asp-validation-for="NomeCompleto" class="text-danger"></span>
                             </div>
-                            <div class="mb-4 d-flex gap-4">
-                                <div class="w-100  d-flex flex-column">
-                                    <input placeholder="email@gmail.com" asp-for="Email" class="form-control" />
-                                    <label asp-for="Email" class="ms-1 mt-1 form-label font-weight-bold">E-mail</label>
-                                    <span asp-validation-for="Email" class="text-danger ms-1 "></span>
-                                </div>
-                                <div class="w-100 d-flex flex-column">
-                                    <input asp-for="DataNascimento" type="date" class="form-control" />
-                                    <label asp-for="DataNascimento" class="ms-1 mt-1 form-label">Data de nascimento</label>
-                                    <span asp-validation-for="DataNascimento" class="text-danger ms-1 "></span>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="ms-1 mt-1 form-label" asp-for="Email">E-mail</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
-                            <div class="mb-4 d-flex flex-column">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="ms-1 mt-1 form-label" asp-for="Cpf">CPF</label>
+                                <input asp-for="Cpf" placeholder="000.000.000-00" id="cpf" class="form-control" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" />
+                                <span asp-validation-for="Cpf" class="text-danger"></span>
+                            </div>
+                            <div class="col-6">
+                                <label class="ms-1 mt-1 form-label" asp-for="DataNascimento">Data de Nascimento</label>
+                                <input asp-for="DataNascimento" class="form-control" />
+                                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="ms-1 mt-1 form-label" asp-for="Password">Senha</label>
                                 <input asp-for="Password" type="password" class="form-control" />
-                                <label asp-for="Password" class="ms-1 mt-1 form-label">Senha</label>
-                                <span asp-validation-for="Password" class="text-danger ms-1"></span>
+                                <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
-                            <div class="mb-4 d-flex flex-column">
+                            <div class="col-6">
+                                <label class="ms-1 mt-1 form-label" asp-for="Repassword">Confirmar Senha</label>
                                 <input asp-for="Repassword" type="password" class="form-control" />
-                                <label asp-for="Repassword" class="ms-1 mt-1 form-label">Confirme a Senha</label>
-                                <span asp-validation-for="Repassword" class="text-danger ms-1"></span>
+                                <span asp-validation-for="Repassword" class="text-danger"></span>
                             </div>
-                            <div class="mb-4">
-                                <select class="visually-hidden" asp-for="SelectedRole" class="form-control">
-                                    <option class="visually-hidden" disabled="disabled" value="Paciente"></option>
-                                </select>
-                                <input type="hidden" name="SelectedRole" value="Paciente" />
-                                <label class="visually-hidden" asp-for="SelectedRole"></label>
-                                <span asp-validation-for="SelectedRole" class="text-danger ms-1"></span>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn botoes-cor1 btn-block">Registrar</button>
-                                <button asp-area="" asp-controller="Home" asp-action="Index" class="btn text-center botoes-cor2">Voltar</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="mb-4">
+                            <select class="visually-hidden" asp-for="SelectedRole" class="form-control">
+                                <option class="visually-hidden" disabled="disabled" value="Paciente"></option>
+                            </select>
+                            <input type="hidden" name="SelectedRole" value="Paciente" />
+                            <label class="visually-hidden" asp-for="SelectedRole"></label>
+                            <span asp-validation-for="SelectedRole" class="text-danger ms-1"></span>
+                        </div>
+                        <br />
+                        <div class="">
+                            <button type="submit" class="btn btn-success btn-block">Registrar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
+@section Scripts
+{
     <script>
         $('#cpf').mask('000.000.000-00', { reverse: false });
     </script>
-
-</section>
+}
 
 

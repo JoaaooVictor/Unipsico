@@ -1,6 +1,7 @@
 ﻿using AppUnipsico.Data.Context;
 using AppUnipsico.Enums;
 using AppUnipsico.Models;
+using AppUnipsico.Utilities;
 using AppUnipsico.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -43,12 +44,13 @@ namespace AppUnipsico.Areas.Admin.Repositories
         public async Task<IdentityResult> CriaUsuario(RegistraUsuarioViewModel registraUsuarioViewModel)
         {
             var tipoUsuario = VerificaTipoUsuario(registraUsuarioViewModel);
+            var cpfFormatado = FormatUtility.RemovePontoTracoCpf(registraUsuarioViewModel.Cpf);
 
             var usuario = new Usuario
             {
                 UserName = registraUsuarioViewModel.Email,
                 NomeCompleto = registraUsuarioViewModel.NomeCompleto,
-                Cpf = registraUsuarioViewModel.Cpf,
+                Cpf = cpfFormatado,
                 DataNascimento = registraUsuarioViewModel.DataNascimento,
                 DataRegistro = DateTime.Now,
                 Email = registraUsuarioViewModel.Email,
