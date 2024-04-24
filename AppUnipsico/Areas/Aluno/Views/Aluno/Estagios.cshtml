@@ -51,7 +51,7 @@
                                 <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
                             </div>
                             <div class="mt-auto text-end">
-                                <a title="Detalhes" class="p-1" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
+                                <a title="Detalhes" class="p-1" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -108,8 +108,8 @@
                                 <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
                             </div>
                             <div class="mt-auto text-end">
-                                <a title="Detalhes" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
-                                <a title="Gerar PDF" asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
+                                <a title="Detalhes" asp-controller="Aluno" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
+                                <a title="Gerar PDF" asp-controller="Aluno" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
