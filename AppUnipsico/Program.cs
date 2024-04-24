@@ -10,7 +10,7 @@ using ReflectionIT.Mvc.Paging;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("AzureDb");
+var connectionString = builder.Configuration.GetConnectionString("App");
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddPaging(options =>
