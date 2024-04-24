@@ -67,6 +67,7 @@ namespace AppUnipsico.Areas.Admin.Repositories
             htmlContent = htmlContent.Replace("{{DataInicioEstagio}}", estagio.DataEstagio.ToShortDateString());
             htmlContent = htmlContent.Replace("{{NomeInstituicaoEstagio}}", estagio.Instituicao.Nome);
             htmlContent = htmlContent.Replace("{{DataDaAssinatura}}", DateTime.Now.ToLongDateString());
+            htmlContent = htmlContent.Replace("{{EstagioId}}", estagio.EstagioId.ToString());
 
 
             return htmlContent;

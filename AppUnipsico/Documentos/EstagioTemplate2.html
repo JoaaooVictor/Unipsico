@@ -65,6 +65,7 @@
 </head>
 <body>
     <div class="container-fluid w-50 mt-5">
+
         <div class="header">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="w-25">
@@ -87,21 +88,23 @@
             <p>(RESPONSAVEL PELA INSTITUIÇÃO).</p>
             <p><strong>{{NomeInstituicaoEstagio}}</strong></strong>.</p>     
         </div>   
-        <div class="texto-estagio d-flex flex-column gap-2 mb-5">
+        <div class="texto-estagio d-flex flex-column gap-2 mb-3">
             <p style="text-indent: 0ch;">Prezado (a) Senhor (a),</p>
-            <p>Vimos, através desta, oficializar pedido de estágio em vossa instituição, para os alunos do 6º Semestre do curso de Psicologia da UNIFAAT.</p> 
-            <p>Entendemos que a atividade de estágio é uma importante complementação para a formação acadêmica e para a promoção da aproximação do aluno com a realidade de nossa comunidade.</p> 
-            <p>Para formalizar nossa proposta, encaminhamos, em anexo, o Plano de Estágio para vossa apreciação. Enfatizamos que se trata de um estágio obrigatório, na modalidade “observação”, correspondendo às exigências da disciplina “INCLUIR NOME DA MATÉRIA”, cujo objetivo é fazer com que o aluno entre em contato com a realidade da prática psicológica no contexto das Instituições.
-            <p>Diante do exposto, desde já agradecemos assim como nos colocamos à disposição para outros esclarecimentos.  </p>               
+            <p><strong>Aline Pinheiro Souza de Morais</strong> RG nº 34.708.911-2 SSP/SP, Coordenadora do Curso de Psicologia da UNIFAAT – CENTRO UNIVERSITÁRIO, apresenta a V.Sª. e solicita permissão para que o(a) aluno(a) <strong>{{NomeDoAluno}}</strong>, portador do Registro Acadêmico (RA) <strong>{{NumeroDoRa}}</strong>, RG nº. <strong>(NÚMERO DE RG, COM DÍGITO)</strong> , regularmente matriculado(a) no 6° (sexto) semestre do curso de PSICOLOGIA desta Instituição de Ensino Superior, possa realizar estágio nessa conceituada Unidade, com inicio em <strong>{{DataInicioEstagio}}</strong>.</p>               
         </div>   
-        <!--<div>
-            <p><strong>Instituição Autorizadora:</strong> UNIFAAT UNIVERSIDADES</p>
-            <p>O, <strong>{{NomeDoAluno}}</strong>, portador do Registro Acadêmico (RA) <strong>{{NumeroDoRa}}</strong>, regularmente matriculado no curso de <strong>Psicologia</strong> no Centro Universitário UNIFAAT, por meio deste documento, está autorizado a realizar estágio na instituição <strong>{{NomeInstituicaoEstagio}}</strong>, localizada em <strong>{{Endereco}}</strong>.</p>
-            <p>Este estágio terá início em <strong>{{DataInicioEstagio}}</strong>.</p>
-            <div class="assinaturas">
-                <p><strong>Data:</strong> {{DataDaAssinatura}}</p>
-            </div>          
-        </div>-->   
+        <div class="texto-estagio d-flex flex-column gap-2 mb-3">
+            <p>Contando com a atenção de V.Sª., subscrevo-me,</p>
+            <p>Atenciosamente,</p>               
+        </div>  
+        <div class="d-flex flex-column gap-2 mb-3 align-items-center">
+            <img class="img-thumbnail w-50" style="border: none" src="/wwwroot/img/unifaat/assinatura.jpg" alt="Assinatura responsavel">
+            <p> <strong>Aline Pinheiro de Souza</strong></p> 
+            <p><strong>CPF 214.619.068-06</strong></p> 
+            <p><strong>CRP06/108.777</strong></p>
+        </div>
+
+
+
     </div>
 </body>
 </html>
