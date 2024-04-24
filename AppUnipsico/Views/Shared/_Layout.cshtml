@@ -4,16 +4,37 @@
 @{
     var user = await userManager.GetUserAsync(User);
 }
+<!--
+=========================================================
+* Argon Dashboard 2 - v2.0.4
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="~/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link id="pagestyle" href="~/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+    <meta charset="utf-8" />
     <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="icon" href="~/assets/icone-unifaat.ico" asp-append-version="true" />
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="~/assets/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true">
     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -23,229 +44,266 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 <body class="g-sidenav-show bg-gray-100">
-    <div class="min-height-150 cor-unifaat position-absolute w-100 top-0"></div>
-    <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4" id="sidenav-main">
-        <div class="sidenav-header">
-            <a class="navbar-brand m-0 text-center" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="~/assets/img/unifaat/logo-unipsico-azul.svg" class="navbar-brand-img h-100" alt="main_logo">
-            </a>
-        </div>
-        <hr class="horizontal dark mt-0">
-        <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
-            <ul class="navbar-nav">
-                @if (signInManager.IsSignedIn(User))
-                {
-                    if (User.IsInRole("Paciente"))
+    <div class="min-height-150 position-absolute w-100" style="background-color:#00365d"></div>
+    <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main">
+            <div class="sidenav-header">
+                <a class="navbar-brand m-0 text-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/assets/img/unifaat/logo-unipsico-azul.svg" class="navbar-brand-img h-100" alt="main_logo">
+                </a>
+            </div>
+            <hr class="horizontal dark mt-0">
+            <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+                <ul class="navbar-nav">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        if (User.IsInRole("Paciente"))
+                        {
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="" asp-controller="Datas" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-calendar-grid-58 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Datas Disponíveis</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="" asp-controller="Consulta" asp-action="ConsultaPaciente">
+                                    <div class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-file-earmark-post text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Consultas</span>
+                                </a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Perfil da Conta</h6>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="nav-link">
+                                    <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; margin:0 0 0 0.1em; cursor: pointer;">
+                                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                            <i class="ni ni-button-power text-sm opacity-10" style="color: #00365d"></i>
+                                        </div>
+                                        <span class="nav-link-text ms-1">@user.NomeCompleto</span>
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-tv-2 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="Admin" asp-controller="AdminConsultas" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-single-copy-04 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Consultas</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-single-02 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Usuários</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="Admin" asp-controller="AdminDatas" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-calendar-grid-58 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Datas de Consultas</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="Admin" asp-controller="AdminEstagios" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-hat-3 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Estágios</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-building text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Instituições</span>
+                                </a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Perfil</h6>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="nav-link">
+                                    <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; margin:0 0 0 0.1em; cursor: pointer;">
+                                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                            <i class="ni ni-button-power text-sm opacity-10" style="color: #00365d"></i>
+                                        </div>
+                                        <span class="nav-link-text ms-1">@user.NomeCompleto</span>
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else if (User.IsInRole("Aluno"))
+                        {
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="Aluno" asp-controller="Aluno" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-tv-2 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link " asp-area="Aluno" asp-controller="Aluno" asp-action="Estagios">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-archive-2 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Estágios</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link " asp-area="Aluno" asp-controller="Aluno" asp-action="Presencas">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-hat-3 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Presenças</span>
+                                </a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Perfil da Conta</h6>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="nav-link">
+                                    <button type="submit" class="nav-link" style="background: none; border: none; padding: 0;margin:0 0 0 0.1em; cursor: pointer;">
+                                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                            <i class="ni ni-button-power text-sm opacity-10" style="color: #00365d"></i>
+                                        </div>
+                                        <span class="nav-link-text ms-1">@user.NomeCompleto</span>
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else if (User.IsInRole("Professor"))
+                        {
+                            <li class="nav-item d-flex justify-content-start">
+                                <a class="nav-link" asp-area="Admin" asp-controller="AdminEstagios" asp-action="Index">
+                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="ni ni-hat-3 text-sm opacity-10" style="color: #00365d"></i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Estágios</span>
+                                </a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Perfil da Conta</h6>
+                            </li>
+                            <li class="nav-item d-flex justify-content-start">
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="nav-link">
+                                    <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; margin:0 0 0 0.1em;  cursor: pointer;">
+                                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                            <i class="ni ni-button-power text-sm opacity-10" style="color: #00365d"></i>
+                                        </div>
+                                        <span class="nav-link-text ms-1">@user.NomeCompleto</span>
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                    }
+                    else
                     {
                         <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="" asp-controller="Datas" asp-action="Index">
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">
                                 <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-calendar-grid-58 text-sm opacity-10" style="color: #00365d"></i>
+                                    <i class="ni ni-circle-08 text-sm opacity-10" style="color: #00365d"></i>
                                 </div>
-                                <span class="nav-link-text ms-1">Datas Disponíveis</span>
+                                <span class="nav-link-text ms-1">Login</span>
                             </a>
                         </li>
                         <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="" asp-controller="Consulta" asp-action="ConsultaPaciente">
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">
                                 <div class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-file-earmark-post text-sm opacity-10" style="color: #00365d"></i>
+                                    <i class="bi bi-person-plus-fill" style="color: #00365d"></i>
                                 </div>
-                                <span class="nav-link-text ms-1">Consultas</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Perfil da Conta</h6>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="nav-link">
-                                <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; margin:0 0 0 0.1em; cursor: pointer;">
-                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="ni ni-button-power text-sm opacity-10" style="color: #00365d"></i>
-                                    </div>
-                                    <span class="nav-link-text ms-1">@user.NomeCompleto</span>
-                                </button>
-                            </form>
-                        </li>
-                    }
-                    else if (User.IsInRole("Admin"))
-                    {
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-tv-2 text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Dashboard</span>
+                                <span class="nav-link-text ms-1">Registrar</span>
                             </a>
                         </li>
                         <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminConsultas" asp-action="Index">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-single-copy-04 text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Consultas</span>
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Index">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-single-02 text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Usuários</span>
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminDatas" asp-action="Index">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-calendar-grid-58 text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Datas de Consultas</span>
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminEstagios" asp-action="Index">
+                            <a class="nav-link" asp-area="" asp-controller="Estagios" asp-action="Index">
                                 <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="ni ni-hat-3 text-sm opacity-10" style="color: #00365d"></i>
                                 </div>
-                                <span class="nav-link-text ms-1">Estágios</span>
+                                <span class="nav-link-text ms-1">Buscar Estágios</span>
                             </a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminInstituicoes" asp-action="Index">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-building text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Instituições</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Perfil</h6>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="nav-link">
-                                <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; margin:0 0 0 0.1em; cursor: pointer;">
-                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="ni ni-button-power text-sm opacity-10" style="color: #00365d"></i>
-                                    </div>
-                                    <span class="nav-link-text ms-1">@user.NomeCompleto</span>
-                                </button>
-                            </form>
                         </li>
                     }
-                    else if (User.IsInRole("Aluno"))
-                    {
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="Aluno" asp-controller="Aluno" asp-action="Index">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-tv-2 text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link " asp-area="Aluno" asp-controller="Aluno" asp-action="Estagios">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-archive-2 text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Estágios</span>
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link " asp-area="Aluno" asp-controller="Aluno" asp-action="Presencas">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-hat-3 text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Presenças</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Perfil da Conta</h6>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="nav-link">
-                                <button type="submit" class="nav-link" style="background: none; border: none; padding: 0;margin:0 0 0 0.1em; cursor: pointer;">
-                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="ni ni-button-power text-sm opacity-10" style="color: #00365d"></i>
-                                    </div>
-                                    <span class="nav-link-text ms-1">@user.NomeCompleto</span>
-                                </button>
-                            </form>
-                        </li>
-                    }
-                    else if (User.IsInRole("Professor"))
-                    {
-                        <li class="nav-item d-flex justify-content-start">
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminEstagios" asp-action="Index">
-                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-hat-3 text-sm opacity-10" style="color: #00365d"></i>
-                                </div>
-                                <span class="nav-link-text ms-1">Estágios</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Perfil da Conta</h6>
-                        </li>
-                        <li class="nav-item d-flex justify-content-start">
-                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="nav-link">
-                                <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; margin:0 0 0 0.1em;  cursor: pointer;">
-                                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="ni ni-button-power text-sm opacity-10" style="color: #00365d"></i>
-                                    </div>
-                                    <span class="nav-link-text ms-1">@user.NomeCompleto</span>
-                                </button>
-                            </form>
-                        </li>
-                    }
-                }
-                else
-                {
-                    <li class="nav-item d-flex justify-content-start">
-                        <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">
-                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-circle-08 text-sm opacity-10" style="color: #00365d"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Login</span>
-                        </a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-start">
-                        <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">
-                            <div class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="bi bi-person-plus-fill" style="color: #00365d"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Registrar</span>
-                        </a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-start">
-                        <a class="nav-link" asp-area="" asp-controller="Estagios" asp-action="Index">
-                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-hat-3 text-sm opacity-10" style="color: #00365d"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Buscar Estágios</span>
-                        </a>
-                    </li>
-                }
-            </ul>
-        </div>
+                </ul>
+            </div>
     </aside>
-    <main class="main-content position-relative border-radius-lg ">
-        @RenderBody()
-    </main>
-    <footer class="border-top footer-unifaat text-muted bg-white">
-        <div class="container d-flex justify-content-center">
-            <p class="text-justify fs-6 text-muted m-2">Desenvolvido por <strong>João Victor</strong> &amp; <strong>Renan Lima</strong></p>
-            <p class="text-justify fs-6 text-muted m-2">&copy; 2024 - Todos os direitos reservados</p>
+    <main class="main-content position-relative border-radius-lg">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+            <div class="container-fluid py-1 px-3">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid py-4">
+            @RenderBody()
         </div>
-    </footer>
-    <br />
-    <br />
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
+    </main>
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+            <i class="fa fa-cog py-2"> </i>
+        </a>
+        <div class="card shadow-lg">
+            <div class="card-header pb-0 pt-3 ">
+                <div class="float-start">
+                    <h5 class="mt-3 mb-0">Cores</h5>
+                    <p>Veja as opções de Dashboard.</p>
+                </div>
+            </div>
+            <hr class="horizontal dark my-1">
+            <div class="card-body pt-sm-3 pt-0 overflow-auto">
+                <!-- Sidenav Type -->
+                <div class="mt-3">
+                    <h6 class="mb-0">Tipos de SideMenus</h6>
+                    <p class="text-sm">Escolha entre os dois tipos.</p>
+                </div>
+                <div class="d-flex">
+                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white" onclick="sidebarType(this)">White Mode</button>
+                    <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default" onclick="sidebarType(this)">Dark Mode</button>
+                </div>
+                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+                <hr class="horizontal dark my-sm-4">
+                <div class="mt-2 mb-5 d-flex">
+                    <h6 class="mb-0">Light / Dark</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -329,17 +387,33 @@
             },
         });
     </script>
-    <script src="~/assets/js/site.js"></script>
-    <script src="~/assets/js/argon-dashboard.js"></script>
     <script src="~/assets/js/core/popper.min.js"></script>
     <script src="~/assets/js/core/bootstrap.min.js"></script>
+    <script src="~/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <script src="~/assets/js/site.js"></script>
+    <script src="~/assets/js/argon-dashboard.js"></script>
     <script src="~/assets/js/argon-dashboard.min.js"></script>
+    <script src="~/assets/js/plugins/chartjs.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/assets/js/core/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="~/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>
 
+</html>
