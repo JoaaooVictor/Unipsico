@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppUnipsico.Migrations
 {
     [DbContext(typeof(AppUnipsicoDb))]
-    [Migration("20240407173501_DBGeral")]
-    partial class DBGeral
+    [Migration("20240424110422_DbGeral")]
+    partial class DbGeral
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -113,7 +113,10 @@ namespace AppUnipsico.Migrations
                     b.Property<string>("Logradouro")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("NomeInstituicao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeResponsavelInstituicao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Numero")

@@ -110,7 +110,10 @@ namespace AppUnipsico.Migrations
                     b.Property<string>("Logradouro")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("NomeInstituicao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeResponsavelInstituicao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Numero")

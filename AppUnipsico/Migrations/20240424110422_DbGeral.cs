@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AppUnipsico.Migrations
 {
     /// <inheritdoc />
-    public partial class DBGeral : Migration
+    public partial class DbGeral : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -74,7 +74,8 @@ namespace AppUnipsico.Migrations
                 columns: table => new
                 {
                     InstituicaoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomeInstituicao = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomeResponsavelInstituicao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Logradouro = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Complemento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Numero = table.Column<string>(type: "nvarchar(max)", nullable: true),

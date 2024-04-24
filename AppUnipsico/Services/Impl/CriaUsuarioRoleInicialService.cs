@@ -68,7 +68,7 @@ namespace AppUnipsico.Services.Impl
                 user.TipoUsuario = TipoUsuarioEnum.Paciente;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                IdentityResult result = _userManager.CreateAsync(user, "Paciente123#").Result;
+                IdentityResult result = _userManager.CreateAsync(user, "123#Paciente").Result;
 
                 if (result.Succeeded)
                 {
@@ -91,7 +91,7 @@ namespace AppUnipsico.Services.Impl
                 user.TipoUsuario = TipoUsuarioEnum.Professor;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                IdentityResult result = _userManager.CreateAsync(user, "Professor123#").Result;
+                IdentityResult result = _userManager.CreateAsync(user, "123#Professor").Result;
 
                 if (result.Succeeded)
                 {
@@ -115,7 +115,7 @@ namespace AppUnipsico.Services.Impl
                 user.TipoUsuario = TipoUsuarioEnum.Aluno;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                IdentityResult result = _userManager.CreateAsync(user, "Aluno123#").Result;
+                IdentityResult result = _userManager.CreateAsync(user, "123#Aluno").Result;
 
                 if (result.Succeeded)
                 {
@@ -138,7 +138,7 @@ namespace AppUnipsico.Services.Impl
                 user.TipoUsuario = TipoUsuarioEnum.Admin;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                IdentityResult result = _userManager.CreateAsync(user, "Admin123#").Result;
+                IdentityResult result = _userManager.CreateAsync(user, "123#Admin").Result;
 
                 if (result.Succeeded)
                 {

@@ -22,6 +22,13 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="form-group">
+                                <label asp-for="NomeResponsavelInstituicao" class="control-label">Nome do Responsável:</label>
+                                <input asp-for="NomeResponsavelInstituicao" class="form-control" />
+                                <span asp-validation-for="NomeResponsavelInstituicao" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-6">
                                 <label asp-for="Logradouro" class="control-label">Logradouro:</label>
                                 <input asp-for="Logradouro" class="form-control" />

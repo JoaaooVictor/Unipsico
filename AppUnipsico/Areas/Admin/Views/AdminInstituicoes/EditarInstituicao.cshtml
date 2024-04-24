@@ -19,9 +19,16 @@
                         <input type="hidden" asp-for="InstituicaoId" />
                         <div class="row">
                             <div class="form-group">
-                                <label asp-for="Nome" class="control-label">Nome:</label>
-                                <input asp-for="Nome" class="form-control" />
-                                <span asp-validation-for="Nome" class="text-danger"></span>
+                                <label asp-for="NomeInstituicao" class="control-label">Nome:</label>
+                                <input asp-for="NomeInstituicao" class="form-control" />
+                                <span asp-validation-for="NomeInstituicao" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label asp-for="NomeResponsavelInstituicao" class="control-label">Nome do Responsável:</label>
+                                <input asp-for="NomeResponsavelInstituicao" class="form-control" />
+                                <span asp-validation-for="NomeResponsavelInstituicao" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">

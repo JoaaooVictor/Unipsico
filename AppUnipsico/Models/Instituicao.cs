@@ -3,7 +3,8 @@
     public class Instituicao
     {
         public Guid InstituicaoId { get; set; }
-        public string Nome { get; set; }
+        public string NomeInstituicao { get; set; }
+        public string NomeResponsavelInstituicao { get; set; }
         public string Logradouro { get; set; }
         public string Complemento { get; set; }
         public string Numero { get; set; }

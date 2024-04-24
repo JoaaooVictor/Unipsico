@@ -56,7 +56,8 @@ namespace AppUnipsico.Areas.Admin.Controllers
                 var instituicao = new Instituicao()
                 {
                     InstituicaoId = Guid.NewGuid(),
-                    Nome = instituicaoViewModel.Nome,
+                    NomeInstituicao = instituicaoViewModel.Nome,
+                    NomeResponsavelInstituicao = instituicaoViewModel.NomeResponsavelInstituicao,
                     Logradouro = instituicaoViewModel.Logradouro,
                     Complemento = instituicaoViewModel.Complemento,
                     Cidade = instituicaoViewModel.Cidade,

@@ -15,6 +15,7 @@
                     <thead class="text-white cor-unifaat">
                         <tr>
                             <th class="text-center" scope="col">Nome</th>
+                            <th class="text-center" scope="col">Nome Responsável</th>
                             <th class="text-center" scope="col">Logradouro</th>
                             <th class="text-center" scope="col">Complemento</th>
                             <th class="text-center" scope="col">Número</th>
@@ -28,7 +29,8 @@
                         @foreach (var instituicao in Model)
                         {
                             <tr>
-                                <td class="text-center">@instituicao.Nome</td>
+                                <td class="text-center">@instituicao.NomeInstituicao</td>
+                                <td class="text-center">@instituicao.NomeResponsavelInstituicao</td>
                                 <td class="text-center">@instituicao.Logradouro</td>
                                 <td class="text-center">@instituicao.Complemento</td>
                                 <td class="text-center">@instituicao.Numero</td>
