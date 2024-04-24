@@ -2,18 +2,20 @@
     ViewData["Title"] = "Estágio não encontrado";
 }
 
-<div class="container-fluid p-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-secondary text-yellow text-center border-0">
-                    <h3 class="mb-0"><i class="fas fa-exclamation-triangle mr-2"></i>Estágio não encontrado</h3>
-                </div>
-                <div class="card-body">
-                    <p class="text-center">O estágio que você está procurando não foi encontrado. Por favor, verifique o Id do estágio e tente novamente.</p>
-                    <div class="text-center">
-                        <a asp-controller="Estagios" asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-arrow-left mr-2"></i>Voltar para a busca de estágio</a>
-                    </div>
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h3 class="mb-3 text-left" style="color: white">Detalhes do estágio</h3>
+    </div>
+    <hr />
+    <div class="d-flex justify-content-center">
+        <div class="card col-4 text-center">
+            <div class="card-header bg-warning p-1">
+                <h3><i class="fas fa-exclamation-triangle"></i>Estágio não encontrado</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-center">O estágio que você está procurando não foi encontrado. Por favor, verifique o Id do estágio e tente novamente.</p>
+                <div class="text-center">
+                    <a asp-controller="Estagios" asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-arrow-left"></i>Voltar para a busca de estágio</a>
                 </div>
             </div>
         </div>

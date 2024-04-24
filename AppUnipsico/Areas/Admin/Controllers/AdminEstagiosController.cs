@@ -97,6 +97,7 @@ namespace AppUnipsico.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Instituicoes = await _instituicoesRepository.BuscarInstituicoes();
             return View(estagioViewModel);
         }
 

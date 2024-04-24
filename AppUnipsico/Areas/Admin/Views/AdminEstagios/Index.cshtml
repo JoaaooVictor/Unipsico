@@ -34,99 +34,93 @@
     </form>
 
     <br />
-    <h3 class="text-left mb-3">Estágios Pendentes</h3>
-    <div class="bg-light mb-4 p-5" style="border-radius: 15px">
-        <div class="row justify-content-center">
-            @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Solicitado))
-            {
-                <div class="col-md-2 mb-2 m-2">
-                    <div class="card" style="border-top: 5px solid #e3b427">
-                        <div class="card-body d-flex flex-column">
-                            <div>
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
-                                <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
-                                <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
-                                <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
-                            </div>
-                            <div class="text-center mt-2">
-                                <a class="p-2" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
-                                <a class="p-2" asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
-                                <a class="p-2" asp-controller="AdminEstagios" asp-action="AprovarEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-thumbs-up fa-lg"></i></a>
-                                <a class="p-2" asp-controller="AdminEstagios" asp-action="ReprovarEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-thumbs-down fa-lg"></i></a>
-                            </div>
+    <h3 class="text-left mb-3" style="color: #e3b427;">Estágios Pendentes</h3>
+    <div class="row justify-content-left">
+        @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Solicitado))
+        {
+            <div class="col-md-2 mb-2 m-2">
+                <div class="card" style="border-top: 5px solid #e3b427">
+                    <div class="card-body d-flex flex-column">
+                        <div>
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
+                            <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
+                            <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
+                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                        </div>
+                        <div class="text-center mt-2">
+                            <a title="Detalhes" class="p-2" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
+                            <a title="Gerar PDF" class="p-2" asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
+                            <a title="Aprovar" class="p-2" asp-controller="AdminEstagios" asp-action="AprovarEstagio" asp-route-EstagioId="@estagio.EstagioId"><i style="color:forestgreen" class="fas fa-thumbs-up fa-lg"></i></a>
+                            <a title="Reprovar" class="p-2" asp-controller="AdminEstagios" asp-action="ReprovarEstagio" asp-route-EstagioId="@estagio.EstagioId"><i style="color:darkred" class="fas fa-thumbs-down fa-lg"></i></a>
                         </div>
                     </div>
                 </div>
-            }
-            @if (!Model.Any(e => e.StatusEstagio == EstagioEnum.Solicitado))
-            {
-                <div class="col-md-12 text-center">
-                    <p>Nenhum estágio pendente encontrado.</p>
-                </div>
-            }
-        </div>
+            </div>
+        }
+        @if (!Model.Any(e => e.StatusEstagio == EstagioEnum.Solicitado))
+        {
+            <div class="col-md-12 text-center">
+                <p>Nenhum estágio pendente encontrado.</p>
+            </div>
+        }
     </div>
     <br />
-    <h3 class="text-left mb-3">Estágios Aprovados</h3>
-    <div class="bg-light mb-4 p-5" style="border-radius: 15px">
-        <div class="row justify-content-center">
-            @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Aprovado))
-            {
-                <div class="col-md-2 mb-2 m-2">
-                    <div class="card" style="border-top: 5px solid #2dce89">
-                        <div class="card-body d-flex flex-column">
-                            <div>
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
-                                <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
-                                <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
-                                <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
-                            </div>
-                            <div class="mt-auto text-end">
-                                <a asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
-                                <a asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
-                            </div>
+    <h3 class="text-left mb-3" style="color: #2dce89">Estágios Aprovados</h3>
+    <div class="row justify-content-left">
+        @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Aprovado))
+        {
+            <div class="col-md-2 mb-2 m-2">
+                <div class="card" style="border-top: 5px solid #2dce89">
+                    <div class="card-body d-flex flex-column">
+                        <div>
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
+                            <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
+                            <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
+                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                        </div>
+                        <div class="mt-auto text-end">
+                            <a title="Detalhes" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
+                            <a title="Gerar PDF" asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
-            }
-            @if (!Model.Any(e => e.StatusEstagio == EstagioEnum.Aprovado))
-            {
-                <div class="col-md-12 text-center">
-                    <p>Nenhum estágio aprovado encontrado.</p>
-                </div>
-            }
-        </div>
+            </div>
+        }
+        @if (!Model.Any(e => e.StatusEstagio == EstagioEnum.Aprovado))
+        {
+            <div class="col-md-12 text-center">
+                <p>Nenhum estágio aprovado encontrado.</p>
+            </div>
+        }
     </div>
     <br />
-    <h3 class="mb-3 text-left">Estágios Reprovados</h3>
-    <div class="bg-light mb-4 p-5" style="border-radius: 15px">
-        <div class="row justify-content-center">
-            @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Reprovado))
-            {
-                <div class="col-md-2 mb-2 m-2">
-                    <div class="card" style="border-top: 5px solid #f5365c">
-                        <div class="card-body d-flex flex-column">
-                            <div>
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
-                                <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
-                                <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
-                                <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
-                            </div>
-                            <div class="mt-auto text-end">
-                                <a asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
-                                <a asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
-                            </div>
+    <h3 class="mb-3 text-left" style="color: #f5365c">Estágios Reprovados</h3>
+    <div class="row justify-content-left">
+        @foreach (var estagio in Model.Where(e => e.StatusEstagio == EstagioEnum.Reprovado))
+        {
+            <div class="col-md-2 mb-2 m-2">
+                <div class="card" style="border-top: 5px solid #f5365c">
+                    <div class="card-body d-flex flex-column">
+                        <div>
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
+                            <h6 class="font-weight-bolder">@estagio.Instituicao.Nome</h6>
+                            <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
+                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                        </div>
+                        <div class="mt-auto text-end">
+                            <a title="Detalhes" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
+                            <a title="Gerar PDF" asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
-            }
-            @if (!Model.Any(e => e.StatusEstagio == EstagioEnum.Reprovado))
-            {
-                <div class="col-md-12 text-center">
-                    <p>Nenhum estágio reprovado encontrado.</p>
-                </div>
-            }
-        </div>
+            </div>
+        }
+        @if (!Model.Any(e => e.StatusEstagio == EstagioEnum.Reprovado))
+        {
+            <div class="col-md-12 text-center">
+                <p>Nenhum estágio reprovado encontrado.</p>
+            </div>
+        }
     </div>
     @if (!Model.Any())
     {

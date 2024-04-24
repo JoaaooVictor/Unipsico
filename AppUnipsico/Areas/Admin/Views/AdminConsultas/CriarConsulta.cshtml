@@ -1,4 +1,7 @@
 ﻿@model CriaConsultaViewModel
+@{
+    ViewData["Title"] = "Agendar Consulta";
+}
 
 <div class="container-fluid">
     <div class="p-3 mb-3">
@@ -12,7 +15,7 @@
                     <form asp-area="Admin" asp-controller="AdminConsultas" asp-action="CriarConsultaConfirmada" method="post">
                         <h4 class="text-center mb-4">Selecionar Data</h4>
                         <div class="row mb-4">
-                            <div class="col">                            
+                            <div class="col">
                                 <select id="DataId" name="DataId" asp-for="DataId" class="form-select">
                                     @foreach (var data in ViewBag.DatasDisponiveis)
                                     {
@@ -38,6 +41,9 @@
         </div>
     </div>
 </div>
-<script>
-    $('#cpfPaciente').mask('000.000.000-00', { reverse: false });
-</script>
+
+@section Scripts {
+    <script>
+        $('#cpfPaciente').mask('000.000.000-00', { reverse: false });
+    </script>
+}

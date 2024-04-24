@@ -1,41 +1,44 @@
 ﻿@model EstagioViewModel
-
-<section class="tela-login">
-    <div class="container py-5 h-100">
-        <div class="row d-flex align-items-center justify-content-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card">
-                    <div class="card-body p-5">
-                        <h3 class="mb-5">Novo Estágio</h3>
-                        <form asp-controller="AdminEstagios" asp-action="CriarEstagio" method="post">
-                            <div class="mb-4">
-                                <input asp-for="DataEstagio" type="date" class="form-control" />
-                                <label asp-for="DataEstagio" class="form-label">Data de Início do Estágio</label>
-                                <span asp-validation-for="DataEstagio" class="text-danger"></span>
-                            </div>
-                            <div class="mb-4">
-                                <input asp-for="AlunoRa" class="form-control" />
-                                <label asp-for="AlunoRa" class="form-label font-weight-bold">RA do Aluno</label>
-                                <span asp-validation-for="AlunoRa" class="text-danger"></span>
-                            </div>
-                            <div class="mb-4">
-                                <select asp-for="Instituicao.InstituicaoId" class="form-control">
-                                    <option value="">Selecione a Instituição</option>
-                                    @foreach (var instituicao in ViewBag.Instituicoes)
-                                    {
-                                        <option value="@instituicao.InstituicaoId">@instituicao.Nome</option>
-                                    }
-                                </select>
-                                <span asp-validation-for="Instituicao.InstituicaoId" class="text-danger"></span>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn botoes-cor1 btn-block">Registrar Estágio</button>
-                                <a asp-area="Admin" asp-controller="AdminEstagios" asp-action="Index" class="btn text-center botoes-cor2">Voltar</a>
-                            </div>
-                        </form>
-                    </div>
+@{
+    ViewData["Title"] = "Agendar estágio";
+}
+<div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h3 class="mb-3 text-left" style="color: white">Estágios</h3>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card">
+                <div class="card-body p-5">
+                    <h3 class="mb-5">Novo Estágio</h3>
+                    <form asp-controller="AdminEstagios" asp-action="CriarEstagio" method="post">
+                        <div class="mb-4">
+                            <span asp-validation-for="DataEstagio" class="text-danger"></span>
+                            <input asp-for="DataEstagio" type="date" class="form-control" />
+                            <label asp-for="DataEstagio" class="form-label">Data de Início do Estágio</label>
+                        </div>
+                        <div class="mb-4">
+                            <span asp-validation-for="AlunoRa" class="text-danger"></span>
+                            <input asp-for="AlunoRa" class="form-control" />
+                            <label asp-for="AlunoRa" class="form-label font-weight-bold">RA do Aluno</label>
+                        </div>
+                        <div class="mb-4">
+                            <span asp-validation-for="Instituicao.InstituicaoId" class="text-danger"></span>
+                            <select asp-for="Instituicao.InstituicaoId" class="form-control">
+                                <option value="">Selecione a Instituição</option>
+                                @foreach (var instituicao in ViewBag.Instituicoes)
+                                {
+                                    <option value="@instituicao.InstituicaoId">@instituicao.Nome</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn botoes-cor1 btn-block">Registrar Estágio</button>
+                            <a asp-area="Admin" asp-controller="AdminEstagios" asp-action="Index" class="btn text-center botoes-cor2">Voltar</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>

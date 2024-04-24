@@ -9,7 +9,6 @@
         <h3 class="text-left" style="color: white">Detalhes da Instituição</h3>
     </div>
     <br />
-    <hr />
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -18,43 +17,49 @@
                     <form asp-action="SalvarEdicaoInstituicao" asp-controller="AdminInstituicoes" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="InstituicaoId" />
-                        <div class="form-group">
-                            <label asp-for="Nome" class="control-label">Nome:</label>
-                            <input asp-for="Nome" class="form-control" />
-                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        <div class="row">
+                            <div class="form-group">
+                                <label asp-for="Nome" class="control-label">Nome:</label>
+                                <input asp-for="Nome" class="form-control" />
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Logradouro" class="control-label">Logradouro:</label>
-                            <input asp-for="Logradouro" class="form-control" />
-                            <span asp-validation-for="Logradouro" class="text-danger"></span>
+                        <div class="row">
+                            <div class="col-6">
+                                <label asp-for="Logradouro" class="control-label">Logradouro:</label>
+                                <input asp-for="Logradouro" class="form-control" />
+                                <span asp-validation-for="Logradouro" class="text-danger"></span>
+                            </div>
+                            <div class="col-4">
+                                <label asp-for="Complemento" class="control-label">Complemento:</label>
+                                <input asp-for="Complemento" class="form-control" />
+                                <span asp-validation-for="Complemento" class="text-danger"></span>
+                            </div>
+                            <div class="col-2">
+                                <label asp-for="Numero" class="control-label">Número:</label>
+                                <input asp-for="Numero" class="form-control" />
+                                <span asp-validation-for="Numero" class="text-danger"></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Complemento" class="control-label">Complemento:</label>
-                            <input asp-for="Complemento" class="form-control" />
-                            <span asp-validation-for="Complemento" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Numero" class="control-label">Número:</label>
-                            <input asp-for="Numero" class="form-control" />
-                            <span asp-validation-for="Numero" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Bairro" class="control-label">Bairro:</label>
-                            <input asp-for="Bairro" class="form-control" />
-                            <span asp-validation-for="Bairro" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Cidade" class="control-label">Cidade:</label>
-                            <input asp-for="Cidade" class="form-control" />
-                            <span asp-validation-for="Cidade" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Cep" class="control-label">CEP:</label>
-                            <input asp-for="Cep" class="form-control" />
-                            <span asp-validation-for="Cep" class="text-danger"></span>
+                        <div class="row">
+                            <div class="col-5">
+                                <label asp-for="Bairro" class="control-label">Bairro:</label>
+                                <input asp-for="Bairro" class="form-control" />
+                                <span asp-validation-for="Bairro" class="text-danger"></span>
+                            </div>
+                            <div class="col-5">
+                                <label asp-for="Cidade" class="control-label">Cidade:</label>
+                                <input asp-for="Cidade" class="form-control" />
+                                <span asp-validation-for="Cidade" class="text-danger"></span>
+                            </div>
+                            <div class="col-2">
+                                <label asp-for="Cep" class="control-label">CEP:</label>
+                                <input asp-for="Cep" id="cep" class="form-control" />
+                                <span asp-validation-for="Cep" class="text-danger"></span>
+                            </div>
                         </div>
                         <br />
-                        <div class="form-group">
+                        <div class="text-center">
                             <button type="submit" class="btn btn-primary col-5">Salvar</button>
                             <a asp-controller="AdminInstituicoes" asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
                         </div>
@@ -64,3 +69,9 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $('#cep').mask('00000-000', { reverse: false });
+    </script>
+}
