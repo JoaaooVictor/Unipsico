@@ -28,7 +28,7 @@
                                     <option value="">Selecione a Instituição</option>
                                     @foreach (var instituicao in ViewBag.Instituicoes)
                                     {
-                                        <option value="@instituicao.InstituicaoId">@instituicao.Nome</option>
+                                        <option value="@instituicao.InstituicaoId">@instituicao.NomeInstituicao</option>
                                     }
                                 </select>
                                 <span asp-validation-for="Instituicao.InstituicaoId" class="text-danger"></span>
