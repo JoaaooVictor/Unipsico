@@ -13,8 +13,7 @@
         <a class="btn d-flex justify-content-center align-items-center gap-2 text-center form-control btn-success w-50 " asp-action="CriarEstagio"><i class="fa-lg bi-file-earmark-pdf"></i>Criar Estágio</a>
     </div>
     <form method="post">
-        <div class="row justify-content-center mb-3">
-            <br />
+        <div class="row justify-content-center mb-3 mt-3">
             <div class="col-md-2">
                 <div class="form-group text-center text-white">
                     <label for="dataInicio">Data de Início:</label>
@@ -51,7 +50,7 @@
                             <a title="Detalhes" class="p-2" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
                             <a title="Gerar PDF" class="p-2" asp-controller="AdminEstagios" asp-action="GerarPdfEstagio" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-file-pdf fa-lg" aria-hidden="true"></i></a>
                             <a title="Aprovar" class="p-2" asp-controller="AdminEstagios" asp-action="AprovarEstagio" asp-route-EstagioId="@estagio.EstagioId"><i style="color:forestgreen" class="fas fa-thumbs-up fa-lg"></i></a>
-                            <a title="Reprovar" class="p-2" asp-controller="AdminEstagios" asp-action="ReprovarEstagio" asp-route-EstagioId="@estagio.EstagioId"><i style="color:darkred" class="fas fa-thumbs-down fa-lg"></i></a>
+                            <a title="Reprovar" class="p-2" asp-controller="AdminEstagios" asp-action="ReprovarEstagio" asp-route-EstagioId="@estagio.EstagioId"><i style="color:red" class="fas fa-thumbs-down fa-lg"></i></a>
                         </div>
                     </div>
                 </div>
