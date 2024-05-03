@@ -1,0 +1,13 @@
+﻿.card-principal {
+    border-top: 5px solid #38a84d
+}
+
+.textos-cards {
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold
+}
+
+.textos-cards-secundario {
+    font-size: 16px
+}

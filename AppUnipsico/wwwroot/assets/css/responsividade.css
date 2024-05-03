@@ -1,0 +1,11 @@
+﻿@media (max-width: 450px) {
+    .responsividade-textos-cabecalho-paciente {
+        text-align: center !important
+    }
+}
+
+@media (max-width: 280px) {
+    .responsividade-textos-cabecalho-paciente {
+        font-size: 18px
+    }
+}

@@ -6,13 +6,14 @@
 
 <div class="container-fluid">
     <div class="p-3 mb-3">
-        <h3 class="text-left" style="color: white">Suas Consultas</h3>
+        <h3 class="text-left responsividade-textos-cabecalho-paciente" style="color: white">Suas Consultas</h3>
     </div>
     <hr />
-    <div class="card">
-        <div class="card-body">
-            @if (Model.Consultas.Any())
-            {
+
+    @if (Model.Consultas.Any())
+    {
+        <div class="card">
+            <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -20,7 +21,6 @@
                                 <th class="text-center">Data da Consulta</th>
                                 <th class="text-center">Horário da Consulta</th>
                                 <th class="text-center">Status</th>
-                                <th class="text-center">Data de Nascimento</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,19 +30,24 @@
                                     <td class="text-center">@consulta.DataConsulta.Data.ToShortDateString()</td>
                                     <td class="text-center">@consulta.DataConsulta.Data.ToShortTimeString()</td>
                                     <td class="text-center">@consulta.StatusConsulta</td>
-                                    <td class="text-center">@consulta.Usuario.DataNascimento.ToShortDateString()</td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                 </div>
-            }
-            else
-            {
-                <div class="text-center">
-                    <p class="lead">Você não possui consultas agendadas no momento.</p>
-                </div>
-            }
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="row justify-content-center mt-6">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-center">Você não possui consultas agendadas no momento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>

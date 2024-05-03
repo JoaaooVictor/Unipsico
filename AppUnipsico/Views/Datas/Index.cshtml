@@ -8,27 +8,43 @@
 {
     <div class="container-fluid">
         <div class="p-3 mb-3">
-            <h3 class="text-left" style="color: white">Datas Disponíveis para Agendamento</h3>
+            <h3 class="text-white text-left responsividade-textos-cabecalho-paciente">Datas Disponíveis para Agendamento</h3>
         </div>
-        <br />
-        <div class="row row-cols-1 row-cols-md-4">
-            @foreach (var dataDisponivel in Model.DatasDisponiveis)
-            {
-                <div class="col-md-2 mb-2 m-2">
-                    <div class="card" style="border-top: 5px solid #38a84d;">
-                        <div class="card-body d-flex flex-column">
-                            <div>
-                                <p class="card-title text-center" style="font-size: 18px; color: #000000; font-weight: bold;">@dataDisponivel.Data.ToString("dd/MM/yyyy")</p>
-                                <p class="card-title text-center" style="font-size: 18px; color: #000000; font-weight: bold;">@dataDisponivel.Data.ToString("hh:mm")</p>
-                                <p class="card-text text-center" style="font-size: 16px;">Descrição: Esta é uma data disponível para agendamento.</p>
+        @if (Model.DatasDisponiveis.Count() > 0)
+        {
+            <div class="row row-cols-1 row-cols-md-4 mt-6">
+                @foreach (var dataDisponivel in Model.DatasDisponiveis)
+                {
+                   <div class="col-md-2 mb-2 m-2">
+                        <div class="card card-principal">
+                            <div class="card-body d-flex flex-column">
+                                <div>
+                                    <p class="card-title text-center textos-cards">@dataDisponivel.Data.ToString("dd/MM/yyyy")</p>
+                                    <p class="card-title text-center textos-cards">@dataDisponivel.Data.ToString("hh:mm")</p>
+                                    <p class="card-text text-center textos-cards-secundario">Descrição: Esta é uma data disponível para agendamento.</p>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <a type="button" class="btn btn-success" asp-controller="Consulta" asp-action="ValidaEConfirmaConsultaNaSemana" asp-route-DataConsultaId="@dataDisponivel.Id">Confirmar Agendamento</a>
+                                </div>
                             </div>
-                            <div class="text-center mt-2">
-                                <a type="button" class="btn btn-success" asp-controller="Consulta" asp-action="ValidaEConfirmaConsultaNaSemana" asp-route-DataConsultaId="@dataDisponivel.Id">Confirmar Agendamento</a>
-                            </div>
+                        </div>
+                   </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="row justify-content-center mt-6">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center card-title">Mensagem:</h4>
+                            <p class="text-center">Nenhuma data de consulta disponível no momento.</p>
                         </div>
                     </div>
                 </div>
-            }
-        </div>
+            </div>
+        }
+
     </div>
 }
