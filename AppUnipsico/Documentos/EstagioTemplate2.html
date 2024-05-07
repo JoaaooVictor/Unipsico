@@ -1,67 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autorização de Estágio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-        body {
-            font-family:  'Arial', 'Arial Narrow', 'Franklin Gothic Medium', sans-serif;
-            background-color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-
-/*        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            border: 2px solid #000;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }*/
-
-        h2 {
-            text-align: center;
-            color: #000;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #000;
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        .texto-estagio{
-            text-indent: 5ch;
-        }
-
-        .assinaturas {
-            margin-top: 40px;
-        }
-
-            .assinaturas p {
-                margin-bottom: 5px;
-                color: #000;
-            }
-
-                .assinaturas p strong {
-                    font-weight: bold;
-                }
-
-                .assinaturas p:last-child {
-                    margin-bottom: 0;
-                }
-
-        .linha-assinatura {
-            border-top: 1px solid #000;
-            margin-top: 20px;
-            opacity: 20%;
-        }
-    </style>
 </head>
 <body>
     <div class="container-fluid w-50 mt-5">
@@ -69,13 +9,13 @@
         <div class="header">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="w-25">
-                    <img class="img-thumbnail" style="border: none" src="/wwwroot/img/unifaat/logo-unifaat.png" alt="Logo da Universidade">
+                    <img class="img-thumbnail" src="./wwwroot/assets/img/unifaat/logo-unifaat.png" alt="Logo da Universidade"/>
                 </div>
                 <div class="w-50">
-                    <h6>INSTITUIÇÃO EDUCACIONAL ATIBAIENSE LTDA</h6></p>
+                    <h6>INSTITUIÇÃO EDUCACIONAL ATIBAIENSE LTDA</h6>
                     <h5><strong>CENTRO UNIVERSITÁRIO UNIFAAT</strong></h5>
                     <h6>Credenciado pela Portaria nº 258, de 22 de março de 2018.</h6>
-                </div>  
+                </div>
             </div>
             <div class="mt-5 mb-5">
                 <div class="linha-assinatura"></div>
@@ -86,25 +26,81 @@
         <div class="mb-5">
             <p>Ilmo(a). Sr(a).</p>
             <p>(RESPONSAVEL PELA INSTITUIÇÃO).</p>
-            <p><strong>{{NomeInstituicaoEstagio}}</strong></strong>.</p>     
-        </div>   
+            <p><strong>{{NomeInstituicaoEstagio}}</strong>.</p>
+        </div>
         <div class="texto-estagio d-flex flex-column gap-2 mb-3">
             <p style="text-indent: 0ch;">Prezado (a) Senhor (a),</p>
-            <p><strong>Aline Pinheiro Souza de Morais</strong> RG nº 34.708.911-2 SSP/SP, Coordenadora do Curso de Psicologia da UNIFAAT – CENTRO UNIVERSITÁRIO, apresenta a V.Sª. e solicita permissão para que o(a) aluno(a) <strong>{{NomeDoAluno}}</strong>, portador do Registro Acadêmico (RA) <strong>{{NumeroDoRa}}</strong>, RG nº. <strong>(NÚMERO DE RG, COM DÍGITO)</strong> , regularmente matriculado(a) no 6° (sexto) semestre do curso de PSICOLOGIA desta Instituição de Ensino Superior, possa realizar estágio nessa conceituada Unidade, com inicio em <strong>{{DataInicioEstagio}}</strong>.</p>               
-        </div>   
+            <p><strong>Aline Pinheiro Souza de Morais</strong> RG nº 34.708.911-2 SSP/SP, Coordenadora do Curso de Psicologia da UNIFAAT – CENTRO UNIVERSITÁRIO, apresenta a V.Sª. e solicita permissão para que o(a) aluno(a) <strong>{{NomeDoAluno}}</strong>, portador do Registro Acadêmico (RA) <strong>{{NumeroDoRa}}</strong>, RG nº. <strong>(NÚMERO DE RG, COM DÍGITO)</strong> , regularmente matriculado(a) no 6° (sexto) semestre do curso de PSICOLOGIA desta Instituição de Ensino Superior, possa realizar estágio nessa conceituada Unidade, com inicio em <strong>{{DataInicioEstagio}}</strong>.</p>
+        </div>
         <div class="texto-estagio d-flex flex-column gap-2 mb-3">
             <p>Contando com a atenção de V.Sª., subscrevo-me,</p>
-            <p>Atenciosamente,</p>               
-        </div>  
+            <p>Atenciosamente,</p>
+        </div>
         <div class="d-flex flex-column gap-2 mb-3 align-items-center">
-            <img class="img-thumbnail w-50" style="border: none" src="/wwwroot/img/unifaat/assinatura.jpg" alt="Assinatura responsavel">
-            <p> <strong>Aline Pinheiro de Souza</strong></p> 
-            <p><strong>CPF 214.619.068-06</strong></p> 
+            <img class="img-thumbnail w-50" style="border: none" src="./wwwroot/assets/img/unifaat/assinatura.jpg" alt="Assinatura responsavel"/>
+            <p> <strong>Aline Pinheiro de Souza</strong></p>
+            <p><strong>CPF 214.619.068-06</strong></p>
             <p><strong>CRP06/108.777</strong></p>
         </div>
-
-
-
     </div>
 </body>
 </html>
+<style>
+    body {
+        font-family: 'Arial', 'Arial Narrow', 'Franklin Gothic Medium', sans-serif;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    /*        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }*/
+
+    h2 {
+        text-align: center;
+        color: #000;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: #000;
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+
+    .texto-estagio {
+        text-indent: 5ch;
+    }
+
+    .assinaturas {
+        margin-top: 40px;
+    }
+
+        .assinaturas p {
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+            .assinaturas p strong {
+                font-weight: bold;
+            }
+
+            .assinaturas p:last-child {
+                margin-bottom: 0;
+            }
+
+    .linha-assinatura {
+        border-top: 1px solid #000;
+        margin-top: 20px;
+        opacity: 20%;
+    }
+</style>
+
