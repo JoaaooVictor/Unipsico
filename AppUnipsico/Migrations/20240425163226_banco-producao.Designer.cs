@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppUnipsico.Migrations
 {
     [DbContext(typeof(AppUnipsicoDb))]
-    [Migration("20240424110422_DbGeral")]
-    partial class DbGeral
+    [Migration("20240425163226_banco-producao")]
+    partial class bancoproducao
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

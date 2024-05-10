@@ -8,8 +8,8 @@ namespace AppUnipsico.Areas.Admin.ViewModels
         [Display(Name = "Nome da Instituição")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "O nome da instituição é obrigatório.")]
-        [Display(Name = "Nome da Instituição")]
+        [Required(ErrorMessage = "O nome do responsável é obrigatório.")]
+        [Display(Name = "Responsável pela Instituição")]
         public string NomeResponsavelInstituicao { get; set; }
 
         [Required(ErrorMessage = "O logradouro da instituição é obrigatório.")]

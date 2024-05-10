@@ -1,5 +1,6 @@
 ﻿using AppUnipsico.Data.Context;
 using AppUnipsico.Models;
+using Humanizer;
 using Microsoft.EntityFrameworkCore;
 
 namespace AppUnipsico.Areas.Admin.Repositories
@@ -57,20 +58,22 @@ namespace AppUnipsico.Areas.Admin.Repositories
 
         public async Task<string> RenderizarHtmlEstagio(Estagio estagio)
         {
-            var htmlFilePath = Path.Combine(Directory.GetCurrentDirectory(), @"Documentos\EstagioTemplate.html");
-            var htmlContent = await File.ReadAllTextAsync(htmlFilePath);
+            var caminhoArquivoHtml = Path.Combine(Directory.GetCurrentDirectory(), @"Documentos\EstagioTemplate2.html");
+            var conteudoHtml = await File.ReadAllTextAsync(caminhoArquivoHtml);
 
-            htmlContent = htmlContent.Replace("{{NomeDoAluno}}", estagio.Aluno.NomeCompleto);
-            htmlContent = htmlContent.Replace("{{NumeroDoRa}}", estagio.Aluno.RA);
-            htmlContent = htmlContent.Replace("{{AlunoRa}}", estagio.Aluno.RA);
-            htmlContent = htmlContent.Replace("{{Endereco}}", estagio.Instituicao.Logradouro);
-            htmlContent = htmlContent.Replace("{{DataInicioEstagio}}", estagio.DataEstagio.ToShortDateString());
-            htmlContent = htmlContent.Replace("{{NomeInstituicaoEstagio}}", estagio.Instituicao.NomeInstituicao);
-            htmlContent = htmlContent.Replace("{{DataDaAssinatura}}", DateTime.Now.ToLongDateString());
-            htmlContent = htmlContent.Replace("{{EstagioId}}", estagio.EstagioId.ToString());
+            conteudoHtml = conteudoHtml.Replace("{{NomeDoAluno}}", estagio.Aluno.NomeCompleto);
+            conteudoHtml = conteudoHtml.Replace("{{NumeroDoRa}}", estagio.Aluno.RA);
+            conteudoHtml = conteudoHtml.Replace("{{AlunoRa}}", estagio.Aluno.RA);
+            conteudoHtml = conteudoHtml.Replace("{{Endereco}}", estagio.Instituicao.Logradouro);
+            conteudoHtml = conteudoHtml.Replace("{{DataInicioEstagio}}", estagio.DataEstagio.ToShortDateString());
+            conteudoHtml = conteudoHtml.Replace("{{NomeInstituicaoEstagio}}", estagio.Instituicao.NomeInstituicao);
+            conteudoHtml = conteudoHtml.Replace("{{DataDaAssinatura}}", DateTime.Now.ToLongDateString());
+            conteudoHtml = conteudoHtml.Replace("{{EstagioId}}", estagio.EstagioId.ToString());
+            conteudoHtml = conteudoHtml.Replace("{{Dia}}", DateTime.Now.Day.ToString());
+            conteudoHtml = conteudoHtml.Replace("{{Mes}}", DateTime.Now.ToString("MMMM"));
+            conteudoHtml = conteudoHtml.Replace("{{Ano}}", DateTime.Now.Year.ToString());
 
-
-            return htmlContent;
+            return conteudoHtml;
         }
 
         public async Task AtualizaStatusEstagio(Estagio estagio)

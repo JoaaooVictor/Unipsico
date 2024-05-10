@@ -24,9 +24,9 @@ namespace AppUnipsico.Controllers
         [HttpPost]
         public async Task<IActionResult> BuscaEstagio(Guid estagioId)
         {
-           var estagio = await _estagioRepository.BuscaEstagioPorId(estagioId);
+            var estagio = await _estagioRepository.BuscaEstagioPorId(estagioId);
 
-            if(estagio is null)
+            if (estagio is null)
             {
                 return View("EstagioNaoEncontrado");
             }
@@ -55,16 +55,27 @@ namespace AppUnipsico.Controllers
                 return NotFound();
             }
 
-            var htmlContent = await _estagioRepository.RenderizarHtmlEstagio(estagio);
+            var conteudoHtml = await _estagioRepository.RenderizarHtmlEstagio(estagio);
+            var nomePdf = $"{estagio.AlunoId}-{DateTime.Now.ToString("yyyyMMdd")}.pdf";
 
-            var memoryStream = new MemoryStream();
-            var writer = new PdfWriter(memoryStream);
-            var pdf = new PdfDocument(writer);
-            var converter = new ConverterProperties();
-            HtmlConverter.ConvertToPdf(htmlContent, pdf, converter);
-            pdf.Close();
+            try
+            {
+                var memoryStream = new MemoryStream();
+                var writer = new PdfWriter(memoryStream);
+                var pdf = new PdfDocument(writer);
+                var converter = new ConverterProperties();
 
-            return File(memoryStream.ToArray(), "application/pdf", Path.Combine($"{estagio.Aluno.RA}", "_estagio.pdf"));
+                HtmlConverter.ConvertToPdf(conteudoHtml, pdf, converter);
+
+                pdf.Close();
+
+                return File(memoryStream.ToArray(), "application/pdf", nomePdf);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao gerar PDF: " + ex.Message);
+                return RedirectToAction("Index");
+            }
         }
     }
 }

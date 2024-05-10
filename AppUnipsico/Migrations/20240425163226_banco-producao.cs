@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AppUnipsico.Migrations
 {
     /// <inheritdoc />
-    public partial class DbGeral : Migration
+    public partial class bancoproducao : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -4,6 +4,7 @@ using AppUnipsico.Enums;
 using AppUnipsico.Models;
 using iText.Html2pdf;
 using iText.Kernel.Pdf;
+using iTextSharp.text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -122,16 +123,27 @@ namespace AppUnipsico.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var htmlContent = await _estagioRepository.RenderizarHtmlEstagio(estagio);
+            var conteudoHtml = await _estagioRepository.RenderizarHtmlEstagio(estagio);
+            var nomePdf = $"{estagio.AlunoId}-{estagio.EstagioId}.pdf";
 
-            var memoryStream = new MemoryStream();
-            var writer = new PdfWriter(memoryStream);
-            var pdf = new PdfDocument(writer);
-            var converter = new ConverterProperties();
-            HtmlConverter.ConvertToPdf(htmlContent, pdf, converter);
-            pdf.Close();
+            try
+            {
+                var memoryStream = new MemoryStream();
+                var writer = new PdfWriter(memoryStream);
+                var pdf = new PdfDocument(writer);
+                var converter = new ConverterProperties();
 
-            return File(memoryStream.ToArray(), "application/pdf", Path.Combine($"{estagio.Aluno.RA}", "_estagio.pdf"));
+                HtmlConverter.ConvertToPdf(conteudoHtml, pdf, converter);
+
+                pdf.Close();
+
+                return File(memoryStream.ToArray(), "application/pdf", nomePdf);
+
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public async Task<IActionResult> AprovarEstagio(Guid estagioId)
