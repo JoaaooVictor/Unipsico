@@ -13,7 +13,8 @@ namespace AppUnipsico.Data.Context
         public AppUnipsicoDb CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppUnipsicoDb>();
-            optionsBuilder.UseSqlServer("Server=tcp:unipsico.database.windows.net,1433;Initial Catalog=unipsico_db;Persist Security Info=False;User ID=unipsico-user-admin;Password=Unifaat@2024;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=UNIPSICO;Integrated Security=true;");
+            //optionsBuilder.UseSqlServer("Server=tcp:unipsico.database.windows.net,1433;Initial Catalog=unipsico_db;Persist Security Info=False;User ID=unipsico-user-admin;Password=Unifaat@2024;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
             return new AppUnipsicoDb(optionsBuilder.Options);
         }

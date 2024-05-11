@@ -62,6 +62,7 @@ namespace AppUnipsico.Areas.Admin.Repositories
             var conteudoHtml = await File.ReadAllTextAsync(caminhoArquivoHtml);
 
             conteudoHtml = conteudoHtml.Replace("{{NomeDoAluno}}", estagio.Aluno.NomeCompleto);
+            conteudoHtml = conteudoHtml.Replace("{{NomeResponsavel}}", estagio.Instituicao.NomeResponsavelInstituicao);
             conteudoHtml = conteudoHtml.Replace("{{NumeroDoRa}}", estagio.Aluno.RA);
             conteudoHtml = conteudoHtml.Replace("{{AlunoRa}}", estagio.Aluno.RA);
             conteudoHtml = conteudoHtml.Replace("{{Endereco}}", estagio.Instituicao.Logradouro);

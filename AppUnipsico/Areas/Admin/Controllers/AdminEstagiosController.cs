@@ -4,7 +4,6 @@ using AppUnipsico.Enums;
 using AppUnipsico.Models;
 using iText.Html2pdf;
 using iText.Kernel.Pdf;
-using iTextSharp.text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
