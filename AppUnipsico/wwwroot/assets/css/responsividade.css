@@ -11,14 +11,14 @@
 }
 
 
-@media (max-width: 1400px){
-    .card-encontrar-estagio{
-        width:50% !important
+@media (max-width: 1400px) {
+    .card-encontrar-estagio {
+        width: 50% !important
     }
+
     @media (max-width: 800px) {
         .card-encontrar-estagio {
             width: 100% !important
         }
     }
-
 }

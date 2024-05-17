@@ -8,47 +8,45 @@
     </div>
     <br />
     <div class="row justify-content-center">
-        <div class="col-7">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-6">
             <div class="card">
                 <div class="card-body p-5">
                     <h3 class="mb-5">Novo Acesso</h3>
                     <form asp-area="" asp-controller="Account" asp-action="Register" method="post">
                         <input type="hidden" asp-for="ReturnUrl" />
                         <div class="row">
-                            <div class="col-12">
-                                <label class="ms-1 mt-1 form-label" asp-for="NomeCompleto">Nome completo</label>
+                            <div class="col-12 col-sm-6 col-lg-6 mb-3">
                                 <input asp-for="NomeCompleto" class="form-control" />
+                                <label class="ms-1 mt-1 form-label" asp-for="NomeCompleto">Nome completo</label>
                                 <span asp-validation-for="NomeCompleto" class="text-danger"></span>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label class="ms-1 mt-1 form-label" asp-for="Email">E-mail</label>
+                            <div class="col-12 col-sm-6 col-lg-6 mb-3">
                                 <input asp-for="Email" class="form-control" />
+                                <label class="ms-1 mt-1 form-label" asp-for="Email">E-mail</label>
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
-                                <label class="ms-1 mt-1 form-label" asp-for="Cpf">CPF</label>
+                            <div class="col-12 col-sm-6 col-lg-6 mb-3">
                                 <input asp-for="Cpf" placeholder="000.000.000-00" id="cpf" class="form-control" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" />
+                                <label class="ms-1 mt-1 form-label" asp-for="Cpf">CPF</label>
                                 <span asp-validation-for="Cpf" class="text-danger"></span>
                             </div>
-                            <div class="col-6">
-                                <label class="ms-1 mt-1 form-label" asp-for="DataNascimento">Data de Nascimento</label>
+                            <div class="col-12 col-sm-6 col-lg-6 mb-3">
                                 <input asp-for="DataNascimento" class="form-control" />
+                                <label class="ms-1 mt-1 form-label" asp-for="DataNascimento">Data de Nascimento</label>
                                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
-                                <label class="ms-1 mt-1 form-label" asp-for="Password">Senha</label>
+                            <div class="col-12 col-sm-6 col-lg-6 mb-3">
                                 <input asp-for="Password" type="password" class="form-control" />
+                                <label class="ms-1 mt-1 form-label" asp-for="Password">Senha</label>
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
-                            <div class="col-6">
-                                <label class="ms-1 mt-1 form-label" asp-for="Repassword">Confirmar Senha</label>
+                            <div class="col-12 col-sm-6 col-lg-6 mb-3">
                                 <input asp-for="Repassword" type="password" class="form-control" />
+                                <label class="ms-1 mt-1 form-label" asp-for="Repassword">Confirmar Senha</label>
                                 <span asp-validation-for="Repassword" class="text-danger"></span>
                             </div>
                         </div>
@@ -60,7 +58,6 @@
                             <label class="visually-hidden" asp-for="SelectedRole"></label>
                             <span asp-validation-for="SelectedRole" class="text-danger ms-1"></span>
                         </div>
-                        <br />
                         <div class="">
                             <button type="submit" class="btn btn-success btn-block">Registrar</button>
                         </div>
