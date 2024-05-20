@@ -66,9 +66,9 @@ namespace AppUnipsico.Areas.Admin.Repositories
             conteudoHtml = conteudoHtml.Replace("{{NumeroDoRa}}", estagio.Aluno.RA);
             conteudoHtml = conteudoHtml.Replace("{{AlunoRa}}", estagio.Aluno.RA);
             conteudoHtml = conteudoHtml.Replace("{{Endereco}}", estagio.Instituicao.Logradouro);
-            conteudoHtml = conteudoHtml.Replace("{{DataInicioEstagio}}", estagio.DataEstagio.ToShortDateString());
+            conteudoHtml = conteudoHtml.Replace("{{DataInicioEstagio}}", estagio.DataEstagio.ToString("dd/MM/yyyy"));
             conteudoHtml = conteudoHtml.Replace("{{NomeInstituicaoEstagio}}", estagio.Instituicao.NomeInstituicao);
-            conteudoHtml = conteudoHtml.Replace("{{DataDaAssinatura}}", DateTime.Now.ToLongDateString());
+            conteudoHtml = conteudoHtml.Replace("{{DataDaAssinatura}}", DateTime.Now.ToString("dd/MM/yyyy"));
             conteudoHtml = conteudoHtml.Replace("{{EstagioId}}", estagio.EstagioId.ToString());
             conteudoHtml = conteudoHtml.Replace("{{Dia}}", DateTime.Now.Day.ToString());
             conteudoHtml = conteudoHtml.Replace("{{Mes}}", DateTime.Now.ToString("MMMM"));
