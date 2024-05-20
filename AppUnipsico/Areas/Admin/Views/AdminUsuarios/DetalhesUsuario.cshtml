@@ -36,11 +36,11 @@
                         </tr>
                         <tr>
                             <th scope="row">Data de nascimento:</th>
-                            <td>@Model.Usuario.DataNascimento.ToString("dd-MM-yyyy")</td>
+                            <td>@Model.Usuario.DataNascimento.ToString("dd/MM/yyyy")</td>
                         </tr>
                         <tr>
                             <th scope="row">Data de registro no sistema:</th>
-                            <td>@Model.Usuario.DataRegistro</td>
+                            <td>@Model.Usuario.DataRegistro.ToString("dd/MM/yyyy")</td>
                         </tr>
                         <tr>
                             <th scope="row">Tipo de usuário:</th>
@@ -79,8 +79,8 @@
                                 @foreach (var consulta in Model.Consultas)
                                 {
                                     <tr>
-                                        <td class="text-center">@consulta.DataConsulta.Data.ToShortDateString()</td>
-                                        <td class="text-center">@consulta.DataConsulta.Data.ToShortTimeString()</td>
+                                        <td class="text-center">@consulta.DataConsulta.Data.ToString("dd/MM/yyyy")</td>
+                                        <td class="text-center">@consulta.DataConsulta.Data.ToString("HH:mm")</td>
                                         <td class="text-center">@consulta.StatusConsulta</td>
                                     </tr>
                                 }

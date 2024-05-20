@@ -23,13 +23,13 @@
                 <dd class="col-sm-9">@Model.Usuario.Cpf</dd>
 
                 <dt class="col-sm-3">Data de Nascimento do Paciente:</dt>
-                <dd class="col-sm-9">@Model.Usuario.DataNascimento.ToString("dd-MM-yyyy")</dd>
+                <dd class="col-sm-9">@Model.Usuario.DataNascimento.ToString("dd/MM/yyyy")</dd>
 
                 <dt class="col-sm-3">Data da Consulta:</dt>
-                <dd class="col-sm-9">@Model.DataConsulta.Data.ToString("dd-MM-yyyy")</dd>
+                <dd class="col-sm-9">@Model.DataConsulta.Data.ToString("dd/MM/yyyy")</dd>
 
                 <dt class="col-sm-3">Horário da consulta:</dt>
-                <dd class="col-sm-9">@Model.DataConsulta.Data.ToString("HH-mm")</dd>
+                <dd class="col-sm-9">@Model.DataConsulta.Data.ToString("HH:mm")</dd>
             </dl>
         </div>
     </div>

@@ -24,10 +24,10 @@
                             <div class="card" style="border-top: 5px solid #00365d">
                                 <div class="card-body d-flex flex-column">
                                     <div>
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">@item.DataConsulta.Data.ToShortDateString()</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">@item.DataConsulta.Data.ToString("dd/MM/yyyy")</p>
                                         <h6 class="font-weight-bolder">@item.StatusConsulta</h6>
                                         <p class="font-weight-bold text-xs mb-0">@item.Usuario.NomeCompleto</p>
-                                        <p class="font-weight-bolder mb-0">@item.DataConsulta.Data.ToShortTimeString()</p>
+                                        <p class="font-weight-bolder mb-0">@item.DataConsulta.Data.ToString("HH:mm")</p>
                                     </div>
                                     <div class="mt-auto text-end">
                                         <a asp-action="DetalhesConsulta" asp-route-ConsultaId="@item.ConsultaId"><i class="fas fa-info-circle" aria-hidden="true"></i></a>
