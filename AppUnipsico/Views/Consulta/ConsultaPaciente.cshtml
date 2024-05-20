@@ -4,15 +4,64 @@
     ViewBag.Title = "Consultas do Paciente";
 }
 
+
 <div class="container-fluid">
     <div class="p-3 mb-3">
-        <h3 class="text-left" style="color: white">Suas Consultas</h3>
+        <h3 class="mb-3 text-left" style="color: white">Consultas</h3>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="row mt-5 responsividade-cards">
+                @if (Model.Consultas.Any())
+                {
+                    @foreach (var item in Model.Consultas)
+                    {
+                        <div class="col-8 col-sm-4 col-md-4 col-lg-3 mb-3">
+                            <div class="card" style="border-top: 5px solid #00365d">
+                                <div class="card-body d-flex flex-column">
+                                    <div>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">@item.DataConsulta.Data.ToShortDateString()</p>
+                                        <h6 class="font-weight-bolder">@item.StatusConsulta</h6>
+                                        <p class="font-weight-bold text-xs mb-0">@item.Usuario.NomeCompleto</p>
+                                        <p class="font-weight-bolder mb-0">@item.DataConsulta.Data.ToShortTimeString()</p>
+                                    </div>
+@*                                     <div class="mt-auto text-end">
+                                        <a asp-action="DetalhesConsulta" asp-route-ConsultaId="@item.ConsultaId"><i class="fas fa-info-circle" aria-hidden="true"></i></a>
+                                        <a asp-action="DeletarConsulta" asp-route-ConsultaId="@item.ConsultaId"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                                    </div> *@
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-md-12">
+                        <div class="alert alert-info" role="alert">
+                            Não foram encontradas consultas.
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@* <div class="container-fluid">
+    <div class="p-3 mb-3">
+        <h3 class="text-white text-left responsividade-textos-cabecalho">Suas Consultas</h3>
     </div>
     <hr />
-    <div class="card">
-        <div class="card-body">
-            @if (Model.Consultas.Any())
-            {
+
+    @if (Model.Consultas.Any())
+    {
+        <div class="card">
+            <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -20,7 +69,6 @@
                                 <th class="text-center">Data da Consulta</th>
                                 <th class="text-center">Horário da Consulta</th>
                                 <th class="text-center">Status</th>
-                                <th class="text-center">Data de Nascimento</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,19 +78,25 @@
                                     <td class="text-center">@consulta.DataConsulta.Data.ToShortDateString()</td>
                                     <td class="text-center">@consulta.DataConsulta.Data.ToShortTimeString()</td>
                                     <td class="text-center">@consulta.StatusConsulta</td>
-                                    <td class="text-center">@consulta.Usuario.DataNascimento.ToShortDateString()</td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                 </div>
-            }
-            else
-            {
-                <div class="text-center">
-                    <p class="lead">Você não possui consultas agendadas no momento.</p>
-                </div>
-            }
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="row justify-content-center mt-6">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-center">Você não possui consultas agendadas no momento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
+ *@

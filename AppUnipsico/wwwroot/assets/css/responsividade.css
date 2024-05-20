@@ -1,0 +1,24 @@
+﻿@media (max-width: 450px) {
+    .responsividade-textos-cabecalho {
+        text-align: center !important
+    }
+
+    @media (max-width: 280px) {
+        .responsividade-textos-cabecalho {
+            font-size: 18px !important
+        }
+    }
+}
+
+
+@media (max-width: 1400px) {
+    .card-encontrar-estagio {
+        width: 50% !important
+    }
+
+    @media (max-width: 800px) {
+        .card-encontrar-estagio {
+            width: 100% !important
+        }
+    }
+}

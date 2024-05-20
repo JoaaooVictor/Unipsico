@@ -33,6 +33,10 @@ body {
     color: white
 }
 
+.cor-unifaat-texto {
+    color: #00365d !important;
+}
+
 .login-box {
     position: absolute;
     top: 50%;
