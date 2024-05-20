@@ -44,7 +44,7 @@
                             <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
                             <h6 class="font-weight-bolder">@estagio.Instituicao.NomeInstituicao</h6>
                             <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
-                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToString("dd-MM-yyyy")</p>
                         </div>
                         <div class="text-center mt-2">
                             <a title="Detalhes" class="p-2" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
@@ -75,7 +75,7 @@
                             <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
                             <h6 class="font-weight-bolder">@estagio.Instituicao.NomeInstituicao</h6>
                             <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
-                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToString("dd-MM-yyyy")</p>
                         </div>
                         <div class="mt-auto text-end">
                             <a title="Detalhes" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
@@ -104,7 +104,7 @@
                             <p class="text-sm mb-0 text-uppercase font-weight-bold">@estagio.Aluno.NomeCompleto</p>
                             <h6 class="font-weight-bolder">@estagio.Instituicao.NomeInstituicao</h6>
                             <p class="font-weight-bold text-xs mb-0">Data de Solicitação</p>
-                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToShortDateString()</p>
+                            <p class="font-weight-bolder mb-0">@estagio.DataEstagio.ToString("dd-MM-yyyy")</p>
                         </div>
                         <div class="mt-auto text-end">
                             <a title="Detalhes" asp-controller="AdminEstagios" asp-action="Detalhes" asp-route-EstagioId="@estagio.EstagioId"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></a>
