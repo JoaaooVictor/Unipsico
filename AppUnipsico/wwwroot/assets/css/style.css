@@ -241,13 +241,24 @@ section {
         color: #222222;
     }
 
+
         .section-title h2::before,
         .section-title h2::after {
             content: "";
-            width: 50px;
+            width: 30px;
             height: 2px;
             background: #00365d;
             display: inline-block;
+        }
+
+        @media (max-width: 570px) {
+            .section-title h2::before,
+            .section-title h2::after {
+                display:none;
+            }
+            .section-title h2 {
+                font-size: 30px;
+            }
         }
 
         .section-title h2::before {
