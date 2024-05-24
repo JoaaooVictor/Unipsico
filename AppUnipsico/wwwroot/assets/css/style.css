@@ -259,6 +259,19 @@ section {
             .section-title h2 {
                 font-size: 30px;
             }
+            .contact-about{
+                text-align:center
+            }
+            .responsividade-campos-email{
+                display: flex;
+                justify-content: center
+            }
+            .responsividade-tamanho-img{
+                width: 60%
+            }
+            .responsividade-centro-img{
+                justify-content: center
+            }
         }
 
         .section-title h2::before {
