@@ -14,21 +14,21 @@
                     <h3 class="mb-5">Registrar Usuário</h3>
                     <form asp-area="Admin" asp-controller="AdminUsuarios" asp-action="Register" class="form-horizontal" method="post">
                         <input type="hidden" asp-for="ReturnUrl" />
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-12">
                                 <input asp-for="NomeCompleto" class="form-control"/>
                                 <label class="ms-1 mt-1 form-label" asp-for="NomeCompleto">Nome completo</label>
                                 <span asp-validation-for="NomeCompleto" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-12">
                                 <input asp-for="Email" class="form-control"/>
                                 <label class="ms-1 mt-1 form-label" asp-for="Email">E-mail</label>
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-6">                            
                                 <input asp-for="Cpf" placeholder="000.000.000-00" id="cpf" class="form-control" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" />
                                 <label class="ms-1 mt-1 form-label" asp-for="Cpf">CPF</label>
@@ -40,7 +40,7 @@
                                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-6">                               
                                 <select asp-for="SelectedRole" class="form-control" id="SelectedRole">
                                     <option value="" disabled>Escolha um perfil</option>
@@ -57,7 +57,7 @@
                                 <span asp-validation-for="RA" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-6">       
                                 <input asp-for="Password" type="password" class="form-control"/>
                                 <label class="ms-1 mt-1 form-label" asp-for="Password">Senha</label>
